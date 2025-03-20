@@ -4,8 +4,9 @@ body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
+  background-color: #EBCBF4;  /* Soft Lavender */
   color: #333;
+  scroll-behavior: smooth;
 }
 
 /* Navigation Bar */
@@ -17,11 +18,13 @@ nav {
   padding: 12px 0;
   text-align: center;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
 }
 
 nav ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 nav ul li {
@@ -29,7 +32,7 @@ nav ul li {
   margin: 0 12px;
 }
 
-/* Standard Button Style (Without Glow) */
+/* Button Styles */
 .button {
   display: inline-block;
   font-size: 18px;
@@ -39,13 +42,14 @@ nav ul li {
   text-decoration: none;
   text-align: center;
   transition: all 0.3s ease-in-out;
-  background: #EF233C;  /* Metallic Red */
+  background: #EF233C;  /* Elegant Red */
   color: white;
   border: none;
+  cursor: pointer;
 }
 
 .button:hover {
-  background: #D90429;  /* Slight Darker Red on Hover */
+  background: #D90429;
   transform: scale(1.05);
 }
 
@@ -53,6 +57,8 @@ nav ul li {
 #home {
   text-align: center;
   padding: 100px 20px;
+  background: linear-gradient(120deg, #EBCBF4, #fff);
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 h1 {
@@ -68,7 +74,7 @@ p {
 
 /* Sections */
 section {
-  padding: 60px 20px;  /* Reduced spacing */
+  padding: 60px 20px;
   max-width: 900px;
   margin: auto;
 }
@@ -79,7 +85,7 @@ section {
   margin-bottom: 25px;
 }
 
-/* Project Button (Without Glow) */
+/* Project Button */
 .project-button {
   display: inline-block;
   font-size: 18px;
@@ -88,15 +94,14 @@ section {
   border-radius: 10px;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
-  background: #EF233C;
-  color: white;
-  border: 2px solid white;
+  background: #fff;
+  color: #EF233C;
+  border: 2px solid #EF233C;
 }
 
 .project-button:hover {
-  background: white;
-  color: #EF233C;
-  border: 2px solid #EF233C;
+  background: #EF233C;
+  color: white;
   transform: scale(1.05);
 }
 
@@ -126,4 +131,16 @@ footer {
   background-color: #f1f1f1;
   font-size: 16px;
   color: #777;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
