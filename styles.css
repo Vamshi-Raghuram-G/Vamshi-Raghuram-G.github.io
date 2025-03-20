@@ -1,0 +1,85 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  a {
+    text-decoration: none;
+    color: red;
+  }
+  
+  header {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #f9f9f9;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin: 0 10px;
+  }
+  
+  section {
+    padding: 50px 20px;
+  }
+  
+  .project {
+    margin-bottom: 20px;
+  }
+  
+  /* "Find Me Online" Section */
+  #find-me-online {
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 30px 20px;
+    margin: 30px 0;
+  }
+  
+  #find-me-online ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #find-me-online ul li {
+    display: inline;
+    margin: 0 15px;
+  }
+  
+  #find-me-online a {
+    color: red;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+  }
+  
+  #find-me-online a:hover {
+    color: darkred;
+  }
+  
+  /* Animations */
+  section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+  }
+  
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+  }
+  
