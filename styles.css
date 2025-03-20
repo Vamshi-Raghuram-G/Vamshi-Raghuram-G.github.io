@@ -4,8 +4,8 @@ body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #EBCBF4; /* Soft Lavender */
-  color: white; /* Changed text color to white */
+  background-color: white; /* White background */
+  color: #EBCBF4; /* Soft Lavender text */
   scroll-behavior: smooth;
 }
 
@@ -13,7 +13,7 @@ body {
 nav {
   position: fixed;
   width: 100%;
-  background: #EBCBF4; /* Soft Lavender */
+  background: white;
   padding: 12px 0;
   text-align: center;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
@@ -42,14 +42,14 @@ nav ul li {
   text-align: center;
   transition: all 0.3s ease-in-out;
   background: transparent;
-  color: white;
-  border: 2px solid white;
+  color: #EBCBF4;
+  border: 2px solid #EBCBF4;
   cursor: pointer;
 }
 
 .button:hover {
-  background: white;
-  color: #EBCBF4;
+  background: #EBCBF4;
+  color: white;
   transform: scale(1.05);
 }
 
@@ -64,18 +64,18 @@ section {
 h1 {
   font-size: 45px;
   font-weight: bold;
-  color: white;
+  color: #EBCBF4;
 }
 
 h2 {
   font-size: 30px;
   font-weight: bold;
-  color: white;
+  color: #EBCBF4;
 }
 
 p {
   font-size: 18px;
-  color: white;
+  color: #EBCBF4;
 }
 
 /* Project Section */
@@ -93,13 +93,13 @@ p {
   text-decoration: none;
   transition: all 0.3s ease-in-out;
   background: transparent;
-  color: white;
-  border: 2px solid white;
+  color: #EBCBF4;
+  border: 2px solid #EBCBF4;
 }
 
 .project-button:hover {
-  background: white;
-  color: #EBCBF4;
+  background: #EBCBF4;
+  color: white;
   transform: scale(1.05);
 }
 
@@ -120,9 +120,9 @@ p {
 footer {
   text-align: center;
   padding: 25px;
-  background-color: #EBCBF4; /* Soft Lavender */
+  background-color: white;
   font-size: 16px;
-  color: white;
+  color: #EBCBF4;
 }
 
 /* Animations */
