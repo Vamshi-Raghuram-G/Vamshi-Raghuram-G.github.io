@@ -29,7 +29,7 @@ nav ul li {
   margin: 0 12px;
 }
 
-/* Standard Button Style */
+/* Standard Button Style (Without Glow) */
 .button {
   display: inline-block;
   font-size: 18px;
@@ -39,22 +39,20 @@ nav ul li {
   text-decoration: none;
   text-align: center;
   transition: all 0.3s ease-in-out;
-  background: #EF233C;
+  background: #EF233C;  /* Metallic Red */
   color: white;
-  box-shadow: 0px 4px 10px rgba(239, 35, 60, 0.3);
   border: none;
 }
 
 .button:hover {
-  background: #D90429;
-  transform: scale(1.07);
-  box-shadow: 0px 6px 15px rgba(239, 35, 60, 0.4);
+  background: #D90429;  /* Slight Darker Red on Hover */
+  transform: scale(1.05);
 }
 
 /* Hero Section */
 #home {
   text-align: center;
-  padding: 120px 20px;
+  padding: 100px 20px;
 }
 
 h1 {
@@ -70,7 +68,7 @@ p {
 
 /* Sections */
 section {
-  padding: 80px 20px;
+  padding: 60px 20px;  /* Reduced spacing */
   max-width: 900px;
   margin: auto;
 }
@@ -81,6 +79,7 @@ section {
   margin-bottom: 25px;
 }
 
+/* Project Button (Without Glow) */
 .project-button {
   display: inline-block;
   font-size: 18px;
@@ -92,7 +91,6 @@ section {
   background: #EF233C;
   color: white;
   border: 2px solid white;
-  box-shadow: 0px 4px 10px rgba(239, 35, 60, 0.3);
 }
 
 .project-button:hover {
@@ -100,7 +98,6 @@ section {
   color: #EF233C;
   border: 2px solid #EF233C;
   transform: scale(1.05);
-  box-shadow: 0px 6px 15px rgba(239, 35, 60, 0.4);
 }
 
 /* Find Me Online */
@@ -115,6 +112,11 @@ section {
   justify-content: center;
   gap: 15px;
   margin-top: 20px;
+}
+
+/* Resume Section */
+#resume {
+  text-align: center;
 }
 
 /* Footer */
