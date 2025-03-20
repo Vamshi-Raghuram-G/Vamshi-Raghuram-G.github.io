@@ -64,34 +64,38 @@ section {
   margin: auto;
 }
 
-/* Project Links */
-.project a {
-  text-decoration: none;
-  color: red;
-  font-size: 24px;
-  font-weight: bold;
-  transition: color 0.3s ease-in-out;
-}
-
-.project a:hover {
-  color: darkred;
-}
-
-/* Resume */
-#resume a {
+/* BUTTONS (Apple-Like Style) */
+.button {
   display: inline-block;
-  font-size: 20px;
   background-color: red;
   color: white;
-  padding: 15px 30px;
-  text-decoration: none;
+  font-size: 18px;
   font-weight: bold;
-  border-radius: 30px;
-  transition: background 0.3s ease-in-out;
+  padding: 15px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
 }
 
-#resume a:hover {
+.button:hover {
   background-color: darkred;
+  transform: scale(1.05);
+}
+
+/* Resume Button */
+#resume {
+  text-align: center;
+}
+
+#resume .button {
+  margin-top: 20px;
+}
+
+/* Projects Section */
+.project {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 /* Find Me Online */
@@ -101,15 +105,11 @@ section {
   padding: 50px 20px;
 }
 
-#find-me-online a {
-  color: red;
-  font-size: 22px;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-#find-me-online a:hover {
-  color: darkred;
+#find-me-online .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 /* Footer */
