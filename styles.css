@@ -4,8 +4,8 @@ body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: white; /* White background */
-  color: #EBCBF4; /* Soft Lavender text */
+  background-color: #FFF0F3; /* Soft pastel background */
+  color: #590D22; /* Deep red text for readability */
   scroll-behavior: smooth;
 }
 
@@ -13,10 +13,10 @@ body {
 nav {
   position: fixed;
   width: 100%;
-  background: white;
+  background: #590D22; /* Dark wine color */
   padding: 12px 0;
   text-align: center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 
@@ -28,29 +28,21 @@ nav ul {
 
 nav ul li {
   display: inline;
-  margin: 0 12px;
+  margin: 0 15px;
 }
 
-/* Button Styles */
-.button {
-  display: inline-block;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 12px 25px;
-  border-radius: 50px;
+nav ul li a {
   text-decoration: none;
-  text-align: center;
+  font-weight: bold;
+  color: #FFF0F3; /* Soft contrast */
+  padding: 8px 15px;
   transition: all 0.3s ease-in-out;
-  background: transparent;
-  color: #EBCBF4;
-  border: 2px solid #EBCBF4;
-  cursor: pointer;
 }
 
-.button:hover {
-  background: #EBCBF4;
-  color: white;
-  transform: scale(1.05);
+nav ul li a:hover {
+  background: #A4133C;
+  border-radius: 8px;
+  padding: 8px 15px;
 }
 
 /* Hero & Sections */
@@ -64,23 +56,53 @@ section {
 h1 {
   font-size: 45px;
   font-weight: bold;
-  color: #EBCBF4;
+  color: #C9184A;
 }
 
 h2 {
   font-size: 30px;
   font-weight: bold;
-  color: #EBCBF4;
+  color: #FF4D6D;
 }
 
 p {
   font-size: 18px;
-  color: #EBCBF4;
+  color: #590D22;
+}
+
+/* Button Styles */
+.button {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  background: #A4133C; /* Primary button color */
+  color: #FFF0F3;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #800F2F; /* Darker hover effect */
+  color: #FFF0F3;
+  transform: scale(1.05);
 }
 
 /* Project Section */
 .project {
-  margin-bottom: 25px;
+  background: #FF8FA3;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.project:hover {
+  transform: scale(1.02);
 }
 
 /* Project Button */
@@ -92,14 +114,13 @@ p {
   border-radius: 10px;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
-  background: transparent;
-  color: #EBCBF4;
-  border: 2px solid #EBCBF4;
+  background: #C9184A;
+  color: white;
+  border: 2px solid transparent;
 }
 
 .project-button:hover {
-  background: #EBCBF4;
-  color: white;
+  background: #A4133C;
   transform: scale(1.05);
 }
 
@@ -120,9 +141,9 @@ p {
 footer {
   text-align: center;
   padding: 25px;
-  background-color: white;
+  background-color: #590D22; /* Dark footer */
   font-size: 16px;
-  color: #EBCBF4;
+  color: white;
 }
 
 /* Animations */
