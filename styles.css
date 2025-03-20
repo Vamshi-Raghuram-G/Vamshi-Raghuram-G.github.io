@@ -1,85 +1,110 @@
-/* General Styles */
+/* Apple-style fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-  }
-  
-  a {
-    text-decoration: none;
-    color: red;
-  }
-  
-  header {
-    text-align: center;
-    padding: 50px 0;
-    background-color: #f9f9f9;
-  }
-  
-  nav ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  nav ul li {
-    display: inline;
-    margin: 0 10px;
-  }
-  
-  section {
-    padding: 50px 20px;
-  }
-  
-  .project {
-    margin-bottom: 20px;
-  }
-  
-  /* "Find Me Online" Section */
-  #find-me-online {
-    text-align: center;
-    background-color: #f9f9f9;
-    padding: 30px 20px;
-    margin: 30px 0;
-  }
-  
-  #find-me-online ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  #find-me-online ul li {
-    display: inline;
-    margin: 0 15px;
-  }
-  
-  #find-me-online a {
-    color: red;
-    font-weight: bold;
-    font-size: 1.2em;
-    transition: color 0.3s ease;
-  }
-  
-  #find-me-online a:hover {
-    color: darkred;
-  }
-  
-  /* Animations */
-  section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease-out;
-  }
-  
-  section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #f1f1f1;
-  }
-  
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* Navigation Bar */
+nav {
+  position: fixed;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 15px 0;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 20px;
+}
+
+nav a {
+  font-size: 18px;
+  color: red;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: darkred;
+}
+
+/* Hero Section */
+#home {
+  text-align: center;
+  padding: 150px 20px;
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+
+p {
+  font-size: 20px;
+  color: #666;
+}
+
+/* Sections */
+section {
+  padding: 100px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Buttons */
+button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: darkred;
+}
+
+/* Find Me Online */
+#find-me-online {
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 50px 20px;
+}
+
+#find-me-online a {
+  color: red;
+  font-size: 22px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+#find-me-online a:hover {
+  color: darkred;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px;
+  background-color: #f1f1f1;
+  font-size: 16px;
+  color: #777;
+}
