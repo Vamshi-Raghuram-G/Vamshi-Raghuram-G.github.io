@@ -15,8 +15,8 @@ nav {
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   padding: 15px 0;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
   text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 nav ul {
@@ -26,18 +26,30 @@ nav ul {
 
 nav ul li {
   display: inline;
-  margin: 0 20px;
+  margin: 0 15px;
 }
 
-nav a {
+/* Metallic Button */
+.button {
+  display: inline-block;
   font-size: 18px;
-  color: red;
-  font-weight: 500;
-  transition: color 0.3s ease-in-out;
+  font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(145deg, #ff0000, #990000);
+  color: white;
+  box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.3);
+  border: none;
+  outline: none;
 }
 
-nav a:hover {
-  color: darkred;
+.button:hover {
+  background: linear-gradient(145deg, #ff3333, #b30000);
+  transform: scale(1.07);
+  box-shadow: 0px 6px 15px rgba(255, 0, 0, 0.4);
 }
 
 /* Hero Section */
@@ -62,34 +74,6 @@ section {
   padding: 100px 20px;
   max-width: 900px;
   margin: auto;
-}
-
-/* BUTTONS (Apple-Like Style) */
-.button {
-  display: inline-block;
-  background-color: red;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 15px 25px;
-  border-radius: 50px;
-  text-decoration: none;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
-}
-
-.button:hover {
-  background-color: darkred;
-  transform: scale(1.05);
-}
-
-/* Resume Button */
-#resume {
-  text-align: center;
-}
-
-#resume .button {
-  margin-top: 20px;
 }
 
 /* Projects Section */
