@@ -4,7 +4,7 @@ body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #EBCBF4;  /* Soft Lavender */
+  background-color: #EBCBF4; /* Soft Lavender */
   color: #333;
   scroll-behavior: smooth;
 }
@@ -42,46 +42,43 @@ nav ul li {
   text-decoration: none;
   text-align: center;
   transition: all 0.3s ease-in-out;
-  background: #EF233C;  /* Elegant Red */
-  color: white;
-  border: none;
+  background: white;
+  color: #333;
+  border: 2px solid #333;
   cursor: pointer;
 }
 
 .button:hover {
-  background: #D90429;
+  background: #333;
+  color: white;
   transform: scale(1.05);
 }
 
-/* Hero Section */
-#home {
+/* Hero & Sections */
+section {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
   text-align: center;
-  padding: 100px 20px;
-  background: linear-gradient(120deg, #EBCBF4, #fff);
-  animation: fadeIn 1.5s ease-in-out;
 }
 
 h1 {
   font-size: 45px;
   font-weight: bold;
-  letter-spacing: -1px;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: bold;
 }
 
 p {
   font-size: 18px;
-  color: #666;
-}
-
-/* Sections */
-section {
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: auto;
+  color: #444;
 }
 
 /* Project Section */
 .project {
-  text-align: center;
   margin-bottom: 25px;
 }
 
@@ -90,25 +87,24 @@ section {
   display: inline-block;
   font-size: 18px;
   font-weight: bold;
-  padding: 15px 20px;
+  padding: 12px 20px;
   border-radius: 10px;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
-  background: #fff;
-  color: #EF233C;
-  border: 2px solid #EF233C;
+  background: white;
+  color: #333;
+  border: 2px solid #333;
 }
 
 .project-button:hover {
-  background: #EF233C;
+  background: #333;
   color: white;
   transform: scale(1.05);
 }
 
 /* Find Me Online */
 #find-me-online {
-  text-align: center;
-  background-color: #f9f9f9;
+  background-color: white;
   padding: 50px 20px;
 }
 
@@ -119,16 +115,11 @@ section {
   margin-top: 20px;
 }
 
-/* Resume Section */
-#resume {
-  text-align: center;
-}
-
 /* Footer */
 footer {
   text-align: center;
   padding: 25px;
-  background-color: #f1f1f1;
+  background-color: white;
   font-size: 16px;
   color: #777;
 }
