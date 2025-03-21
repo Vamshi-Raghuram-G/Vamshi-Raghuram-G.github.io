@@ -19,7 +19,6 @@
             --dark-accent: #495057;
         }
 
-        /* General Styling */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: var(--primary);
@@ -31,7 +30,6 @@
             transition: background 0.3s, color 0.3s;
         }
 
-        /* Header Styling */
         header {
             position: fixed;
             width: 100%;
@@ -71,7 +69,6 @@
             background: var(--button-hover);
         }
 
-        /* Dark Mode Toggle */
         .toggle-container {
             display: flex;
             align-items: center;
@@ -128,13 +125,11 @@
             transform: translateX(24px);
         }
 
-        /* Section Spacing */
         section {
             padding: 120px 20px;
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        /* Hero Section */
         .hero {
             height: 90vh;
             display: flex;
@@ -148,7 +143,6 @@
             font-weight: bold;
         }
 
-        /* Projects */
         .project-container {
             display: flex;
             flex-wrap: wrap;
@@ -189,7 +183,6 @@
             background: var(--button-hover);
         }
 
-        /* Dark Mode */
         .dark-mode {
             background: var(--dark-bg);
             color: var(--dark-text);
@@ -212,93 +205,55 @@
             color: var(--dark-text);
         }
 
-        /* Social Buttons */
-        .social-button {
-            text-decoration: none;
-            color: var(--button-text);
-            background: var(--button-bg);
-            padding: 12px 20px;
-            border-radius: 5px;
-            margin: 10px;
-            display: inline-block;
-            transition: 0.3s;
-        }
-
-        .social-button:hover {
-            background: var(--button-hover);
-        }
-
         footer {
             background: var(--secondary);
             padding: 20px;
             margin-top: 40px;
         }
-
     </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about" class="nav-button">About</a></li>
-                <li><a href="#projects" class="nav-button">Projects</a></li>
-                <li><a href="#resume" class="nav-button">Resume</a></li>
-                <li><a href="#contact" class="nav-button">Find Me Online</a></li>
-            </ul>
-        </nav>
-        <div class="toggle-container">
-            <span class="toggle-label">Switch between Light/Dark Mode</span>
-            <label class="toggle-switch">
-                <input type="checkbox" id="darkModeToggle">
-                <span class="slider"></span>
-            </label>
-        </div>
-    </header>
-    
-    <section>
-        <div id="hero" class="hero">
-            <h1>Welcome to My Data Science World</h1>
-            <p>Transforming Data into Meaningful Insights</p>
-        </div>
+<header>
+    <nav>
+        <ul>
+            <li><a href="#projects" class="nav-button">Projects</a></li>
+            <li><a href="#resume" class="nav-button">Resume</a></li>
+            <li><a href="#contact" class="nav-button">Find Me Online</a></li>
+        </ul>
+    </nav>
+    <div class="toggle-container">
+        <span class="toggle-label">Switch between Light/Dark Mode</span>
+        <label class="toggle-switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+</header>
 
-        <div id="projects">
-            <h2>Projects</h2>
-            <div class="project-container">
-                <div class="project">
-                    <h3>Project 1</h3>
-                    <p class="project-description">An AI-powered system that analyzes sentiment from drug reviews.</p>
-                    <a href="#" class="project-button">View Project</a>
-                </div>
-                <div class="project">
-                    <h3>Project 2</h3>
-                    <p class="project-description">A predictive model for retail sales forecasting using ML techniques.</p>
-                    <a href="#" class="project-button">View Project</a>
-                </div>
-            </div>
-        </div>
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="project-container">
+        <div class="project"><h3>Drug Recommendation</h3><p class="project-description">AI-based sentiment analysis of drug reviews.</p><a href="#" class="project-button">View Project</a></div>
+        <div class="project"><h3>Retail Sales Prediction</h3><p class="project-description">Machine learning model for forecasting store sales.</p><a href="#" class="project-button">View Project</a></div>
+        <div class="project"><h3>Real Estate Pricing</h3><p class="project-description">Predictive model for real estate price estimation.</p><a href="#" class="project-button">View Project</a></div>
+        <div class="project"><h3>Credit Card Fraud Detection</h3><p class="project-description">ML model detecting fraudulent credit card transactions.</p><a href="#" class="project-button">View Project</a></div>
+        <div class="project"><h3>Customer Segmentation</h3><p class="project-description">Clustering customers for targeted marketing.</p><a href="#" class="project-button">View Project</a></div>
+        <div class="project"><h3>Stock Price Prediction</h3><p class="project-description">Predicting stock trends using ML techniques.</p><a href="#" class="project-button">View Project</a></div>
+        <div class="project"><h3>Resume Screening</h3><p class="project-description">NLP-based AI system for resume filtering.</p><a href="#" class="project-button">View Project</a></div>
+        <div class="project"><h3>Churn Prediction</h3><p class="project-description">Detecting customers likely to leave a service.</p><a href="#" class="project-button">View Project</a></div>
+    </div>
+</section>
 
-        <div id="resume">
-            <h2>Resume</h2>
-            <a href="resume.pdf" download class="project-button">Download Resume</a>
-        </div>
+<footer>
+    <p>Data Science Enthusiast | AI Developer</p>
+</footer>
 
-        <div id="contact">
-            <h2>Find Me Online</h2>
-            <a href="https://linkedin.com" class="social-button">LinkedIn</a>
-            <a href="https://github.com" class="social-button">GitHub</a>
-        </div>
-    </section>
-
-    <footer>
-        <p>Crafting Data-Driven Experiences.</p>
-    </footer>
-
-    <script>
-        document.getElementById("darkModeToggle").addEventListener("change", function () {
-            document.body.classList.toggle("dark-mode");
-        });
-    </script>
+<script>
+    document.getElementById("darkModeToggle").addEventListener("change", function () {
+        document.body.classList.toggle("dark-mode");
+    });
+</script>
 
 </body>
 </html>
