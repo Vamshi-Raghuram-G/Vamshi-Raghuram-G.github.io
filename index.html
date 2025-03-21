@@ -208,6 +208,15 @@
             color: var(--text-dark);
         }
 
+        /* Fixed Dark Mode Menu Issue */
+        .dark-mode .nav-menu {
+            background: var(--secondary-dark);
+        }
+
+        .dark-mode .nav-menu a {
+            color: var(--text-dark);
+        }
+
         /* Responsive Mobile Styles */
         @media (max-width: 768px) {
             header {
@@ -237,6 +246,14 @@
 
             .nav-menu.active {
                 display: flex;
+            }
+
+            .dark-mode .nav-menu {
+                background: var(--secondary-dark);
+            }
+
+            .dark-mode .nav-menu a {
+                color: var(--text-dark);
             }
 
             .project {
