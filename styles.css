@@ -4,8 +4,8 @@ body {
     font-family: 'SF Pro Display', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #FBF8CC;
-    color: #2B2D42;
+    background-color: #F7FFF7;
+    color: #1A535C;
     text-align: center;
     scroll-behavior: smooth;
     overflow-x: hidden;
@@ -16,7 +16,7 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(251, 248, 204, 0.95);
+    background: rgba(26, 83, 92, 0.95);
     padding: 10px 0;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
@@ -38,26 +38,26 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     font-weight: bold;
-    color: #2B2D42;
+    color: #F7FFF7;
     padding: 10px 15px;
     transition: 0.3s ease-in-out;
 }
 
 nav ul li a:hover {
-    background: #F1C0E8;
+    background: #4ECDC4;
     border-radius: 8px;
 }
 
 /* Hero Section */
 .hero {
     padding: 20vh 5%;
-    background: #FDE4CF;
+    background: #FF6B6B;
 }
 
 h1 {
     font-size: 3rem;
     font-weight: bold;
-    color: #2B2D42;
+    color: #F7FFF7;
 }
 
 p {
@@ -69,7 +69,7 @@ p {
 /* Sections */
 .content-section {
     padding: 10vh 5%;
-    background: #FFC0CB;
+    background: #FFE66D;
 }
 
 /* Buttons */
@@ -78,7 +78,7 @@ p {
     padding: 12px 25px;
     border-radius: 25px;
     text-decoration: none;
-    background: #A3C4F3;
+    background: #4ECDC4;
     color: white;
     font-weight: bold;
     transition: all 0.3s ease-in-out;
@@ -86,7 +86,7 @@ p {
 }
 
 .button:hover {
-    background: #90DBF4;
+    background: #FF6B6B;
     transform: scale(1.05);
 }
 
@@ -101,7 +101,7 @@ p {
 }
 
 .project {
-    background: #CFBAF0;
+    background: #FFE66D;
     padding: 20px;
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
@@ -116,7 +116,7 @@ p {
     position: absolute;
     width: 100px;
     height: 100px;
-    background: #F1C0E8;
+    background: #4ECDC4;
     opacity: 0.4;
     border-radius: 50%;
     animation: floatShape 6s infinite ease-in-out;
@@ -157,7 +157,7 @@ p {
 /* Responsive Footer */
 footer {
     padding: 20px;
-    background-color: #B9FBC0;
+    background-color: #1A535C;
+    color: #F7FFF7;
     font-size: 16px;
-    color: black;
 }
