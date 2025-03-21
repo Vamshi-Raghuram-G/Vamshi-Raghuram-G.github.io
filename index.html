@@ -36,19 +36,18 @@
             position: fixed;
             width: 100%;
             background: var(--secondary-light);
-            padding: 10px 20px;
+            padding: 15px 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease-in-out;
+            padding: 15px 40px;
         }
 
         nav ul {
             list-style: none;
             padding: 0;
-            margin: 0;
             display: flex;
             gap: 20px;
         }
@@ -57,10 +56,9 @@
             text-decoration: none;
             color: var(--text-light);
             font-weight: bold;
-            padding: 8px 12px;
+            padding: 10px 15px;
             transition: 0.3s;
             position: relative;
-            font-size: 16px;
         }
 
         .nav-button::after {
@@ -86,11 +84,13 @@
             gap: 10px;
             font-size: 14px;
             font-weight: bold;
+            position: relative;
+            left: -50px; /* Moved slightly left */
         }
 
         .toggle-switch {
-            width: 45px;
-            height: 22px;
+            width: 50px;
+            height: 25px;
             background: var(--button-bg-light);
             border-radius: 50px;
             position: relative;
@@ -100,13 +100,13 @@
 
         .toggle-switch::before {
             content: '';
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             background: white;
             border-radius: 50%;
             position: absolute;
             top: 50%;
-            left: 4px;
+            left: 5px;
             transform: translateY(-50%);
             transition: 0.3s;
         }
@@ -116,11 +116,11 @@
         }
 
         .dark-mode .toggle-switch::before {
-            left: 23px;
+            left: 25px;
         }
 
         section {
-            padding: 80px 20px;
+            padding: 100px 20px;
         }
 
         .project-container {
@@ -212,39 +212,18 @@
             header {
                 flex-direction: column;
                 text-align: center;
-                padding: 8px;
+                padding: 15px;
             }
-
+            
             nav ul {
                 flex-direction: column;
-                gap: 8px;
-            }
-
-            .nav-button {
-                font-size: 14px;
-                padding: 6px 10px;
+                gap: 10px;
             }
 
             .toggle-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 5px;
-                font-size: 12px;
-                margin-top: 5px;
-            }
-
-            .toggle-switch {
-                width: 40px;
-                height: 20px;
-            }
-
-            .toggle-switch::before {
-                width: 16px;
-                height: 16px;
-            }
-
-            .dark-mode .toggle-switch::before {
-                left: 20px;
+                left: 0; /* Reset position for mobile */
+                justify-content: center;
+                margin-top: 10px;
             }
 
             .project {
@@ -265,10 +244,38 @@
             </ul>
         </nav>
         <div class="toggle-container">
-            <span>Dark Mode</span>
+            <span>Enable Dark/Light Mode</span>
             <div class="toggle-switch" onclick="toggleDarkMode()"></div>
         </div>
     </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I'm a passionate Data Scientist specializing in Machine Learning, AI, and Data Visualization.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-container">
+            <div class="project"><h3>Project 1</h3><p>ML model for fraud detection.</p><a href="#" class="project-button">View Project</a></div>
+            <div class="project"><h3>Project 2</h3><p>Sentiment analysis on reviews.</p><a href="#" class="project-button">View Project</a></div>
+        </div>
+    </section>
+
+    <section id="resume">
+        <h2>Access My Professional Portfolio</h2>
+        <a href="resume.pdf" download class="resume-button">Download Resume</a>
+    </section>
+
+    <section id="contact">
+        <h2>Find Me Online</h2>
+        <a href="https://linkedin.com" class="social-button">LinkedIn</a>
+        <a href="https://github.com" class="social-button">GitHub</a>
+    </section>
+
+    <footer>
+        <p>Crafting Data-Driven Experiences.</p>
+    </footer>
 
     <script>
         function toggleDarkMode() {
