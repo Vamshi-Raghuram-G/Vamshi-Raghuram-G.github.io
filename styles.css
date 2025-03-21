@@ -4,8 +4,8 @@ body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #FFF0F3; /* Soft pastel background */
-  color: #590D22; /* Deep red text for readability */
+  background-color: #FFFFFF; /* White background */
+  color: #000000; /* Black text for contrast */
   scroll-behavior: smooth;
 }
 
@@ -13,7 +13,7 @@ body {
 nav {
   position: fixed;
   width: 100%;
-  background: #590D22; /* Dark wine color */
+  background: #B1C1C0; /* Muted grey-green */
   padding: 12px 0;
   text-align: center;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -34,15 +34,16 @@ nav ul li {
 nav ul li a {
   text-decoration: none;
   font-weight: bold;
-  color: #FFF0F3; /* Soft contrast */
+  color: #000000; /* Black text */
   padding: 8px 15px;
   transition: all 0.3s ease-in-out;
 }
 
 nav ul li a:hover {
-  background: #A4133C;
+  background: #7A8C8B;
   border-radius: 8px;
   padding: 8px 15px;
+  color: white;
 }
 
 /* Hero & Sections */
@@ -56,18 +57,18 @@ section {
 h1 {
   font-size: 45px;
   font-weight: bold;
-  color: #C9184A;
+  color: #505A5B;
 }
 
 h2 {
   font-size: 30px;
   font-weight: bold;
-  color: #FF4D6D;
+  color: #7A8C8B;
 }
 
 p {
   font-size: 18px;
-  color: #590D22;
+  color: #000000;
 }
 
 /* Button Styles */
@@ -80,21 +81,21 @@ p {
   text-decoration: none;
   text-align: center;
   transition: all 0.3s ease-in-out;
-  background: #A4133C; /* Primary button color */
-  color: #FFF0F3;
+  background: #7A8C8B;
+  color: white;
   border: 2px solid transparent;
   cursor: pointer;
 }
 
 .button:hover {
-  background: #800F2F; /* Darker hover effect */
-  color: #FFF0F3;
+  background: #505A5B;
+  color: white;
   transform: scale(1.05);
 }
 
 /* Project Section */
 .project {
-  background: #FF8FA3;
+  background: #A3B3B2;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 10px;
@@ -114,13 +115,13 @@ p {
   border-radius: 10px;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
-  background: #C9184A;
+  background: #7A8C8B;
   color: white;
   border: 2px solid transparent;
 }
 
 .project-button:hover {
-  background: #A4133C;
+  background: #505A5B;
   transform: scale(1.05);
 }
 
@@ -141,9 +142,9 @@ p {
 footer {
   text-align: center;
   padding: 25px;
-  background-color: #590D22; /* Dark footer */
+  background-color: #B1C1C0; /* Muted grey-green */
   font-size: 16px;
-  color: white;
+  color: black;
 }
 
 /* Animations */
