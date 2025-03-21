@@ -36,7 +36,7 @@
             position: fixed;
             width: 100%;
             background: var(--secondary-light);
-            padding: 15px 40px;
+            padding: 15px 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             display: flex;
@@ -44,20 +44,11 @@
             align-items: center;
         }
 
-        nav {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links {
+        nav ul {
             list-style: none;
             padding: 0;
             display: flex;
             gap: 20px;
-        }
-
-        .nav-links li {
-            display: inline;
         }
 
         .nav-button {
@@ -86,41 +77,14 @@
             width: 100%;
         }
 
-        /* Hamburger menu (hidden by default) */
-        .menu-icon {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .mobile-nav {
-            display: none;
-            flex-direction: column;
-            gap: 15px;
-            position: absolute;
-            top: 60px;
-            right: 20px;
-            background: var(--secondary-light);
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .mobile-nav a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-weight: bold;
-            padding: 10px;
-            transition: 0.3s;
-            display: block;
-        }
-
         .toggle-container {
             display: flex;
             align-items: center;
             gap: 10px;
             font-size: 14px;
             font-weight: bold;
+            position: relative;
+            left: -25px; /* Moved slightly left */
         }
 
         .toggle-switch {
@@ -178,44 +142,102 @@
             transform: scale(1.05);
         }
 
+        .project-button {
+            text-decoration: none;
+            color: white;
+            background: var(--button-bg-light);
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .project-button:hover {
+            background: var(--button-hover-light);
+        }
+
+        .resume-button, .social-button {
+            text-decoration: none;
+            color: white;
+            background: var(--button-bg-light);
+            padding: 12px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .resume-button:hover, .social-button:hover {
+            background: var(--button-hover-light);
+        }
+
+        footer {
+            background: var(--secondary-light);
+            padding: 20px;
+            margin-top: 40px;
+            color: var(--text-light);
+        }
+
         .dark-mode {
             background-color: var(--primary-dark);
             color: var(--text-dark);
         }
 
-        .dark-mode header, .dark-mode .mobile-nav {
+        .dark-mode header, .dark-mode footer {
             background: var(--secondary-dark);
-        }
-
-        .dark-mode .nav-button, .dark-mode .mobile-nav a {
             color: var(--text-dark);
         }
 
-        @media (max-width: 768px) {
-            header {
-                padding: 15px 20px;
-            }
+        .dark-mode .nav-button {
+            color: var(--text-dark);
+        }
 
-            .nav-links {
+        .dark-mode .resume-button, .dark-mode .social-button, .dark-mode .project-button {
+            background: var(--button-bg-dark);
+            color: var(--text-dark);
+        }
+
+        .dark-mode .project {
+            background: var(--accent-dark);
+            color: var(--text-dark);
+        }
+
+        /* Mobile Optimization */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            background: var(--secondary-light);
+            padding: 15px;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
                 display: none;
             }
 
-            .menu-icon {
+            .hamburger {
                 display: block;
             }
 
-            .mobile-nav {
-                display: none;
-                width: 200px;
-                right: 10px;
-            }
-
-            .mobile-nav.open {
+            .mobile-menu.active {
                 display: flex;
             }
 
             .toggle-container {
-                font-size: 12px;
+                left: 0; /* Reset position for mobile */
             }
 
             .project {
@@ -227,45 +249,27 @@
 <body>
 
     <header>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
         <nav>
-            <ul class="nav-links">
+            <ul>
                 <li><a href="#about" class="nav-button">About</a></li>
                 <li><a href="#projects" class="nav-button">Projects</a></li>
                 <li><a href="#resume" class="nav-button">Resume</a></li>
                 <li><a href="#contact" class="nav-button">Find Me Online</a></li>
             </ul>
-            <div class="menu-icon" onclick="toggleMenu()">☰</div>
         </nav>
-
         <div class="toggle-container">
             <span>Dark Mode</span>
             <div class="toggle-switch" onclick="toggleDarkMode()"></div>
         </div>
     </header>
 
-    <div class="mobile-nav">
-        <a href="#about" onclick="toggleMenu()">About</a>
-        <a href="#projects" onclick="toggleMenu()">Projects</a>
-        <a href="#resume" onclick="toggleMenu()">Resume</a>
-        <a href="#contact" onclick="toggleMenu()">Find Me Online</a>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about" class="nav-button">About</a>
+        <a href="#projects" class="nav-button">Projects</a>
+        <a href="#resume" class="nav-button">Resume</a>
+        <a href="#contact" class="nav-button">Find Me Online</a>
     </div>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I'm a passionate Data Scientist specializing in Machine Learning, AI, and Data Visualization.</p>
-    </section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project-container">
-            <div class="project"><h3>Project 1</h3><p>ML model for fraud detection.</p></div>
-            <div class="project"><h3>Project 2</h3><p>Sentiment analysis on reviews.</p></div>
-        </div>
-    </section>
-
-    <footer>
-        <p>Crafting Data-Driven Experiences.</p>
-    </footer>
 
     <script>
         function toggleDarkMode() {
@@ -273,7 +277,7 @@
         }
 
         function toggleMenu() {
-            document.querySelector('.mobile-nav').classList.toggle('open');
+            document.getElementById("mobileMenu").classList.toggle("active");
         }
     </script>
 
