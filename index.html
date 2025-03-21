@@ -62,12 +62,11 @@
         }
 
         .toggle-container {
-            position: absolute;
-            top: 15px;
-            right: 20px;
             display: flex;
+            justify-content: center;
             align-items: center;
             gap: 10px;
+            margin-top: 10px;
             font-size: 14px;
             font-weight: bold;
         }
@@ -116,6 +115,7 @@
             border-radius: 10px;
             width: 45%;
             transition: transform 0.3s;
+            color: var(--text-light);
         }
 
         .project:hover {
@@ -173,6 +173,11 @@
             background: var(--button-bg-dark);
             color: var(--text-dark);
         }
+
+        .dark-mode .project {
+            background: var(--accent-dark);
+            color: var(--text-dark);
+        }
     </style>
 </head>
 <body>
@@ -203,6 +208,8 @@
             <div class="project"><h3>Project 1</h3><p>ML model for fraud detection.</p><a href="#" class="project-button">View Project</a></div>
             <div class="project"><h3>Project 2</h3><p>Sentiment analysis on reviews.</p><a href="#" class="project-button">View Project</a></div>
             <div class="project"><h3>Project 3</h3><p>Retail sales forecasting.</p><a href="#" class="project-button">View Project</a></div>
+            <div class="project"><h3>Project 4</h3><p>Credit card fraud detection.</p><a href="#" class="project-button">View Project</a></div>
+            <div class="project"><h3>Project 5</h3><p>AI-based chatbot for healthcare.</p><a href="#" class="project-button">View Project</a></div>
         </div>
     </section>
 
