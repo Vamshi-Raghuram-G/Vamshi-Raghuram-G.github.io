@@ -26,7 +26,6 @@
             text-align: center;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
             transition: background 0.3s, color 0.3s;
         }
 
@@ -126,8 +125,7 @@
         }
 
         section {
-            padding: 120px 20px;
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            padding: 100px 20px;
         }
 
         .hero {
@@ -141,6 +139,12 @@
         .hero h1 {
             font-size: 2.5rem;
             font-weight: bold;
+        }
+
+        .about {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
         .project-container {
@@ -200,15 +204,9 @@
             color: var(--dark-text);
         }
 
-        .dark-mode footer {
-            background: var(--dark-secondary);
-            color: var(--dark-text);
-        }
-
         footer {
             background: var(--secondary);
             padding: 20px;
-            margin-top: 40px;
         }
     </style>
 </head>
@@ -217,6 +215,7 @@
 <header>
     <nav>
         <ul>
+            <li><a href="#about" class="nav-button">About</a></li>
             <li><a href="#projects" class="nav-button">Projects</a></li>
             <li><a href="#resume" class="nav-button">Resume</a></li>
             <li><a href="#contact" class="nav-button">Find Me Online</a></li>
@@ -231,6 +230,11 @@
     </div>
 </header>
 
+<section id="about">
+    <h2>About Me</h2>
+    <p class="about">I am a Data Scientist and AI enthusiast with experience in machine learning, predictive analytics, and data visualization. I love solving real-world problems using data-driven insights.</p>
+</section>
+
 <section id="projects">
     <h2>Projects</h2>
     <div class="project-container">
@@ -238,11 +242,18 @@
         <div class="project"><h3>Retail Sales Prediction</h3><p class="project-description">Machine learning model for forecasting store sales.</p><a href="#" class="project-button">View Project</a></div>
         <div class="project"><h3>Real Estate Pricing</h3><p class="project-description">Predictive model for real estate price estimation.</p><a href="#" class="project-button">View Project</a></div>
         <div class="project"><h3>Credit Card Fraud Detection</h3><p class="project-description">ML model detecting fraudulent credit card transactions.</p><a href="#" class="project-button">View Project</a></div>
-        <div class="project"><h3>Customer Segmentation</h3><p class="project-description">Clustering customers for targeted marketing.</p><a href="#" class="project-button">View Project</a></div>
-        <div class="project"><h3>Stock Price Prediction</h3><p class="project-description">Predicting stock trends using ML techniques.</p><a href="#" class="project-button">View Project</a></div>
-        <div class="project"><h3>Resume Screening</h3><p class="project-description">NLP-based AI system for resume filtering.</p><a href="#" class="project-button">View Project</a></div>
-        <div class="project"><h3>Churn Prediction</h3><p class="project-description">Detecting customers likely to leave a service.</p><a href="#" class="project-button">View Project</a></div>
     </div>
+</section>
+
+<section id="resume">
+    <h2>Resume</h2>
+    <p>Download my resume <a href="#" class="project-button">here</a></p>
+</section>
+
+<section id="contact">
+    <h2>Find Me Online</h2>
+    <a href="#" class="project-button">LinkedIn</a>
+    <a href="#" class="project-button">GitHub</a>
 </section>
 
 <footer>
