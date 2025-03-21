@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #FFFFFF; /* White background */
-  color: #000000; /* Black text for contrast */
+  color: #000000; /* Black text */
   scroll-behavior: smooth;
 }
 
@@ -13,7 +13,7 @@ body {
 nav {
   position: fixed;
   width: 100%;
-  background: #B1C1C0; /* Muted grey-green */
+  background: #B1C1C0;
   padding: 12px 0;
   text-align: center;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -27,14 +27,14 @@ nav ul {
 }
 
 nav ul li {
-  display: inline;
+  display: inline-block;
   margin: 0 15px;
 }
 
 nav ul li a {
   text-decoration: none;
   font-weight: bold;
-  color: #000000; /* Black text */
+  color: #000000;
   padding: 8px 15px;
   transition: all 0.3s ease-in-out;
 }
@@ -42,44 +42,68 @@ nav ul li a {
 nav ul li a:hover {
   background: #7A8C8B;
   border-radius: 8px;
-  padding: 8px 15px;
   color: white;
 }
 
-/* Hero & Sections */
-section {
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: auto;
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
+/* Hero Section */
+.hero {
   text-align: center;
+  padding: 10vh 5%;
 }
 
 h1 {
-  font-size: 45px;
+  font-size: 4vw; /* Scales with screen size */
   font-weight: bold;
   color: #505A5B;
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 2.5vw;
   font-weight: bold;
   color: #7A8C8B;
 }
 
 p {
-  font-size: 18px;
+  font-size: 1.2rem;
   color: #000000;
+  max-width: 80%;
+  margin: auto;
 }
 
-/* Button Styles */
+/* Responsive Hero Text */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 8vw;
+  }
+  h2 {
+    font-size: 5vw;
+  }
+  p {
+    font-size: 1rem;
+  }
+}
+
+/* Buttons */
 .button {
   display: inline-block;
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: bold;
   padding: 12px 25px;
   border-radius: 50px;
   text-decoration: none;
-  text-align: center;
   transition: all 0.3s ease-in-out;
   background: #7A8C8B;
   color: white;
@@ -89,40 +113,36 @@ p {
 
 .button:hover {
   background: #505A5B;
-  color: white;
   transform: scale(1.05);
 }
 
+/* Responsive Buttons */
+@media (max-width: 768px) {
+  .button {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}
+
 /* Project Section */
+.project-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 90%;
+  margin: auto;
+}
+
 .project {
   background: #A3B3B2;
   padding: 20px;
-  margin-bottom: 20px;
   border-radius: 10px;
   transition: transform 0.3s ease-in-out;
 }
 
 .project:hover {
   transform: scale(1.02);
-}
-
-/* Project Button */
-.project-button {
-  display: inline-block;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 12px 20px;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  background: #7A8C8B;
-  color: white;
-  border: 2px solid transparent;
-}
-
-.project-button:hover {
-  background: #505A5B;
-  transform: scale(1.05);
 }
 
 /* Find Me Online */
@@ -134,6 +154,7 @@ p {
 #find-me-online .social-links {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 15px;
   margin-top: 20px;
 }
@@ -142,9 +163,17 @@ p {
 footer {
   text-align: center;
   padding: 25px;
-  background-color: #B1C1C0; /* Muted grey-green */
+  background-color: #B1C1C0;
   font-size: 16px;
   color: black;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  footer {
+    padding: 20px;
+    font-size: 14px;
+  }
 }
 
 /* Animations */
