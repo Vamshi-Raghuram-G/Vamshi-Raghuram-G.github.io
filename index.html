@@ -13,8 +13,13 @@
             --button-bg: #495057;
             --button-hover: #6C757D;
             --button-text: white;
+            --dark-bg: #212529;
+            --dark-text: #E9ECEF;
+            --dark-secondary: #343A40;
+            --dark-accent: #495057;
         }
 
+        /* General Styling */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: var(--primary);
@@ -23,9 +28,11 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            overflow-y: auto; /* Ensures smooth scrolling */
             transition: background 0.3s, color 0.3s;
         }
 
+        /* Header Styling */
         header {
             position: fixed;
             width: 100%;
@@ -34,14 +41,15 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 10px 20px;
+            gap: 20px;
         }
 
         nav ul {
             list-style: none;
             padding: 0;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -64,26 +72,55 @@
             background: var(--button-hover);
         }
 
-        .dark-mode-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--button-bg);
-            color: var(--button-text);
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
+        /* Dark Mode Toggle Switch */
+        .toggle-container {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            position: absolute;
-            right: 20px;
-            top: 10px;
+            gap: 10px;
         }
 
-        .dark-mode-btn:hover {
-            background: var(--button-hover);
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 25px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--button-bg);
+            transition: 0.4s;
+            border-radius: 25px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--button-hover);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
         }
 
         section {
@@ -145,19 +182,26 @@
             background: var(--button-hover);
         }
 
+        /* Dark Mode Styling */
         .dark-mode {
-            background: #212529;
-            color: #E9ECEF;
+            background: var(--dark-bg);
+            color: var(--dark-text);
         }
 
         .dark-mode header {
-            background: #343A40;
+            background: var(--dark-secondary);
         }
 
         .dark-mode .project {
-            background: #495057;
+            background: var(--dark-accent);
         }
 
+        .dark-mode footer {
+            background: var(--dark-secondary);
+            color: var(--dark-text);
+        }
+
+        /* Social Buttons */
         .social-container {
             margin-top: 20px;
         }
@@ -196,7 +240,14 @@
                 <li><a href="#contact" class="nav-button">Find Me Online</a></li>
             </ul>
         </nav>
-        <button onclick="toggleDarkMode()" class="dark-mode-btn">🌙</button>
+        <div class="toggle-container">
+            <span>🌙</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="slider"></span>
+            </label>
+            <span>☀️</span>
+        </div>
     </header>
     
     <section id="hero" class="hero">
@@ -204,32 +255,17 @@
         <p>Transforming Data into Meaningful Insights</p>
     </section>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I'm a passionate Data Scientist with expertise in Machine Learning, Data Visualization, and Analytics.</p>
-    </section>
-
     <section id="projects">
         <h2>Projects</h2>
         <div class="project-container">
             <div class="project">
                 <h3>Project 1</h3>
-                <p>Data-driven insights for real-world applications.</p>
                 <a href="#" class="project-button">View Project</a>
             </div>
             <div class="project">
                 <h3>Project 2</h3>
-                <p>Machine Learning models for predictive analytics.</p>
                 <a href="#" class="project-button">View Project</a>
             </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Find Me Online</h2>
-        <div class="social-container">
-            <a href="https://linkedin.com" class="social-button">LinkedIn</a>
-            <a href="https://github.com" class="social-button">GitHub</a>
         </div>
     </section>
 
@@ -238,17 +274,9 @@
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll("section").forEach(section => {
-                section.classList.add("show");
-            });
+        document.getElementById("darkModeToggle").addEventListener("change", function() {
+            document.body.classList.toggle("dark-mode");
         });
-
-        function toggleDarkMode() { 
-            document.body.classList.toggle("dark-mode"); 
-            let btn = document.querySelector(".dark-mode-btn");
-            btn.innerHTML = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
-        }
     </script>
 
 </body>
