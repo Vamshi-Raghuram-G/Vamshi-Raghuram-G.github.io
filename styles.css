@@ -4,19 +4,20 @@ body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #FFFFFF; /* White background */
-  color: #000000; /* Black text */
+  background-color: #2B2D42; /* Dark background */
+  color: #EDF2F4; /* Light text */
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* Navigation Bar */
 nav {
   position: fixed;
   width: 100%;
-  background: #B1C1C0;
+  background: rgba(43, 45, 66, 0.95); /* Dark blue with slight transparency */
   padding: 12px 0;
   text-align: center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 
@@ -24,76 +25,51 @@ nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 nav ul li {
-  display: inline-block;
   margin: 0 15px;
 }
 
 nav ul li a {
   text-decoration: none;
   font-weight: bold;
-  color: #000000;
+  color: #EDF2F4; /* Light text */
   padding: 8px 15px;
   transition: all 0.3s ease-in-out;
 }
 
 nav ul li a:hover {
-  background: #7A8C8B;
+  background: #EF233C;
   border-radius: 8px;
   color: white;
-}
-
-/* Responsive Navbar */
-@media (max-width: 768px) {
-  nav ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  nav ul li {
-    display: block;
-    margin: 10px 0;
-  }
 }
 
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 10vh 5%;
+  padding: 15vh 5%;
+  position: relative;
 }
 
 h1 {
-  font-size: 4vw; /* Scales with screen size */
+  font-size: 4vw;
   font-weight: bold;
-  color: #505A5B;
+  color: #EDF2F4;
 }
 
 h2 {
   font-size: 2.5vw;
   font-weight: bold;
-  color: #7A8C8B;
+  color: #8D99AE;
 }
 
 p {
   font-size: 1.2rem;
-  color: #000000;
   max-width: 80%;
   margin: auto;
-}
-
-/* Responsive Hero Text */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 8vw;
-  }
-  h2 {
-    font-size: 5vw;
-  }
-  p {
-    font-size: 1rem;
-  }
 }
 
 /* Buttons */
@@ -104,30 +80,22 @@ p {
   padding: 12px 25px;
   border-radius: 50px;
   text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  background: #7A8C8B;
+  background: #EF233C;
   color: white;
   border: 2px solid transparent;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .button:hover {
-  background: #505A5B;
+  background: #D90429;
   transform: scale(1.05);
 }
 
-/* Responsive Buttons */
-@media (max-width: 768px) {
-  .button {
-    font-size: 0.9rem;
-    padding: 10px 20px;
-  }
-}
-
-/* Project Section */
+/* Project Section - Side by Side Layout */
 .project-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   padding: 20px;
   max-width: 90%;
@@ -135,7 +103,7 @@ p {
 }
 
 .project {
-  background: #A3B3B2;
+  background: #8D99AE;
   padding: 20px;
   border-radius: 10px;
   transition: transform 0.3s ease-in-out;
@@ -145,45 +113,56 @@ p {
   transform: scale(1.02);
 }
 
-/* Find Me Online */
-#find-me-online {
-  background-color: transparent;
-  padding: 50px 20px;
+/* Background Geometric Shapes */
+.shape {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: #EF233C;
+  opacity: 0.4;
+  border-radius: 50%;
+  animation: floatShape 6s infinite ease-in-out;
 }
 
-#find-me-online .social-links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 20px;
+.shape:nth-child(2) {
+  left: 20%;
+  top: 10%;
+  width: 80px;
+  height: 80px;
+  background: #8D99AE;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 25px;
-  background-color: #B1C1C0;
-  font-size: 16px;
-  color: black;
+.shape:nth-child(3) {
+  right: 10%;
+  bottom: 20%;
+  width: 120px;
+  height: 120px;
+  background: #D90429;
+}
+
+@keyframes floatShape {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Smooth Scroll Animation */
+.scroll-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Responsive Footer */
-@media (max-width: 768px) {
-  footer {
-    padding: 20px;
-    font-size: 14px;
-  }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+footer {
+  text-align: center;
+  padding: 25px;
+  background-color: #8D99AE;
+  font-size: 16px;
+  color: white;
 }
