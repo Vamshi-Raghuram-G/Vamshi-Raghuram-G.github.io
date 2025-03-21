@@ -40,9 +40,9 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            gap: 30px;
+            padding: 15px 40px;
         }
 
         nav ul {
@@ -57,13 +57,25 @@
             color: var(--text-light);
             font-weight: bold;
             padding: 10px 15px;
-            transition: 0.3s ease-in-out;
-            border-radius: 5px;
+            transition: 0.3s;
+            position: relative;
         }
 
-        .nav-button:hover {
-            background: var(--button-hover-light);
-            color: white;
+        .nav-button::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 3px;
+            background: var(--button-bg-light);
+            transition: width 0.3s;
+            position: absolute;
+            left: 50%;
+            bottom: -5px;
+            transform: translateX(-50%);
+        }
+
+        .nav-button:hover::after {
+            width: 100%;
         }
 
         .toggle-container {
@@ -103,6 +115,10 @@
 
         .dark-mode .toggle-switch::before {
             left: 25px;
+        }
+
+        section {
+            padding: 100px 20px;
         }
 
         .project-container {
@@ -172,19 +188,43 @@
             color: var(--text-dark);
         }
 
-        .dark-mode .nav-button, .dark-mode .resume-button, .dark-mode .social-button, .dark-mode .project-button {
-            background: var(--button-bg-dark);
+        .dark-mode .nav-button {
             color: var(--text-dark);
         }
 
-        .dark-mode .nav-button:hover {
-            background: var(--button-hover-dark);
-            color: white;
+        .dark-mode .nav-button::after {
+            background: var(--button-bg-dark);
+        }
+
+        .dark-mode .resume-button, .dark-mode .social-button, .dark-mode .project-button {
+            background: var(--button-bg-dark);
+            color: var(--text-dark);
         }
 
         .dark-mode .project {
             background: var(--accent-dark);
             color: var(--text-dark);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .toggle-container {
+                margin-top: 10px;
+            }
+
+            .project {
+                width: 90%;
+            }
         }
     </style>
 </head>
@@ -215,9 +255,6 @@
         <div class="project-container">
             <div class="project"><h3>Project 1</h3><p>ML model for fraud detection.</p><a href="#" class="project-button">View Project</a></div>
             <div class="project"><h3>Project 2</h3><p>Sentiment analysis on reviews.</p><a href="#" class="project-button">View Project</a></div>
-            <div class="project"><h3>Project 3</h3><p>Retail sales forecasting.</p><a href="#" class="project-button">View Project</a></div>
-            <div class="project"><h3>Project 4</h3><p>Credit card fraud detection.</p><a href="#" class="project-button">View Project</a></div>
-            <div class="project"><h3>Project 5</h3><p>AI-based chatbot for healthcare.</p><a href="#" class="project-button">View Project</a></div>
         </div>
     </section>
 
