@@ -40,6 +40,7 @@
             padding: 0;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
         nav ul li {
@@ -56,6 +57,24 @@
         }
 
         .nav-button:hover {
+            background: var(--button-hover);
+        }
+
+        .dark-mode-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dark-mode-btn:hover {
             background: var(--button-hover);
         }
 
@@ -77,7 +96,6 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            position: relative;
         }
 
         .hero h1 {
@@ -92,11 +110,6 @@
             border-right: 3px solid var(--button-hover);
             white-space: nowrap;
             overflow: hidden;
-        }
-
-        @keyframes typing {
-            0% { width: 0; }
-            100% { width: 100%; }
         }
 
         .project-container {
@@ -116,21 +129,6 @@
 
         .project:hover {
             transform: scale(1.05);
-        }
-
-        .project-button {
-            text-decoration: none;
-            color: var(--button-text);
-            background: var(--button-bg);
-            padding: 10px 15px;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 10px;
-            transition: 0.3s;
-        }
-
-        .project-button:hover {
-            background: var(--button-hover);
         }
 
         .progress-container {
@@ -191,7 +189,7 @@
                 <li><a href="#projects" class="nav-button">Projects</a></li>
                 <li><a href="#resume" class="nav-button">Resume</a></li>
                 <li><a href="#contact" class="nav-button">Find Me Online</a></li>
-                <li><button onclick="toggleDarkMode()">🌙</button></li>
+                <li><button onclick="toggleDarkMode()" class="dark-mode-btn">🌙</button></li>
             </ul>
         </nav>
     </header>
@@ -246,17 +244,11 @@
     </div>
 
     <script>
-        const words = ["Data Scientist", "AI Enthusiast", "ML Engineer"];
-        let i = 0, j = 0, isDeleting = false;
-        function typeEffect() {
-            let current = words[i].substring(0, j);
-            document.querySelector(".typing-text").textContent = current;
-            isDeleting ? j-- : j++;
-            if (j === words[i].length + 1) isDeleting = true;
-            if (j === 0 && isDeleting) { isDeleting = false; i = (i + 1) % words.length; }
-            setTimeout(typeEffect, isDeleting ? 100 : 200);
-        }
-        typeEffect();
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll("section").forEach(section => {
+                section.classList.add("show");
+            });
+        });
 
         function toggleDarkMode() { document.body.classList.toggle("dark-mode"); }
         function showPopup(content) { document.getElementById("popup-content").textContent = content; document.getElementById("popup").style.display = "block"; }
