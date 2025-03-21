@@ -36,22 +36,13 @@
             position: fixed;
             width: 100%;
             background: var(--secondary-light);
-            padding: 10px 20px;
+            padding: 15px 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease-in-out;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-
-        nav {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            overflow-x: auto;
+            padding: 15px 40px;
         }
 
         nav ul {
@@ -59,9 +50,6 @@
             padding: 0;
             display: flex;
             gap: 20px;
-            margin: 0;
-            overflow-x: auto;
-            white-space: nowrap;
         }
 
         .nav-button {
@@ -96,7 +84,8 @@
             gap: 10px;
             font-size: 14px;
             font-weight: bold;
-            flex-shrink: 0;
+            position: relative;
+            left: -50px; /* Moved slightly left */
         }
 
         .toggle-switch {
@@ -221,29 +210,20 @@
 
         @media (max-width: 768px) {
             header {
-                flex-direction: row;
-                justify-content: space-between;
-                padding: 10px;
-                overflow-x: auto;
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
             }
-
-            nav {
-                display: flex;
-                flex-grow: 1;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
-
+            
             nav ul {
-                flex-direction: row;
+                flex-direction: column;
                 gap: 10px;
-                display: flex;
-                justify-content: center;
-                flex-wrap: nowrap;
             }
 
             .toggle-container {
-                flex-shrink: 0;
+                left: 0; /* Reset position for mobile */
+                justify-content: center;
+                margin-top: 10px;
             }
 
             .project {
@@ -264,7 +244,7 @@
             </ul>
         </nav>
         <div class="toggle-container">
-            <span>Dark/Light</span>
+            <span>Enable Dark/Light Mode</span>
             <div class="toggle-switch" onclick="toggleDarkMode()"></div>
         </div>
     </header>
@@ -281,6 +261,21 @@
             <div class="project"><h3>Project 2</h3><p>Sentiment analysis on reviews.</p><a href="#" class="project-button">View Project</a></div>
         </div>
     </section>
+
+    <section id="resume">
+        <h2>Access My Professional Portfolio</h2>
+        <a href="resume.pdf" download class="resume-button">Download Resume</a>
+    </section>
+
+    <section id="contact">
+        <h2>Find Me Online</h2>
+        <a href="https://linkedin.com" class="social-button">LinkedIn</a>
+        <a href="https://github.com" class="social-button">GitHub</a>
+    </section>
+
+    <footer>
+        <p>Crafting Data-Driven Experiences.</p>
+    </footer>
 
     <script>
         function toggleDarkMode() {
