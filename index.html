@@ -37,6 +37,10 @@
             width: 100%;
             background: var(--secondary-light);
             padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
         }
@@ -45,7 +49,6 @@
             list-style: none;
             padding: 0;
             display: flex;
-            justify-content: center;
             gap: 20px;
         }
 
@@ -55,18 +58,31 @@
             font-weight: bold;
             padding: 10px 15px;
             transition: 0.3s;
+            position: relative;
         }
 
-        section {
-            padding: 80px 20px;
+        .nav-button:hover {
+            color: var(--button-hover-light);
+        }
+
+        .nav-button::after {
+            content: "";
+            display: block;
+            height: 2px;
+            width: 0;
+            background: var(--button-hover-light);
+            transition: width 0.3s ease-in-out;
+            margin: auto;
+        }
+
+        .nav-button:hover::after {
+            width: 100%;
         }
 
         .toggle-container {
             display: flex;
-            justify-content: center;
             align-items: center;
             gap: 10px;
-            margin-top: 10px;
             font-size: 14px;
             font-weight: bold;
         }
@@ -178,6 +194,14 @@
             background: var(--accent-dark);
             color: var(--text-dark);
         }
+
+        .dark-mode .nav-button:hover {
+            color: var(--button-hover-dark);
+        }
+
+        .dark-mode .nav-button::after {
+            background: var(--button-hover-dark);
+        }
     </style>
 </head>
 <body>
@@ -207,9 +231,6 @@
         <div class="project-container">
             <div class="project"><h3>Project 1</h3><p>ML model for fraud detection.</p><a href="#" class="project-button">View Project</a></div>
             <div class="project"><h3>Project 2</h3><p>Sentiment analysis on reviews.</p><a href="#" class="project-button">View Project</a></div>
-            <div class="project"><h3>Project 3</h3><p>Retail sales forecasting.</p><a href="#" class="project-button">View Project</a></div>
-            <div class="project"><h3>Project 4</h3><p>Credit card fraud detection.</p><a href="#" class="project-button">View Project</a></div>
-            <div class="project"><h3>Project 5</h3><p>AI-based chatbot for healthcare.</p><a href="#" class="project-button">View Project</a></div>
         </div>
     </section>
 
