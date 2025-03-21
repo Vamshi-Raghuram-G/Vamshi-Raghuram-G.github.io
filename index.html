@@ -3,75 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Science Portfolio</title>
+    <title>My Data Science Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
 </head>
 <body>
-
-    <!-- Header -->
+    <div class="loading-screen">
+        <div class="loader"></div>
+    </div>
     <header>
         <nav>
             <ul>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#resume" class="nav-link">Resume</a></li>
-                <li><a href="#contact" class="nav-link">Find Me Online</a></li>
+                <li><a href="#about" class="nav-button">About</a></li>
+                <li><a href="#projects" class="nav-button">Projects</a></li>
+                <li><a href="#resume" class="nav-button">Resume</a></li>
+                <li><a href="#contact" class="nav-button">Find Me Online</a></li>
             </ul>
         </nav>
     </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Transforming Data into Meaningful Insights</h1>
-        <p>Unlocking the power of machine learning & AI.</p>
+    
+    <section id="hero">
+        <h1>Welcome to My Data Science World</h1>
+        <p>Transforming Data into Meaningful Insights</p>
     </section>
 
-    <!-- About Me -->
-    <section id="about" class="content-section">
+    <section id="about">
         <h2>About Me</h2>
-        <p>A data scientist with a passion for turning raw data into actionable insights.</p>
-        <img src="about-me.svg" alt="Data Science Illustration">
+        <p>I'm a passionate Data Scientist with expertise in Machine Learning, Data Visualization, and Analytics.</p>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="content-section">
+    <section id="projects">
         <h2>Projects</h2>
         <div class="project-container">
             <div class="project">
-                <img src="project1.png" alt="Project Image">
-                <h3>Drug Recommendation System</h3>
-                <p>Developed an NLP-based system to analyze user sentiments for better drug recommendations.</p>
-                <a href="#" class="button">View Project</a>
+                <h3>Project 1</h3>
+                <p>Data-driven insights for real-world applications.</p>
+                <a href="#" class="project-button">View Project</a>
             </div>
             <div class="project">
-                <img src="project2.png" alt="Project Image">
-                <h3>Retail Sales Prediction</h3>
-                <p>Built an ML model to forecast daily sales trends across multiple locations.</p>
-                <a href="#" class="button">View Project</a>
+                <h3>Project 2</h3>
+                <p>Machine Learning models for predictive analytics.</p>
+                <a href="#" class="project-button">View Project</a>
             </div>
+            <!-- Add more projects here -->
         </div>
     </section>
 
-    <!-- Resume -->
-    <section id="resume" class="content-section">
+    <section id="resume">
         <h2>Resume</h2>
-        <a href="resume.pdf" class="button">Download Resume</a>
+        <a href="resume.pdf" download class="resume-button">Download Resume</a>
     </section>
 
-    <!-- Find Me Online -->
-    <section id="contact" class="content-section">
+    <section id="contact">
         <h2>Find Me Online</h2>
-        <div class="social-links">
-            <a href="https://github.com/yourprofile" class="button">GitHub</a>
-            <a href="https://linkedin.com/in/yourprofile" class="button">LinkedIn</a>
-        </div>
+        <a href="https://linkedin.com" class="social-button">LinkedIn</a>
+        <a href="https://github.com" class="social-button">GitHub</a>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <p>Crafted with passion & precision.</p>
+        <p>Crafting Data-Driven Experiences.</p>
     </footer>
-
 </body>
 </html>
