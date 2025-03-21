@@ -71,7 +71,18 @@
             background: var(--button-hover);
         }
 
-        /* Dark Mode Toggle Switch */
+        /* Dark Mode Toggle */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-label {
+            font-size: 14px;
+            color: var(--text);
+        }
+
         .toggle-switch {
             position: relative;
             width: 50px;
@@ -116,13 +127,15 @@
             transform: translateX(24px);
         }
 
+        /* Section Spacing */
         section {
-            padding: 100px 20px;
+            padding: 80px 20px;
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
+        /* Hero Section */
         .hero {
-            height: 100vh;
+            height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -134,6 +147,7 @@
             font-weight: bold;
         }
 
+        /* Projects */
         .project-container {
             display: flex;
             flex-wrap: wrap;
@@ -153,6 +167,11 @@
             transform: scale(1.05);
         }
 
+        .project-description {
+            font-size: 14px;
+            color: var(--text);
+        }
+
         .project-button {
             text-decoration: none;
             color: var(--button-text);
@@ -168,7 +187,7 @@
             background: var(--button-hover);
         }
 
-        /* Dark Mode Styling */
+        /* Dark Mode */
         .dark-mode {
             background: var(--dark-bg);
             color: var(--dark-text);
@@ -222,10 +241,13 @@
                 <li><a href="#contact" class="nav-button">Find Me Online</a></li>
             </ul>
         </nav>
-        <label class="toggle-switch">
-            <input type="checkbox" id="darkModeToggle">
-            <span class="slider"></span>
-        </label>
+        <div class="toggle-container">
+            <span class="toggle-label">Switch between Light/Dark Mode</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
     </header>
     
     <section>
@@ -239,10 +261,12 @@
             <div class="project-container">
                 <div class="project">
                     <h3>Project 1</h3>
+                    <p class="project-description">An AI-powered system that analyzes sentiment from drug reviews.</p>
                     <a href="#" class="project-button">View Project</a>
                 </div>
                 <div class="project">
                     <h3>Project 2</h3>
+                    <p class="project-description">A predictive model for retail sales forecasting using ML techniques.</p>
                     <a href="#" class="project-button">View Project</a>
                 </div>
             </div>
@@ -265,9 +289,7 @@
     </footer>
 
     <script>
-        const darkModeToggle = document.getElementById("darkModeToggle");
-
-        darkModeToggle.addEventListener("change", function () {
+        document.getElementById("darkModeToggle").addEventListener("change", function () {
             document.body.classList.toggle("dark-mode");
         });
     </script>
