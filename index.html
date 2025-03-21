@@ -4,13 +4,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Data Science Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <style>
+        /* Color Palette */
+        :root {
+            --primary: #F8F9FA;
+            --secondary: #E9ECEF;
+            --accent: #DEE2E6;
+            --text: #212529;
+            --button-bg: #495057;
+            --button-hover: #6C757D;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Static Header */
+        header {
+            position: fixed;
+            width: 100%;
+            background: var(--secondary);
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        .nav-button {
+            text-decoration: none;
+            color: var(--text);
+            padding: 10px 15px;
+            border-radius: 5px;
+            background: var(--button-bg);
+            transition: 0.3s;
+        }
+
+        .nav-button:hover {
+            background: var(--button-hover);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+        }
+
+        /* Projects Layout */
+        .project-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .project {
+            background: var(--accent);
+            padding: 20px;
+            border-radius: 10px;
+            width: 45%;
+            transition: transform 0.3s;
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+        }
+
+        .project-button {
+            text-decoration: none;
+            color: white;
+            background: var(--button-bg);
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .project-button:hover {
+            background: var(--button-hover);
+        }
+
+        .resume-button, .social-button {
+            text-decoration: none;
+            color: white;
+            background: var(--button-bg);
+            padding: 12px 20px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .resume-button:hover, .social-button:hover {
+            background: var(--button-hover);
+        }
+
+        /* Loading Animation */
+        .loading-screen {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .loader {
+            border: 5px solid var(--button-bg);
+            border-top: 5px solid var(--button-hover);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+    </style>
 </head>
 <body>
+    <!-- Loading Screen -->
     <div class="loading-screen">
         <div class="loader"></div>
     </div>
+
+    <!-- Header -->
     <header>
         <nav>
             <ul>
@@ -22,16 +168,19 @@
         </nav>
     </header>
     
+    <!-- Hero Section -->
     <section id="hero">
         <h1>Welcome to My Data Science World</h1>
         <p>Transforming Data into Meaningful Insights</p>
     </section>
 
+    <!-- About Section -->
     <section id="about">
         <h2>About Me</h2>
         <p>I'm a passionate Data Scientist with expertise in Machine Learning, Data Visualization, and Analytics.</p>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects">
         <h2>Projects</h2>
         <div class="project-container">
@@ -45,23 +194,35 @@
                 <p>Machine Learning models for predictive analytics.</p>
                 <a href="#" class="project-button">View Project</a>
             </div>
-            <!-- Add more projects here -->
+            <!-- Add more projects -->
         </div>
     </section>
 
+    <!-- Resume Section -->
     <section id="resume">
         <h2>Resume</h2>
         <a href="resume.pdf" download class="resume-button">Download Resume</a>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact">
         <h2>Find Me Online</h2>
         <a href="https://linkedin.com" class="social-button">LinkedIn</a>
         <a href="https://github.com" class="social-button">GitHub</a>
     </section>
 
+    <!-- Footer -->
     <footer>
         <p>Crafting Data-Driven Experiences.</p>
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Remove loading screen after page loads
+        window.addEventListener("load", function () {
+            document.querySelector(".loading-screen").style.display = "none";
+        });
+    </script>
+
 </body>
 </html>
