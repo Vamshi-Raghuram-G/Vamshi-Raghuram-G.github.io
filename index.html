@@ -6,156 +6,112 @@
     <title>My Data Science Portfolio</title>
     <style>
         :root {
-            --primary: #F8F9FA;
-            --secondary: #E9ECEF;
-            --accent: #DEE2E6;
-            --text: #212529;
-            --button-bg: #495057;
-            --button-hover: #6C757D;
-            --button-text: white;
-            --dark-bg: #212529;
-            --dark-text: #E9ECEF;
-            --dark-secondary: #343A40;
-            --dark-accent: #495057;
+            --primary-light: #F8F9FA;
+            --secondary-light: #E9ECEF;
+            --accent-light: #DEE2E6;
+            --text-light: #212529;
+            --button-bg-light: #495057;
+            --button-hover-light: #6C757D;
+
+            --primary-dark: #212529;
+            --secondary-dark: #343A40;
+            --accent-dark: #495057;
+            --text-dark: #E9ECEF;
+            --button-bg-dark: #ADB5BD;
+            --button-hover-dark: #DEE2E6;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--primary);
-            color: var(--text);
+            background-color: var(--primary-light);
+            color: var(--text-light);
             text-align: center;
             margin: 0;
             padding: 0;
-            transition: background 0.3s, color 0.3s;
+            overflow-x: hidden;
+            transition: all 0.3s ease-in-out;
         }
 
         header {
             position: fixed;
             width: 100%;
-            background: var(--secondary);
+            background: var(--secondary-light);
             padding: 15px 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
         }
 
         nav ul {
             list-style: none;
             padding: 0;
-            margin: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
-        }
-
-        nav ul li {
-            margin: 0 15px;
+            gap: 20px;
         }
 
         .nav-button {
             text-decoration: none;
-            color: var(--button-text);
+            color: var(--text-light);
+            font-weight: bold;
             padding: 10px 15px;
-            border-radius: 5px;
-            background: var(--button-bg);
             transition: 0.3s;
         }
 
-        .nav-button:hover {
-            background: var(--button-hover);
+        section {
+            padding: 80px 20px;
         }
 
         .toggle-container {
+            position: absolute;
+            top: 15px;
+            right: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .toggle-label {
             font-size: 14px;
-            color: var(--text);
-            transition: color 0.3s;
-        }
-
-        .toggle-switch {
-            position: relative;
-            width: 50px;
-            height: 25px;
-        }
-
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: var(--button-bg);
-            transition: 0.4s;
-            border-radius: 25px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            left: 4px;
-            bottom: 3px;
-            background-color: white;
-            transition: 0.4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider {
-            background-color: var(--button-hover);
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(24px);
-        }
-
-        section {
-            padding: 100px 20px;
-        }
-
-        .hero {
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
             font-weight: bold;
         }
 
-        .about {
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
+        .toggle-switch {
+            width: 50px;
+            height: 25px;
+            background: var(--button-bg-light);
+            border-radius: 50px;
+            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .toggle-switch::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            transition: 0.3s;
+        }
+
+        .dark-mode .toggle-switch {
+            background: var(--button-bg-dark);
+        }
+
+        .dark-mode .toggle-switch::before {
+            left: 25px;
         }
 
         .project-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 40px;
+            gap: 20px;
         }
 
         .project {
-            background: var(--accent);
+            background: var(--accent-light);
             padding: 20px;
             border-radius: 10px;
             width: 45%;
@@ -166,16 +122,10 @@
             transform: scale(1.05);
         }
 
-        .project-description {
-            font-size: 14px;
-            color: var(--text);
-            transition: color 0.3s;
-        }
-
         .project-button {
             text-decoration: none;
-            color: var(--button-text);
-            background: var(--button-bg);
+            color: white;
+            background: var(--button-bg-light);
             padding: 10px 15px;
             border-radius: 5px;
             display: inline-block;
@@ -184,87 +134,98 @@
         }
 
         .project-button:hover {
-            background: var(--button-hover);
+            background: var(--button-hover-light);
         }
 
-        .dark-mode {
-            background: var(--dark-bg);
-            color: var(--dark-text);
+        .resume-button, .social-button {
+            text-decoration: none;
+            color: white;
+            background: var(--button-bg-light);
+            padding: 12px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 15px;
+            transition: 0.3s;
         }
 
-        .dark-mode header {
-            background: var(--dark-secondary);
-        }
-
-        .dark-mode .project {
-            background: var(--dark-accent);
-        }
-
-        .dark-mode .project-description, .dark-mode .toggle-label {
-            color: var(--dark-text);
+        .resume-button:hover, .social-button:hover {
+            background: var(--button-hover-light);
         }
 
         footer {
-            background: var(--secondary);
+            background: var(--secondary-light);
             padding: 20px;
+            margin-top: 40px;
+            color: var(--text-light);
+        }
+
+        .dark-mode {
+            background-color: var(--primary-dark);
+            color: var(--text-dark);
+        }
+
+        .dark-mode header, .dark-mode footer {
+            background: var(--secondary-dark);
+            color: var(--text-dark);
+        }
+
+        .dark-mode .nav-button, .dark-mode .resume-button, .dark-mode .social-button, .dark-mode .project-button {
+            background: var(--button-bg-dark);
+            color: var(--text-dark);
         }
     </style>
 </head>
 <body>
 
-<header>
-    <nav>
-        <ul>
-            <li><a href="#about" class="nav-button">About</a></li>
-            <li><a href="#projects" class="nav-button">Projects</a></li>
-            <li><a href="#resume" class="nav-button">Resume</a></li>
-            <li><a href="#contact" class="nav-button">Find Me Online</a></li>
-        </ul>
-    </nav>
-    <div class="toggle-container">
-        <span class="toggle-label">Switch between Light/Dark Mode</span>
-        <label class="toggle-switch">
-            <input type="checkbox" id="darkModeToggle">
-            <span class="slider"></span>
-        </label>
-    </div>
-</header>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about" class="nav-button">About</a></li>
+                <li><a href="#projects" class="nav-button">Projects</a></li>
+                <li><a href="#resume" class="nav-button">Resume</a></li>
+                <li><a href="#contact" class="nav-button">Find Me Online</a></li>
+            </ul>
+        </nav>
+        <div class="toggle-container">
+            <span>Enable Dark/Light Mode</span>
+            <div class="toggle-switch" onclick="toggleDarkMode()"></div>
+        </div>
+    </header>
 
-<section id="about">
-    <h2>About Me</h2>
-    <p class="about">I am a Data Scientist and AI enthusiast with experience in machine learning, predictive analytics, and data visualization. I love solving real-world problems using data-driven insights.</p>
-</section>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I'm a passionate Data Scientist specializing in Machine Learning, AI, and Data Visualization.</p>
+    </section>
 
-<section id="projects">
-    <h2>Projects</h2>
-    <div class="project-container">
-        <div class="project"><h3>Drug Recommendation</h3><p class="project-description">AI-based sentiment analysis of drug reviews.</p><a href="#" class="project-button">View Project</a></div>
-        <div class="project"><h3>Retail Sales Prediction</h3><p class="project-description">Machine learning model for forecasting store sales.</p><a href="#" class="project-button">View Project</a></div>
-        <div class="project"><h3>Real Estate Pricing</h3><p class="project-description">Predictive model for real estate price estimation.</p><a href="#" class="project-button">View Project</a></div>
-        <div class="project"><h3>Credit Card Fraud Detection</h3><p class="project-description">ML model detecting fraudulent credit card transactions.</p><a href="#" class="project-button">View Project</a></div>
-    </div>
-</section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-container">
+            <div class="project"><h3>Project 1</h3><p>ML model for fraud detection.</p><a href="#" class="project-button">View Project</a></div>
+            <div class="project"><h3>Project 2</h3><p>Sentiment analysis on reviews.</p><a href="#" class="project-button">View Project</a></div>
+            <div class="project"><h3>Project 3</h3><p>Retail sales forecasting.</p><a href="#" class="project-button">View Project</a></div>
+        </div>
+    </section>
 
-<section id="resume">
-    <h2>Resume</h2>
-    <p>Download my resume <a href="#" class="project-button">here</a></p>
-</section>
+    <section id="resume">
+        <h2>Access My Professional Portfolio</h2>
+        <a href="resume.pdf" download class="resume-button">Download Resume</a>
+    </section>
 
-<section id="contact">
-    <h2>Find Me Online</h2>
-    <a href="#" class="project-button">LinkedIn</a>
-    <a href="#" class="project-button">GitHub</a>
-</section>
+    <section id="contact">
+        <h2>Find Me Online</h2>
+        <a href="https://linkedin.com" class="social-button">LinkedIn</a>
+        <a href="https://github.com" class="social-button">GitHub</a>
+    </section>
 
-<footer>
-    <p>Data Science Enthusiast | AI Developer</p>
-</footer>
+    <footer>
+        <p>Crafting Data-Driven Experiences.</p>
+    </footer>
 
-<script>
-    document.getElementById("darkModeToggle").addEventListener("change", function () {
-        document.body.classList.toggle("dark-mode");
-    });
-</script>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
 
 </body>
 </html>
