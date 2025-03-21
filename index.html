@@ -81,6 +81,7 @@
         .toggle-label {
             font-size: 14px;
             color: var(--text);
+            transition: color 0.3s;
         }
 
         .toggle-switch {
@@ -129,7 +130,7 @@
 
         /* Section Spacing */
         section {
-            padding: 80px 20px;
+            padding: 120px 20px;
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
@@ -152,7 +153,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 40px;
         }
 
         .project {
@@ -170,6 +171,7 @@
         .project-description {
             font-size: 14px;
             color: var(--text);
+            transition: color 0.3s;
         }
 
         .project-button {
@@ -199,6 +201,10 @@
 
         .dark-mode .project {
             background: var(--dark-accent);
+        }
+
+        .dark-mode .project-description, .dark-mode .toggle-label {
+            color: var(--dark-text);
         }
 
         .dark-mode footer {
