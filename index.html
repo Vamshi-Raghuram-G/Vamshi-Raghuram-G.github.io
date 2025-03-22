@@ -139,17 +139,16 @@
         }
 
         #hero h1 {
-            font-size: clamp(1.5em, 5vw, 2.5em); /* Responsive heading size */
+            font-size: clamp(1.5em, 5vw, 2.5em); /* Responsive and smaller */
             margin: 0;
         }
 
         .typing-effect {
-            font-size: clamp(0.9em, 3vw, 1.2em); /* Reduced and responsive */
+            font-size: clamp(1em, 4vw, 1.5em);
             overflow: hidden;
             white-space: nowrap;
             border-right: 3px solid;
             animation: typing 4s steps(40, end) infinite, blink 0.75s step-end infinite;
-            margin-top: 10px; /* Added spacing */
         }
 
         @keyframes typing {
@@ -372,7 +371,7 @@
             }
 
             #hero {
-                height: 50vh; /* Further reduced for mobile */
+                height: 50vh; /* Even smaller on mobile */
             }
 
             #hero h1 {
@@ -395,6 +394,10 @@
         }
 
         @media (max-width: 480px) {
+            #hero {
+                height: 40vh; /* Further reduced for very small screens */
+            }
+
             .resume-button, .social-button {
                 padding: 10px 15px;
                 font-size: 0.9em;
@@ -409,10 +412,6 @@
                 width: 35px;
                 height: 35px;
                 font-size: 18px;
-            }
-
-            #hero {
-                height: 40vh; /* Even smaller for very small screens */
             }
         }
     </style>
