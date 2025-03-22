@@ -45,13 +45,64 @@
 
         /* Hero Section */
         #hero {
-            height: 60vh;
+            height: 40vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             background: linear-gradient(135deg, #6e8efb, #a777e3);
             color: white;
+            position: relative;
+        }
+
+        #hero header {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 16px; /* Moved approximately 1 inch left */
+        }
+
+        .toggle-switch {
+            width: 50px;
+            height: 25px;
+            background: var(--button-bg-light);
+            border-radius: 50px;
+            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .toggle-switch::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            transition: 0.3s;
+        }
+
+        .dark-mode .toggle-switch {
+            background: var(--button-bg-dark);
+        }
+
+        .dark-mode .toggle-switch::before {
+            left: 25px;
         }
 
         #hero h1 {
@@ -242,7 +293,7 @@
         /* Responsive Styles */
         @media (max-width: 768px) {
             #hero {
-                height: 50vh;
+                height: 35vh;
             }
 
             #hero h1 {
@@ -266,7 +317,7 @@
 
         @media (max-width: 480px) {
             #hero {
-                height: 40vh;
+                height: 30vh;
             }
 
             .resume-button, .social-button {
@@ -290,6 +341,12 @@
 <body>
     <!-- Hero Section -->
     <section id="hero" data-aos="fade-down">
+        <header>
+            <div class="toggle-container">
+                <span>Dark Mode</span>
+                <div class="toggle-switch" onclick="toggleDarkMode()"></div>
+            </div>
+        </header>
         <h1>Hi, I'm [Your Name]</h1>
         <p class="typing-effect"></p>
     </section>
@@ -363,6 +420,10 @@
             duration: 1000,
             once: true,
         });
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
 
         // Typing Effect
         const text = "Data Scientist | Machine Learning Enthusiast | AI Innovator";
