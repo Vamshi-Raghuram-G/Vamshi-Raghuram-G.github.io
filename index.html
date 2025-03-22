@@ -12,23 +12,24 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root {
-            --primary-light: #F7F4F9;    /* Pale Lavender */
-            --secondary-light: #E8DCEB;  /* Light Plum */
-            --accent-light: #4A2E59;     /* Deep Plum */
-            --text-light: #F7F4F9;       /* Pale Lavender - Light for visibility on Deep Plum */
-            --text-fixed: #4A2E59;       /* Deep Plum - Dark for visibility on light backgrounds */
-            --button-bg-light: #6CC4A1;  /* Mint */
-            --button-hover-light: #8AD7B5; /* Lighter Mint for hover */
-            --project-back-light: #E8DCEB; /* Light Plum */
-            --skill-tag-bg: #F0E8F2;     /* Very Pale Plum - Subtle and readable */
+            --primary-light: #F8F9FA; /* Light Gray */
+            --secondary-light: #E9ECEF; /* Slightly Darker Gray */
+            --accent-light: #DEE2E6; /* Gray */
+            --text-light: #2C3E50; /* Dark Blue-Gray */
+            --text-fixed: #343A40; /* Fixed text color */
+            --button-bg-light: #3498DB; /* Blue */
+            --button-hover-light: #2ECC71; /* Green */
+            --project-back-light: #CED4DA; /* Mid Gray */
+            --skill-tag-bg: #E9ECEF; /* Light gray for tags */
 
-            --primary-dark: #2A1E34;     /* Dark Plum */
-            --secondary-dark: #3F2E4D;   /* Mid Plum */
-            --accent-dark: #D8F0E3;      /* Pale Mint */
-            --text-dark: #2A1E34;        /* Dark Plum - Dark for visibility on Pale Mint */
-            --button-bg-dark: #6CC4A1;   /* Mint */
-            --button-hover-dark: #8AD7B5; /* Lighter Mint for hover */
-            --project-back-dark: #3F2E4D; /* Mid Plum */
+            --primary-dark: #2C3E50; /* Dark Blue-Gray */
+            --secondary-dark: #E9ECEF; /* Slightly Darker Gray */
+            --accent-dark: #DEE2E6; /* Gray */
+            --text-dark: #ECF0F1; /* Light Gray */
+            --button-bg-dark: #3498DB; /* Blue */
+            --button-hover-dark: #2ECC71; /* Green */
+            --project-back-dark: #CED4DA; /* Mid Gray */
+            --skill-tag-bg-dark: #7F8C8D; /* Darker gray for tags in dark mode (unused) */
         }
 
         body {
@@ -58,7 +59,7 @@
             position: absolute;
             width: 5px;
             height: 5px;
-            background-color: #E8DCEB; /* Light Plum */
+            background-color: #ADB5BD;
             border-radius: 50%;
             opacity: 0.5;
             animation: float 10s infinite ease-in-out;
@@ -71,7 +72,7 @@
         }
 
         .dark-mode .particle {
-            background-color: #D8F0E3; /* Pale Mint */
+            background-color: #CED4DA;
         }
 
         header {
@@ -164,11 +165,10 @@
             height: 50px;
             opacity: 0.2;
             z-index: 0;
-            fill: #4A2E59; /* Deep Plum */
         }
 
         .dark-mode .section-divider {
-            fill: #D8F0E3; /* Pale Mint */
+            fill: #CED4DA;
         }
 
         /* Hero Section */
@@ -178,8 +178,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #E8DCEB, #F7F4F9); /* Light Plum to Pale Lavender */
-            color: var(--text-fixed); /* Deep Plum for visibility */
+            background: linear-gradient(135deg, var(--accent-light), var(--secondary-light));
+            color: var(--text-light);
         }
 
         #hero h1 {
@@ -191,7 +191,7 @@
             font-size: clamp(1em, 4vw, 1.5em);
             overflow: hidden;
             white-space: nowrap;
-            border-right: 3px solid var(--text-fixed);
+            border-right: 3px solid var(--text-light);
             animation: typing 4s steps(40, end) infinite, blink 0.75s step-end infinite;
         }
 
@@ -202,7 +202,7 @@
 
         @keyframes blink {
             from, to { border-color: transparent }
-            50% { border-color: var(--text-fixed) }
+            50% { border-color: var(--text-light) }
         }
 
         /* Flip Card Styles (Projects Only) */
@@ -227,7 +227,7 @@
 
         .project-front {
             background: var(--accent-light);
-            color: var(--text-light); /* Pale Lavender for visibility on Deep Plum */
+            color: var(--text-light);
             z-index: 2;
             display: flex;
             flex-direction: column;
@@ -237,7 +237,7 @@
 
         .project-back {
             background: var(--project-back-light);
-            color: var(--text-fixed); /* Deep Plum for visibility on Light Plum */
+            color: var(--text-light);
             transform: rotateY(180deg);
             display: flex;
             flex-direction: column;
@@ -267,7 +267,7 @@
             justify-content: center;
             align-items: center;
             z-index: 1;
-            color: var(--text-light); /* Pale Lavender for visibility on Deep Plum */
+            color: var(--text-light); /* Fixed color in both modes */
         }
 
         .certification h3 {
@@ -280,7 +280,7 @@
         }
 
         .certification .project-button {
-            margin-top: 0; /* Consistent with previous update */
+            margin-top: 0; /* Moved up by ~0.5cm from previous 19px */
         }
 
         /* Skills Block */
@@ -297,7 +297,7 @@
             justify-content: center;
             align-items: center;
             z-index: 1;
-            color: var(--text-light); /* Pale Lavender for visibility on Deep Plum */
+            color: var(--text-light);
         }
 
         .skills-tags {
@@ -310,7 +310,7 @@
 
         .skills-tags span {
             background: var(--skill-tag-bg);
-            color: var(--text-fixed); /* Deep Plum for visibility on Very Pale Plum */
+            color: var(--text-light);
             padding: 6px 12px;
             border-radius: 15px;
             font-weight: bold;
@@ -327,6 +327,7 @@
 
         .project-button, .social-button {
             text-decoration: none;
+            color: var(--text-dark);
             background: var(--button-bg-light);
             padding: 10px 15px;
             border-radius: 5px;
@@ -334,7 +335,6 @@
             margin: 5px;
             transition: background 0.3s;
             opacity: 1;
-            color: #2A1E34; /* Dark Plum for contrast on Mint */
         }
 
         .project-button:hover, .social-button:hover {
@@ -344,6 +344,7 @@
         /* Buttons */
         .resume-button {
             text-decoration: none;
+            color: var(--text-dark);
             background: var(--button-bg-light);
             padding: 12px 20px;
             border-radius: 5px;
@@ -351,7 +352,6 @@
             margin: 10px;
             transition: background 0.3s;
             opacity: 1;
-            color: #2A1E34; /* Dark Plum for contrast on Mint */
         }
 
         .resume-button:hover {
@@ -363,7 +363,7 @@
             bottom: 20px;
             right: 20px;
             background: var(--button-bg-light);
-            color: #2A1E34; /* Dark Plum for contrast on Mint */
+            color: var(--text-dark);
             border: none;
             border-radius: 50%;
             width: 40px;
@@ -383,7 +383,7 @@
             background: var(--secondary-light);
             padding: 20px;
             margin-top: 40px;
-            color: var(--text-fixed); /* Deep Plum for visibility on Light Plum */
+            color: var(--text-fixed);
             position: relative;
             z-index: 1;
         }
@@ -397,49 +397,10 @@
         .dark-mode .project-front, .dark-mode .certification, 
         .dark-mode .skills-block {
             background: var(--accent-dark);
-            color: var(--text-dark); /* Dark Plum for visibility on Pale Mint */
         }
 
         .dark-mode .project-back {
             background: var(--project-back-dark);
-            color: #D8F0E3; /* Pale Mint for visibility on Mid Plum */
-        }
-
-        .dark-mode header, .dark-mode footer {
-            background: var(--secondary-dark);
-            color: #D8F0E3; /* Pale Mint for visibility on Mid Plum */
-        }
-
-        .dark-mode .nav-button {
-            color: #D8F0E3; /* Pale Mint for visibility on Mid Plum */
-        }
-
-        .dark-mode .toggle-container {
-            color: #D8F0E3; /* Pale Mint for visibility on Mid Plum */
-        }
-
-        .dark-mode .project-button, .dark-mode .social-button, 
-        .dark-mode .resume-button {
-            background: var(--button-bg-dark);
-            color: #2A1E34; /* Dark Plum for contrast on Mint */
-        }
-
-        .dark-mode .project-button:hover, .dark-mode .social-button:hover, 
-        .dark-mode .resume-button:hover {
-            background: var(--button-hover-dark);
-        }
-
-        .dark-mode #back-to-top {
-            background: var(--button-bg-dark);
-            color: #2A1E34; /* Dark Plum for contrast on Mint */
-        }
-
-        .dark-mode #back-to-top:hover {
-            background: var(--button-hover-dark);
-        }
-
-        .dark-mode #hero {
-            color: #D8F0E3; /* Pale Mint for visibility on Dark Plum */
         }
 
         /* Responsive Styles */
@@ -588,7 +549,7 @@
 
     <!-- Hero Section -->
     <section id="hero" data-aos="fade-down">
-        <svg class="section-divider" viewBox="0 0 100 100">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h1>Hi, I'm [Your Name]</h1>
@@ -597,7 +558,7 @@
 
     <!-- About Section -->
     <section id="about" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>About Me</h2>
@@ -606,7 +567,7 @@
 
     <!-- Projects Section -->
     <section id="projects" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>Projects</h2>
@@ -636,7 +597,7 @@
 
     <!-- Skills Section -->
     <section id="skills" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>Skills</h2>
@@ -655,7 +616,7 @@
 
     <!-- Certifications Section -->
     <section id="certifications" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>Certifications</h2>
@@ -675,7 +636,7 @@
 
     <!-- Resume Section -->
     <section id="resume" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>Access My Professional Portfolio</h2>
@@ -684,7 +645,7 @@
 
     <!-- Contact Section -->
     <section id="contact" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>Find Me Online</h2>
