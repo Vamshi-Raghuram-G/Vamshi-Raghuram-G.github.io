@@ -270,7 +270,11 @@
 
         .certification h3 {
             margin-top: 19px; /* Moves name down by ~0.5cm */
-            margin-bottom: 5px;
+            margin-bottom: 0;
+        }
+
+        .certification p {
+            margin: 10px 0; /* Centers issuer between name and button */
         }
 
         .certification .project-button {
@@ -280,7 +284,7 @@
         /* Skills Block */
         .skills-block {
             position: relative;
-            width: 90%; /* Matches project and certification outer margins */
+            width: calc(45% + 45% + 20px); /* Matches exact outer margins of project/certification */
             height: 150px;
             background: var(--accent-light);
             border-radius: 10px;
