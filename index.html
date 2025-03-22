@@ -12,19 +12,19 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root {
-            --primary-light: #FFFFFF; /* White */
-            --secondary-light: #BFDBF7; /* Light Blue */
-            --accent-light: #E1E5F2; /* Pale Blue */
-            --text-light: #022B3A; /* Dark Teal */
-            --button-bg-light: #1F7A8C; /* Teal */
-            --button-hover-light: #155E6E; /* Darker Teal */
+            --primary-light: #ECEBDE; /* Off-White */
+            --secondary-light: #C1BAA1; /* Light Olive */
+            --accent-light: #D7D3BF; /* Pale Beige */
+            --text-light: #A59D84; /* Olive Green */
+            --button-bg-light: #A59D84; /* Olive Green */
+            --button-hover-light: #8A846C; /* Darker Olive Green */
 
-            --primary-dark: #022B3A; /* Dark Teal */
-            --secondary-dark: #BFDBF7; /* Light Blue */
-            --accent-dark: #E1E5F2; /* Pale Blue */
-            --text-dark: #FFFFFF; /* White */
-            --button-bg-dark: #1F7A8C; /* Teal */
-            --button-hover-dark: #155E6E; /* Darker Teal */
+            --primary-dark: #A59D84; /* Olive Green */
+            --secondary-dark: #C1BAA1; /* Light Olive */
+            --accent-dark: #D7D3BF; /* Pale Beige */
+            --text-dark: #ECEBDE; /* Off-White */
+            --button-bg-dark: #C1BAA1; /* Light Olive */
+            --button-hover-dark: #A59D84; /* Olive Green */
         }
 
         body {
@@ -232,21 +232,55 @@
 
         /* Certifications Section */
         .certifications-container {
-            max-width: 600px;
-            margin: 20px auto;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
+            gap: 20px;
         }
 
         .certification {
+            position: relative;
+            width: 45%;
+            height: 150px;
+            perspective: 1000px;
+        }
+
+        .certification-front, .certification-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transition: transform 0.6s;
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .certification-front {
             background: var(--accent-light);
             color: var(--text-light);
-            padding: 8px 16px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 0.9em;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .certification-back {
+            background: var(--secondary-light);
+            color: var(--text-light);
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .certification:hover .certification-front {
+            transform: rotateY(-180deg);
+        }
+
+        .certification:hover .certification-back {
+            transform: rotateY(0deg);
         }
 
         /* Buttons */
@@ -314,20 +348,20 @@
 
         .dark-mode .resume-button, .dark-mode .social-button, .dark-mode .project-button {
             background: var(--button-bg-dark);
-            color: var(--text-dark);
+            color: var(--text-light);
         }
 
-        .dark-mode .project-front {
+        .dark-mode .project-front, .dark-mode .certification-front {
             background: var(--accent-dark);
             color: var(--text-light);
         }
 
-        .dark-mode .project-back {
+        .dark-mode .project-back, .dark-mode .certification-back {
             background: var(--secondary-dark);
             color: var(--text-dark);
         }
 
-        .dark-mode .skill, .dark-mode .certification {
+        .dark-mode .skill {
             background: var(--accent-dark);
             color: var(--text-light);
         }
@@ -361,12 +395,16 @@
                 font-size: 2em;
             }
 
-            .project {
+            .project, .certification {
                 width: 90%;
-                height: 180px;
+                height: 180px; /* Adjusted for projects */
             }
 
-            .skill, .certification {
+            .certification {
+                height: 150px; /* Keep certifications slightly smaller */
+            }
+
+            .skill {
                 padding: 6px 12px;
                 font-size: 0.85em;
             }
@@ -469,10 +507,42 @@
     <section id="certifications" data-aos="fade-up">
         <h2>Certifications</h2>
         <div class="certifications-container">
-            <div class="certification">Google Data Analytics Professional Certificate</div>
-            <div class="certification">AWS Certified Machine Learning – Specialty</div>
-            <div class="certification">Microsoft Azure AI Engineer Associate</div>
-            <div class="certification">Coursera Deep Learning Specialization</div>
+            <div class="certification" data-aos="flip-left">
+                <div class="certification-front">
+                    <h3>Google Data Analytics</h3>
+                </div>
+                <div class="certification-back">
+                    <p><strong>Issuer:</strong> Google</p>
+                    <a href="#" class="project-button">View Certificate</a>
+                </div>
+            </div>
+            <div class="certification" data-aos="flip-right">
+                <div class="certification-front">
+                    <h3>AWS Machine Learning</h3>
+                </div>
+                <div class="certification-back">
+                    <p><strong>Issuer:</strong> AWS</p>
+                    <a href="#" class="project-button">View Certificate</a>
+                </div>
+            </div>
+            <div class="certification" data-aos="flip-left">
+                <div class="certification-front">
+                    <h3>Azure AI Engineer</h3>
+                </div>
+                <div class="certification-back">
+                    <p><strong>Issuer:</strong> Microsoft</p>
+                    <a href="#" class="project-button">View Certificate</a>
+                </div>
+            </div>
+            <div class="certification" data-aos="flip-right">
+                <div class="certification-front">
+                    <h3>Deep Learning Specialization</h3>
+                </div>
+                <div class="certification-back">
+                    <p><strong>Issuer:</strong> Coursera</p>
+                    <a href="#" class="project-button">View Certificate</a>
+                </div>
+            </div>
         </div>
     </section>
 
