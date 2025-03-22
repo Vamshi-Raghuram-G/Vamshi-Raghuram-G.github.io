@@ -29,7 +29,7 @@
             --button-bg-dark: #3498DB; /* Blue */
             --button-hover-dark: #2ECC71; /* Green */
             --project-back-dark: #CED4DA; /* Mid Gray */
-            --skill-tag-bg-dark: #7F8C8D; /* Darker gray for tags in dark mode */
+            --skill-tag-bg-dark: #7F8C8D; /* Darker gray for tags in dark mode (unused) */
         }
 
         body {
@@ -280,7 +280,7 @@
         }
 
         .certification .project-button {
-            margin-top: 19px; /* Moves button down by ~1cm */
+            margin-top: 0; /* Moved up by ~0.5cm from previous 19px */
         }
 
         /* Skills Block */
@@ -315,12 +315,11 @@
             border-radius: 15px;
             font-weight: bold;
             font-size: 1em;
-            transition: background 0.3s;
+            transition: color 0.3s; /* Only color transitions */
         }
 
         .dark-mode .skills-tags span {
-            background: var(--skill-tag-bg-dark);
-            color: var(--text-light); /* Keeps text color consistent */
+            color: var(--text-dark); /* Only text color changes in dark mode */
         }
 
         /* Containers */
