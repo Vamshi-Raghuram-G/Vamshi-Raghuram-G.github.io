@@ -31,7 +31,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--primary-light), var(--secondary-light));
+            background-color: var(--primary-light);
             color: var(--text-light);
             text-align: center;
             margin: 0;
@@ -40,41 +40,14 @@
             transition: all 0.3s ease-in-out;
             font-size: 16px;
             position: relative;
-        }
-
-        #particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Behind content */
-            pointer-events: none; /* Allows clicks through */
-        }
-
-        .particle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background-color: #ADB5BD; /* Cool Gray */
-            border-radius: 50%;
-            opacity: 0.4;
-            animation: drift 15s infinite ease-in-out;
-        }
-
-        @keyframes drift {
-            0% { transform: translate(0, 0); opacity: 0.4; }
-            50% { transform: translate(10px, -10px); opacity: 0.6; }
-            100% { transform: translate(0, 0); opacity: 0.4; }
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.2"><path fill="%23E9ECEF" d="M50 10c-20 0-30 20-20 40s30 20 40 0-20-40-20-40z"/><path fill="%23DEE2E6" d="M50 90c20 0 30-20 20-40s-30-20-40 0 20 40 20 40z"/></svg>');
+            background-repeat: repeat;
         }
 
         .dark-mode {
-            background: linear-gradient(135deg, var(--primary-dark), #212529);
+            background-color: var(--primary-dark);
             color: var(--text-dark);
-        }
-
-        .dark-mode .particle {
-            background-color: #CED4DA; /* Mid Gray */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.2"><path fill="%23CED4DA" d="M50 10c-20 0-30 20-20 40s30 20 40 0-20-40-20-40z"/><path fill="%23DEE2E6" d="M50 90c20 0 30-20 20-40s-30-20-40 0 20 40 20 40z"/></svg>');
         }
 
         header {
@@ -89,7 +62,7 @@
         }
 
         nav {
-            flex: 1; /* Takes available space */
+            flex: 1;
         }
 
         nav ul {
@@ -106,6 +79,7 @@
             font-weight: bold;
             padding: 10px;
             transition: color 0.3s;
+            opacity: 1.0; /* Full opacity for fixed text */
         }
 
         .nav-button:hover {
@@ -118,8 +92,9 @@
             gap: 10px;
             font-size: 14px;
             font-weight: bold;
-            margin-right: 16px; /* Moved left by ~1 inch */
-            color: var(--text-light); /* Fixed color */
+            margin-right: 16px;
+            color: var(--text-light);
+            opacity: 1.0; /* Full opacity for fixed text */
         }
 
         .toggle-switch {
@@ -156,6 +131,11 @@
         section {
             padding: 80px 20px;
             position: relative;
+            opacity: 0.9; /* Slightly reduced opacity for readability in light mode */
+        }
+
+        .dark-mode section {
+            opacity: 1.0; /* Full opacity in dark mode for contrast */
         }
 
         .section-divider {
@@ -170,10 +150,9 @@
         }
 
         .dark-mode .section-divider {
-            fill: #CED4DA; /* Mid Gray in dark mode */
+            fill: #CED4DA;
         }
 
-        /* Hero Section */
         #hero {
             height: 30vh;
             display: flex;
@@ -207,7 +186,6 @@
             50% { border-color: var(--text-light) }
         }
 
-        /* Project Flip Cards */
         .project-container {
             display: flex;
             flex-wrap: wrap;
@@ -248,6 +226,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            opacity: 1.0; /* Full opacity for fixed text */
         }
 
         .project:hover .project-front {
@@ -273,7 +252,6 @@
             background: var(--button-hover-light);
         }
 
-        /* Skills Section */
         .skills-container {
             max-width: 600px;
             margin: 20px auto;
@@ -292,7 +270,6 @@
             font-size: 0.9em;
         }
 
-        /* Certifications Section */
         .certifications-container {
             display: flex;
             flex-wrap: wrap;
@@ -336,6 +313,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            opacity: 1.0; /* Full opacity for fixed text */
         }
 
         .certification:hover .certification-front {
@@ -346,7 +324,6 @@
             transform: rotateY(0deg);
         }
 
-        /* Buttons */
         .resume-button, .social-button {
             text-decoration: none;
             color: var(--text-dark);
@@ -362,7 +339,6 @@
             background: var(--button-hover-light);
         }
 
-        /* Back-to-Top Button */
         #back-to-top {
             position: fixed;
             bottom: 20px;
@@ -391,38 +367,64 @@
             color: var(--text-light);
             position: relative;
             z-index: 1;
+            opacity: 1.0; /* Full opacity for fixed text */
+        }
+
+        .dark-mode .resume-button, .dark-mode .social-button, .dark-mode .project-button {
+            background: var(--button-bg-dark);
+            color: var(--text-dark);
+        }
+
+        .dark-mode .project-front, .dark-mode .certification-front {
+            background: var(--accent-dark);
+        }
+
+        .dark-mode .project-back, .dark-mode .certification-back {
+            background: var(--project-back-dark);
+        }
+
+        .dark-mode .skill {
+            background: var(--accent-dark);
+        }
+
+        .dark-mode #back-to-top {
+            background: var(--button-bg-dark);
+        }
+
+        .dark-mode #back-to-top:hover {
+            background: var(--button-hover-dark);
         }
 
         /* Responsive Styles */
         @media (max-width: 768px) {
             header {
-                flex-direction: row; /* Side-by-side scrolling */
-                overflow-x: auto; /* Enable horizontal scrolling */
-                white-space: nowrap; /* Prevent wrapping */
+                flex-direction: row;
+                overflow-x: auto;
+                white-space: nowrap;
                 padding: 10px 15px;
             }
 
             nav {
-                flex: 1; /* Takes available space */
-                overflow-x: auto; /* Scrollable nav */
+                flex: 1;
+                overflow-x: auto;
             }
 
             nav ul {
-                flex-direction: row; /* Side-by-side links */
-                overflow-x: auto; /* Enable horizontal scrolling */
-                white-space: nowrap; /* Keep links in one line */
-                gap: 0; /* Remove gap, use padding instead */
+                flex-direction: row;
+                overflow-x: auto;
+                white-space: nowrap;
+                gap: 0;
             }
 
             .nav-button {
-                padding: 8px 12px; /* Adjusted padding for mobile */
+                padding: 8px 12px;
                 display: inline-block;
             }
 
             .toggle-container {
-                width: 150px; /* Fixed width for toggle */
-                flex-shrink: 0; /* Prevent shrinking */
-                padding-left: 10px; /* Space from nav */
+                width: 150px;
+                flex-shrink: 0;
+                padding-left: 10px;
             }
 
             #hero {
@@ -435,11 +437,11 @@
 
             .project, .certification {
                 width: 90%;
-                height: 180px; /* Adjusted for projects */
+                height: 180px;
             }
 
             .certification {
-                height: 150px; /* Keep certifications slightly smaller */
+                height: 150px;
             }
 
             .skill {
@@ -449,11 +451,6 @@
 
             section {
                 padding: 60px 15px;
-            }
-
-            .particle {
-                width: 4px;
-                height: 4px;
             }
 
             .section-divider {
@@ -483,30 +480,22 @@
                 font-size: 18px;
             }
 
-            .particle {
-                width: 3px;
-                height: 3px;
-            }
-
             .section-divider {
                 width: 30px;
                 height: 30px;
             }
 
             .nav-button {
-                padding: 6px 10px; /* Smaller padding for smaller screens */
+                padding: 6px 10px;
             }
 
             .toggle-container {
-                width: 130px; /* Slightly smaller for very small screens */
+                width: 130px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Particle Background -->
-    <div id="particles"></div>
-
     <!-- Header with Navigation -->
     <header>
         <nav>
@@ -685,23 +674,6 @@
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        // Particle Animation (Freepik-inspired)
-        document.addEventListener('DOMContentLoaded', () => {
-            const particlesContainer = document.getElementById('particles');
-            let numParticles = window.innerWidth <= 480 ? 15 : window.innerWidth <= 768 ? 25 : 40;
-
-            for (let i = 0; i < numParticles; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                particle.style.left = `${Math.random() * 100}vw`;
-                particle.style.top = `${Math.random() * 100}vh`;
-                particle.style.animationDelay = `${Math.random() * 15}s`;
-                particle.style.width = `${Math.random() * 4 + 2}px`; /* Vary size slightly */
-                particle.style.height = particle.style.width;
-                particlesContainer.appendChild(particle);
-            }
-        });
     </script>
 </body>
 </html>
