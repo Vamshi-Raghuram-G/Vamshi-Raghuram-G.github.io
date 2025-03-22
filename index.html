@@ -12,24 +12,23 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root {
-            --primary-light: #F8F9FA; /* Light Gray */
-            --secondary-light: #E9ECEF; /* Slightly Darker Gray */
-            --accent-light: #DEE2E6; /* Gray */
-            --text-light: #2C3E50; /* Dark Blue-Gray */
-            --text-fixed: #343A40; /* Fixed text color */
-            --button-bg-light: #3498DB; /* Blue */
-            --button-hover-light: #2ECC71; /* Green */
-            --project-back-light: #CED4DA; /* Mid Gray */
-            --skill-tag-bg: #E9ECEF; /* Light gray for tags */
+            --primary-light: #F0F4F8;    /* Soft Blue-Gray */
+            --secondary-light: #DCE8F0;  /* Pale Cyan */
+            --accent-light: #1A3C5A;     /* Deep Ocean Blue */
+            --text-light: #1A3C5A;       /* Deep Ocean Blue */
+            --text-fixed: #1A3C5A;       /* Deep Ocean Blue */
+            --button-bg-light: #FF6F61;  /* Coral */
+            --button-hover-light: #FF9F85; /* Light Coral */
+            --project-back-light: #A3BFFA; /* Soft Lavender-Blue */
+            --skill-tag-bg: #E6F0FA;     /* Very Light Blue */
 
-            --primary-dark: #2C3E50; /* Dark Blue-Gray */
-            --secondary-dark: #E9ECEF; /* Slightly Darker Gray */
-            --accent-dark: #DEE2E6; /* Gray */
-            --text-dark: #ECF0F1; /* Light Gray */
-            --button-bg-dark: #3498DB; /* Blue */
-            --button-hover-dark: #2ECC71; /* Green */
-            --project-back-dark: #CED4DA; /* Mid Gray */
-            --skill-tag-bg-dark: #7F8C8D; /* Darker gray for tags in dark mode (unused) */
+            --primary-dark: #1A2526;     /* Deep Teal-Black */
+            --secondary-dark: #2E3A4D;   /* Dark Slate Blue */
+            --accent-dark: #A3BFFA;      /* Soft Lavender-Blue */
+            --text-dark: #DCE8F0;        /* Pale Cyan */
+            --button-bg-dark: #FF6F61;   /* Coral */
+            --button-hover-dark: #FF9F85; /* Light Coral */
+            --project-back-dark: #4A6FA5; /* Midnight Blue */
         }
 
         body {
@@ -59,7 +58,7 @@
             position: absolute;
             width: 5px;
             height: 5px;
-            background-color: #ADB5BD;
+            background-color: #A3BFFA; /* Soft Lavender-Blue */
             border-radius: 50%;
             opacity: 0.5;
             animation: float 10s infinite ease-in-out;
@@ -72,7 +71,7 @@
         }
 
         .dark-mode .particle {
-            background-color: #CED4DA;
+            background-color: #4A6FA5; /* Midnight Blue */
         }
 
         header {
@@ -165,10 +164,11 @@
             height: 50px;
             opacity: 0.2;
             z-index: 0;
+            fill: #1A3C5A; /* Deep Ocean Blue */
         }
 
         .dark-mode .section-divider {
-            fill: #CED4DA;
+            fill: #A3BFFA; /* Soft Lavender-Blue */
         }
 
         /* Hero Section */
@@ -178,7 +178,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, var(--accent-light), var(--secondary-light));
+            background: linear-gradient(135deg, #DCE8F0, #F0F4F8); /* Pale Cyan to Soft Blue-Gray */
             color: var(--text-light);
         }
 
@@ -267,7 +267,7 @@
             justify-content: center;
             align-items: center;
             z-index: 1;
-            color: var(--text-light); /* Fixed color in both modes */
+            color: var(--text-light);
         }
 
         .certification h3 {
@@ -280,7 +280,7 @@
         }
 
         .certification .project-button {
-            margin-top: 0; /* Moved up by ~0.5cm from previous 19px */
+            margin-top: 0; /* Consistent with previous update */
         }
 
         /* Skills Block */
@@ -401,6 +401,30 @@
 
         .dark-mode .project-back {
             background: var(--project-back-dark);
+        }
+
+        .dark-mode header, .dark-mode footer {
+            background: var(--secondary-dark);
+        }
+
+        .dark-mode .project-button, .dark-mode .social-button, 
+        .dark-mode .resume-button {
+            background: var(--button-bg-dark);
+            color: var(--text-dark);
+        }
+
+        .dark-mode .project-button:hover, .dark-mode .social-button:hover, 
+        .dark-mode .resume-button:hover {
+            background: var(--button-hover-dark);
+        }
+
+        .dark-mode #back-to-top {
+            background: var(--button-bg-dark);
+            color: var(--text-dark);
+        }
+
+        .dark-mode #back-to-top:hover {
+            background: var(--button-hover-dark);
         }
 
         /* Responsive Styles */
@@ -549,7 +573,7 @@
 
     <!-- Hero Section -->
     <section id="hero" data-aos="fade-down">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
+        <svg class="section-divider" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h1>Hi, I'm [Your Name]</h1>
@@ -558,7 +582,7 @@
 
     <!-- About Section -->
     <section id="about" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
+        <svg class="section-divider" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>About Me</h2>
@@ -567,7 +591,7 @@
 
     <!-- Projects Section -->
     <section id="projects" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
+        <svg class="section-divider" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>Projects</h2>
@@ -597,7 +621,7 @@
 
     <!-- Skills Section -->
     <section id="skills" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
+        <svg class="section-divider" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>Skills</h2>
@@ -616,7 +640,7 @@
 
     <!-- Certifications Section -->
     <section id="certifications" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
+        <svg class="section-divider" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>Certifications</h2>
@@ -636,7 +660,7 @@
 
     <!-- Resume Section -->
     <section id="resume" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
+        <svg class="section-divider" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>Access My Professional Portfolio</h2>
@@ -645,7 +669,7 @@
 
     <!-- Contact Section -->
     <section id="contact" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
+        <svg class="section-divider" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>Find Me Online</h2>
