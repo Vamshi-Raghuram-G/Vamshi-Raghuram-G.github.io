@@ -39,97 +39,13 @@
             font-size: 16px;
         }
 
-        header {
-            position: fixed;
-            width: 100%;
-            background: var(--secondary-light);
-            padding: 15px 40px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-button {
-            text-decoration: none;
-            color: var(--text-light);
-            font-weight: bold;
-            padding: 10px 15px;
-            transition: 0.3s;
-            position: relative;
-        }
-
-        .nav-button::after {
-            content: "";
-            display: block;
-            width: 0;
-            height: 3px;
-            background: var(--button-bg-light);
-            transition: width 0.3s;
-            position: absolute;
-            left: 50%;
-            bottom: -5px;
-            transform: translateX(-50%);
-        }
-
-        .nav-button:hover::after {
-            width: 100%;
-        }
-
-        .toggle-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .toggle-switch {
-            width: 50px;
-            height: 25px;
-            background: var(--button-bg-light);
-            border-radius: 50px;
-            position: relative;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .toggle-switch::before {
-            content: '';
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 5px;
-            transform: translateY(-50%);
-            transition: 0.3s;
-        }
-
-        .dark-mode .toggle-switch {
-            background: var(--button-bg-dark);
-        }
-
-        .dark-mode .toggle-switch::before {
-            left: 25px;
-        }
-
         section {
             padding: 80px 20px;
         }
 
         /* Hero Section */
         #hero {
-            height: 60vh; /* Reduced from 100vh */
+            height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -139,7 +55,7 @@
         }
 
         #hero h1 {
-            font-size: clamp(1.5em, 5vw, 2.5em); /* Responsive and smaller */
+            font-size: clamp(1.5em, 5vw, 2.5em);
             margin: 0;
         }
 
@@ -293,17 +209,9 @@
             color: var(--text-dark);
         }
 
-        .dark-mode header, .dark-mode footer {
+        .dark-mode footer {
             background: var(--secondary-dark);
             color: var(--text-dark);
-        }
-
-        .dark-mode .nav-button {
-            color: var(--text-dark);
-        }
-
-        .dark-mode .nav-button::after {
-            background: var(--button-bg-dark);
         }
 
         .dark-mode .resume-button, .dark-mode .social-button, .dark-mode .project-button {
@@ -333,45 +241,8 @@
 
         /* Responsive Styles */
         @media (max-width: 768px) {
-            header {
-                padding: 10px 15px;
-                flex-wrap: wrap;
-            }
-
-            .menu-icon {
-                display: block;
-                cursor: pointer;
-                font-size: 28px;
-            }
-
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                background: var(--secondary-light);
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-                padding: 10px 0;
-                text-align: center;
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .dark-mode .nav-menu {
-                background: var(--secondary-dark);
-            }
-
-            .toggle-container {
-                position: static;
-                margin-left: auto;
-            }
-
             #hero {
-                height: 50vh; /* Even smaller on mobile */
+                height: 50vh;
             }
 
             #hero h1 {
@@ -395,7 +266,7 @@
 
         @media (max-width: 480px) {
             #hero {
-                height: 40vh; /* Further reduced for very small screens */
+                height: 40vh;
             }
 
             .resume-button, .social-button {
@@ -422,23 +293,6 @@
         <h1>Hi, I'm [Your Name]</h1>
         <p class="typing-effect"></p>
     </section>
-
-    <header>
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="#about" class="nav-button">About</a></li>
-                <li><a href="#projects" class="nav-button">Projects</a></li>
-                <li><a href="#skills" class="nav-button">Skills</a></li>
-                <li><a href="#resume" class="nav-button">Resume</a></li>
-                <li><a href="#contact" class="nav-button">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="toggle-container">
-            <span>Dark Mode</span>
-            <div class="toggle-switch" onclick="toggleDarkMode()"></div>
-        </div>
-    </header>
 
     <section id="about" data-aos="fade-up">
         <h2>About Me</h2>
@@ -509,14 +363,6 @@
             duration: 1000,
             once: true,
         });
-
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
-        }
-
-        function toggleMenu() {
-            document.querySelector('.nav-menu').classList.toggle('active');
-        }
 
         // Typing Effect
         const text = "Data Scientist | Machine Learning Enthusiast | AI Innovator";
