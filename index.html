@@ -12,19 +12,21 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root {
-            --primary-light: #ECEBDE; /* Off-White */
-            --secondary-light: #C1BAA1; /* Light Olive */
-            --accent-light: #D7D3BF; /* Pale Beige */
-            --text-light: #A59D84; /* Olive Green */
-            --button-bg-light: #A59D84; /* Olive Green */
-            --button-hover-light: #8A846C; /* Darker Olive Green */
+            --primary-light: #F8F9FA; /* Light Gray */
+            --secondary-light: #E9ECEF; /* Slightly Darker Gray */
+            --accent-light: #DEE2E6; /* Gray */
+            --text-light: #343A40; /* Very Dark Gray */
+            --button-bg-light: #6C757D; /* Dark Gray */
+            --button-hover-light: #495057; /* Darker Gray */
+            --project-back-light: #CED4DA; /* Mid Gray */
 
-            --primary-dark: #A59D84; /* Olive Green */
-            --secondary-dark: #C1BAA1; /* Light Olive */
-            --accent-dark: #D7D3BF; /* Pale Beige */
-            --text-dark: #ECEBDE; /* Off-White */
-            --button-bg-dark: #C1BAA1; /* Light Olive */
-            --button-hover-dark: #A59D84; /* Olive Green */
+            --primary-dark: #343A40; /* Very Dark Gray */
+            --secondary-dark: #E9ECEF; /* Slightly Darker Gray */
+            --accent-dark: #DEE2E6; /* Gray */
+            --text-dark: #F8F9FA; /* Light Gray */
+            --button-bg-dark: #6C757D; /* Dark Gray */
+            --button-hover-dark: #CED4DA; /* Mid Gray */
+            --project-back-dark: #CED4DA; /* Mid Gray */
         }
 
         body {
@@ -179,7 +181,7 @@
         }
 
         .project-back {
-            background: var(--secondary-light);
+            background: var(--project-back-light);
             color: var(--text-light);
             transform: rotateY(180deg);
             display: flex;
@@ -266,7 +268,7 @@
         }
 
         .certification-back {
-            background: var(--secondary-light);
+            background: var(--project-back-light);
             color: var(--text-light);
             transform: rotateY(180deg);
             display: flex;
@@ -348,7 +350,7 @@
 
         .dark-mode .resume-button, .dark-mode .social-button, .dark-mode .project-button {
             background: var(--button-bg-dark);
-            color: var(--text-light);
+            color: var(--text-dark);
         }
 
         .dark-mode .project-front, .dark-mode .certification-front {
@@ -357,7 +359,7 @@
         }
 
         .dark-mode .project-back, .dark-mode .certification-back {
-            background: var(--secondary-dark);
+            background: var(--project-back-dark);
             color: var(--text-dark);
         }
 
