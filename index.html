@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- AOS Animation -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --primary-light: #F8F9FA; /* Light Gray */
@@ -173,12 +171,13 @@
 
         /* Hero Section */
         #hero {
-            height: 40vh;
+            height: 30vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             background: linear-gradient(135deg, var(--accent-light), var(--secondary-light));
+            color: var(--text-light);
         }
 
         #hero h1 {
@@ -186,18 +185,22 @@
             margin: 0;
         }
 
-        #hero-chart {
-            width: 80%;
-            max-width: 600px;
-            height: 200px;
+        .typing-effect {
+            font-size: clamp(1em, 4vw, 1.5em);
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--text-light);
+            animation: typing 4s steps(40, end) infinite, blink 0.75s step-end infinite;
         }
 
-        /* About Section */
-        #about video {
-            width: 100%;
-            max-width: 400px;
-            margin: 20px auto;
-            border-radius: 10px;
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 50% } /* Reduced from 100% */
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--text-light) }
         }
 
         /* Flip Card Base Styles */
@@ -269,14 +272,22 @@
 
         /* Containers */
         .project-container, .certifications-container, .skills-container, 
-        .blog-container, .case-study-container {
+        .case-study-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
         }
 
-        .project-button, .demo-button {
+        .project {
+            height: 200px;
+        }
+
+        .certification {
+            height: 150px;
+        }
+
+        .project-button, .social-button {
             text-decoration: none;
             color: var(--text-dark);
             background: var(--button-bg-light);
@@ -284,34 +295,12 @@
             border-radius: 5px;
             display: inline-block;
             margin: 5px;
-            transition: 0.3s;
+            transition: background 0.3s;
             opacity: 1;
         }
 
-        .project-button:hover, .demo-button:hover {
+        .project-button:hover, .social-button:hover {
             background: var(--button-hover-light);
-        }
-
-        /* Blog Section */
-        .blog-post {
-            width: 30%;
-            background: var(--accent-light);
-            border-radius: 10px;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        /* Tools Section */
-        #tools table {
-            width: 80%;
-            max-width: 600px;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-
-        #tools th, #tools td {
-            padding: 10px;
-            border: 1px solid var(--accent-light);
         }
 
         /* Case Study Section */
@@ -323,37 +312,6 @@
             box-sizing: border-box;
         }
 
-        /* Contact Form */
-        #contact-form {
-            width: 80%;
-            max-width: 500px;
-            margin: 20px auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        #contact-form input, #contact-form textarea {
-            padding: 10px;
-            border: 1px solid var(--accent-light);
-            border-radius: 5px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        #contact-form button {
-            background: var(--button-bg-light);
-            color: var(--text-dark);
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        #contact-form button:hover {
-            background: var(--button-hover-light);
-        }
-
         /* Buttons */
         .resume-button {
             text-decoration: none;
@@ -363,7 +321,7 @@
             border-radius: 5px;
             display: inline-block;
             margin: 10px;
-            transition: 0.3s;
+            transition: background 0.3s;
             opacity: 1;
         }
 
@@ -384,7 +342,7 @@
             font-size: 20px;
             cursor: pointer;
             display: none;
-            transition: 0.3s;
+            transition: background 0.3s;
             z-index: 2;
         }
 
@@ -407,34 +365,13 @@
             color: var(--text-dark);
         }
 
-        .dark-mode .resume-button, .dark-mode .project-button, .dark-mode .demo-button {
-            background: var(--button-bg-dark);
-            color: var(--text-dark);
-        }
-
         .dark-mode .project-front, .dark-mode .certification-front, 
-        .dark-mode .skills-block, .dark-mode .blog-post, .dark-mode .case-study {
+        .dark-mode .skills-block, .dark-mode .case-study {
             background: var(--accent-dark);
         }
 
         .dark-mode .project-back, .dark-mode .certification-back {
             background: var(--project-back-dark);
-        }
-
-        .dark-mode #back-to-top {
-            background: var(--button-bg-dark);
-        }
-
-        .dark-mode #back-to-top:hover {
-            background: var(--button-hover-dark);
-        }
-
-        .dark-mode #contact-form button {
-            background: var(--button-bg-dark);
-        }
-
-        .dark-mode #contact-form button:hover {
-            background: var(--button-hover-dark);
         }
 
         /* Responsive Styles */
@@ -469,20 +406,20 @@
             }
 
             #hero {
-                height: 30vh;
+                height: 25vh;
             }
 
-            #hero-chart {
+            #hero h1 {
+                font-size: 2em;
+            }
+
+            .project, .certification, .skills-block, .case-study {
                 width: 90%;
+                height: 180px;
+            }
+
+            .certification, .skills-block {
                 height: 150px;
-            }
-
-            .project, .certification, .skills-block, .blog-post, .case-study {
-                width: 90%;
-            }
-
-            .blog-post {
-                width: 80%;
             }
 
             section {
@@ -502,19 +439,15 @@
 
         @media (max-width: 480px) {
             #hero {
-                height: 25vh;
+                height: 20vh;
             }
 
-            #hero-chart {
-                height: 120px;
-            }
-
-            .resume-button {
+            .resume-button, .social-button {
                 padding: 10px 15px;
                 font-size: 0.9em;
             }
 
-            .project-button, .demo-button {
+            .project-button {
                 padding: 8px 12px;
                 font-size: 0.85em;
             }
@@ -528,6 +461,11 @@
             .particle {
                 width: 3px;
                 height: 3px;
+            }
+
+            .section-divider {
+                width: 30px;
+                height: 30px;
             }
 
             .nav-button {
@@ -552,8 +490,6 @@
                 <li><a href="#projects" class="nav-button">Projects</a></li>
                 <li><a href="#skills" class="nav-button">Skills</a></li>
                 <li><a href="#certifications" class="nav-button">Certifications</a></li>
-                <li><a href="#blog" class="nav-button">Blog</a></li>
-                <li><a href="#tools" class="nav-button">Tools</a></li>
                 <li><a href="#case-studies" class="nav-button">Case Studies</a></li>
                 <li><a href="#resume" class="nav-button">Resume</a></li>
                 <li><a href="#contact" class="nav-button">Contact</a></li>
@@ -565,26 +501,22 @@
         </div>
     </header>
 
-    <!-- Hero Section with Chart -->
+    <!-- Hero Section -->
     <section id="hero" data-aos="fade-down">
         <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h1>Hi, I'm [Your Name]</h1>
-        <canvas id="hero-chart"></canvas>
+        <p class="typing-effect"></p>
     </section>
 
-    <!-- About Section with Video -->
+    <!-- About Section -->
     <section id="about" data-aos="fade-up">
         <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>About Me</h2>
         <p>I'm a passionate Data Scientist specializing in Machine Learning, AI, and Data Visualization.</p>
-        <video controls>
-            <source src="your-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
     </section>
 
     <!-- Projects Section -->
@@ -602,7 +534,6 @@
                 <div class="project-back">
                     <p><strong>Tech Stack:</strong> Python, TensorFlow, Pandas</p>
                     <a href="#" class="project-button">View Project</a>
-                    <a href="#" class="demo-button">View Demo</a>
                 </div>
             </div>
             <div class="project" data-aos="flip-right">
@@ -613,7 +544,6 @@
                 <div class="project-back">
                     <p><strong>Tech Stack:</strong> Python, Scikit-learn, Matplotlib</p>
                     <a href="#" class="project-button">View Project</a>
-                    <a href="#" class="demo-button">View Demo</a>
                 </div>
             </div>
         </div>
@@ -660,41 +590,6 @@
         </div>
     </section>
 
-    <!-- Blog Section -->
-    <section id="blog" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
-            <circle cx="50" cy="50" r="40" />
-        </svg>
-        <h2>Blog</h2>
-        <div class="blog-container">
-            <div class="blog-post" data-aos="fade-up">
-                <h3>How I Built My First ML Model</h3>
-                <p>A beginner's guide to machine learning.</p>
-                <a href="#" class="project-button">Read More</a>
-            </div>
-            <div class="blog-post" data-aos="fade-up">
-                <h3>Top 5 Data Science Tools</h3>
-                <p>My favorite tools for data analysis.</p>
-                <a href="#" class="project-button">Read More</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tools Section -->
-    <section id="tools" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
-            <circle cx="50" cy="50" r="40" />
-        </svg>
-        <h2>Tools and Technologies</h2>
-        <table>
-            <tr><th>Tool/Technology</th><th>Proficiency</th><th>Icon</th></tr>
-            <tr><td>Python</td><td>Advanced</td><td>🐍</td></tr>
-            <tr><td>Tableau</td><td>Intermediate</td><td>📊</td></tr>
-            <tr><td>SQL</td><td>Advanced</td><td>💾</td></tr>
-            <tr><td>TensorFlow</td><td>Intermediate</td><td>🤖</td></tr>
-        </table>
-    </section>
-
     <!-- Case Studies Section -->
     <section id="case-studies" data-aos="fade-up">
         <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
@@ -721,18 +616,16 @@
         <a href="resume.pdf" download class="resume-button"><i class="fas fa-download"></i> Download Resume</a>
     </section>
 
-    <!-- Contact Section with Form -->
+    <!-- Contact Section -->
     <section id="contact" data-aos="fade-up">
         <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
-        <h2>Contact Me</h2>
-        <form id="contact-form" onsubmit="submitForm(event)">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+        <h2>Find Me Online</h2>
+        <div>
+            <a href="https://linkedin.com" class="social-button"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com" class="social-button"><i class="fab fa-github"></i> GitHub</a>
+        </div>
     </section>
 
     <footer>
@@ -754,42 +647,9 @@
             document.body.classList.toggle("dark-mode");
         }
 
-        // Hero Chart
-        document.addEventListener('DOMContentLoaded', () => {
-            const ctx = document.getElementById('hero-chart').getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
-                    datasets: [{
-                        label: 'Skill Progression',
-                        data: [10, 20, 40, 60, 80, 100],
-                        borderColor: '#3498DB',
-                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                        fill: true,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: { beginAtZero: true }
-                    }
-                }
-            });
-
-            // Particle Animation
-            const particlesContainer = document.getElementById('particles');
-            let numParticles = window.innerWidth <= 480 ? 20 : window.innerWidth <= 768 ? 30 : 50;
-            for (let i = 0; i < numParticles; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                particle.style.left = `${Math.random() * 100}vw`;
-                particle.style.top = `${Math.random() * 100}vh`;
-                particle.style.animationDelay = `${Math.random() * 10}s`;
-                particlesContainer.appendChild(particle);
-            }
-        });
+        // Typing Effect
+        const text = "Data Scientist | Machine Learning Enthusiast | AI Innovator";
+        document.querySelector('.typing-effect').textContent = text;
 
         // Back-to-Top Button
         window.onscroll = function() {
@@ -805,12 +665,19 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Contact Form Submission
-        function submitForm(event) {
-            event.preventDefault();
-            alert('Thank you for your message! (This is a demo)');
-            document.getElementById('contact-form').reset();
-        }
+        // Particle Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const particlesContainer = document.getElementById('particles');
+            let numParticles = window.innerWidth <= 480 ? 20 : window.innerWidth <= 768 ? 30 : 50;
+            for (let i = 0; i < numParticles; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                particlesContainer.appendChild(particle);
+            }
+        });
     </script>
 </body>
 </html>
