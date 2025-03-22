@@ -15,7 +15,8 @@
             --primary-light: #F8F9FA; /* Light Gray */
             --secondary-light: #E9ECEF; /* Slightly Darker Gray */
             --accent-light: #DEE2E6; /* Gray */
-            --text-light: #343A40; /* Very Dark Gray */
+            --text-light: rgba(52, 58, 64, 0.9); /* Very Dark Gray, softened */
+            --text-fixed: #343A40; /* Fixed text color */
             --button-bg-light: #6C757D; /* Dark Gray */
             --button-hover-light: #495057; /* Darker Gray */
             --project-back-light: #CED4DA; /* Mid Gray */
@@ -23,7 +24,7 @@
             --primary-dark: #343A40; /* Very Dark Gray */
             --secondary-dark: #E9ECEF; /* Slightly Darker Gray */
             --accent-dark: #DEE2E6; /* Gray */
-            --text-dark: #F8F9FA; /* Light Gray */
+            --text-dark: rgba(248, 249, 250, 0.9); /* Light Gray, softened */
             --button-bg-dark: #6C757D; /* Dark Gray */
             --button-hover-dark: #CED4DA; /* Mid Gray */
             --project-back-dark: #CED4DA; /* Mid Gray */
@@ -40,14 +41,36 @@
             transition: all 0.3s ease-in-out;
             font-size: 16px;
             position: relative;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.2"><path fill="%23E9ECEF" d="M50 10c-20 0-30 20-20 40s30 20 40 0-20-40-20-40z"/><path fill="%23DEE2E6" d="M50 90c20 0 30-20 20-40s-30-20-40 0 20 40 20 40z"/></svg>');
-            background-repeat: repeat;
         }
 
-        .dark-mode {
-            background-color: var(--primary-dark);
-            color: var(--text-dark);
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.2"><path fill="%23CED4DA" d="M50 10c-20 0-30 20-20 40s30 20 40 0-20-40-20-40z"/><path fill="%23DEE2E6" d="M50 90c20 0 30-20 20-40s-30-20-40 0 20 40 20 40z"/></svg>');
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Behind content */
+            pointer-events: none; /* Allows clicks through */
+        }
+
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: #ADB5BD; /* Cool Gray */
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .dark-mode .particle {
+            background-color: #CED4DA; /* Mid Gray */
         }
 
         header {
@@ -62,7 +85,7 @@
         }
 
         nav {
-            flex: 1;
+            flex: 1; /* Takes available space */
         }
 
         nav ul {
@@ -75,11 +98,10 @@
 
         .nav-button {
             text-decoration: none;
-            color: var(--text-light);
+            color: var(--text-fixed);
             font-weight: bold;
             padding: 10px;
             transition: color 0.3s;
-            opacity: 1.0; /* Full opacity for fixed text */
         }
 
         .nav-button:hover {
@@ -93,8 +115,7 @@
             font-size: 14px;
             font-weight: bold;
             margin-right: 16px;
-            color: var(--text-light);
-            opacity: 1.0; /* Full opacity for fixed text */
+            color: var(--text-fixed); /* Fixed color */
         }
 
         .toggle-switch {
@@ -131,11 +152,6 @@
         section {
             padding: 80px 20px;
             position: relative;
-            opacity: 0.9; /* Slightly reduced opacity for readability in light mode */
-        }
-
-        .dark-mode section {
-            opacity: 1.0; /* Full opacity in dark mode for contrast */
         }
 
         .section-divider {
@@ -150,9 +166,10 @@
         }
 
         .dark-mode .section-divider {
-            fill: #CED4DA;
+            fill: #CED4DA; /* Mid Gray in dark mode */
         }
 
+        /* Hero Section */
         #hero {
             height: 30vh;
             display: flex;
@@ -186,22 +203,18 @@
             50% { border-color: var(--text-light) }
         }
 
-        .project-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .project {
+        /* Flip Card Base Styles */
+        .project, .certification, .skills-block {
             position: relative;
             width: 45%;
-            height: 200px;
+            height: 200px; /* Default for projects */
             perspective: 1000px;
             z-index: 1;
         }
 
-        .project-front, .project-back {
+        .project-front, .project-back, 
+        .certification-front, .certification-back,
+        .skills-front, .skills-back {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -212,13 +225,17 @@
             box-sizing: border-box;
         }
 
-        .project-front {
+        .project-front, .certification-front, .skills-front {
             background: var(--accent-light);
             color: var(--text-light);
             z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        .project-back {
+        .project-back, .certification-back, .skills-back {
             background: var(--project-back-light);
             color: var(--text-light);
             transform: rotateY(180deg);
@@ -226,15 +243,38 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            opacity: 1.0; /* Full opacity for fixed text */
         }
 
-        .project:hover .project-front {
+        .project:hover .project-front, 
+        .certification:hover .certification-front,
+        .skills-block:hover .skills-front {
             transform: rotateY(-180deg);
         }
 
-        .project:hover .project-back {
+        .project:hover .project-back, 
+        .certification:hover .certification-back,
+        .skills-block:hover .skills-back {
             transform: rotateY(0deg);
+        }
+
+        /* Project Container */
+        .project-container, .certifications-container, .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .project {
+            height: 200px; /* Specific to projects */
+        }
+
+        .certification {
+            height: 150px; /* Specific to certifications */
+        }
+
+        .skills-block {
+            height: 150px; /* Matches certifications */
         }
 
         .project-button {
@@ -246,84 +286,14 @@
             display: inline-block;
             margin: 5px;
             transition: 0.3s;
+            opacity: 1; /* Full opacity for buttons */
         }
 
         .project-button:hover {
             background: var(--button-hover-light);
         }
 
-        .skills-container {
-            max-width: 600px;
-            margin: 20px auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .skill {
-            background: var(--accent-light);
-            color: var(--text-light);
-            padding: 8px 16px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 0.9em;
-        }
-
-        .certifications-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .certification {
-            position: relative;
-            width: 45%;
-            height: 150px;
-            perspective: 1000px;
-            z-index: 1;
-        }
-
-        .certification-front, .certification-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            transition: transform 0.6s;
-            border-radius: 10px;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .certification-front {
-            background: var(--accent-light);
-            color: var(--text-light);
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .certification-back {
-            background: var(--project-back-light);
-            color: var(--text-light);
-            transform: rotateY(180deg);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 1.0; /* Full opacity for fixed text */
-        }
-
-        .certification:hover .certification-front {
-            transform: rotateY(-180deg);
-        }
-
-        .certification:hover .certification-back {
-            transform: rotateY(0deg);
-        }
-
+        /* Buttons */
         .resume-button, .social-button {
             text-decoration: none;
             color: var(--text-dark);
@@ -333,12 +303,14 @@
             display: inline-block;
             margin: 10px;
             transition: 0.3s;
+            opacity: 1; /* Full opacity for buttons */
         }
 
         .resume-button:hover, .social-button:hover {
             background: var(--button-hover-light);
         }
 
+        /* Back-to-Top Button */
         #back-to-top {
             position: fixed;
             bottom: 20px;
@@ -364,10 +336,15 @@
             background: var(--secondary-light);
             padding: 20px;
             margin-top: 40px;
-            color: var(--text-light);
+            color: var(--text-fixed);
             position: relative;
             z-index: 1;
-            opacity: 1.0; /* Full opacity for fixed text */
+        }
+
+        /* Dark Mode */
+        .dark-mode {
+            background-color: var(--primary-dark);
+            color: var(--text-dark);
         }
 
         .dark-mode .resume-button, .dark-mode .social-button, .dark-mode .project-button {
@@ -375,16 +352,12 @@
             color: var(--text-dark);
         }
 
-        .dark-mode .project-front, .dark-mode .certification-front {
+        .dark-mode .project-front, .dark-mode .certification-front, .dark-mode .skills-front {
             background: var(--accent-dark);
         }
 
-        .dark-mode .project-back, .dark-mode .certification-back {
+        .dark-mode .project-back, .dark-mode .certification-back, .dark-mode .skills-back {
             background: var(--project-back-dark);
-        }
-
-        .dark-mode .skill {
-            background: var(--accent-dark);
         }
 
         .dark-mode #back-to-top {
@@ -418,7 +391,6 @@
 
             .nav-button {
                 padding: 8px 12px;
-                display: inline-block;
             }
 
             .toggle-container {
@@ -435,22 +407,22 @@
                 font-size: 2em;
             }
 
-            .project, .certification {
+            .project, .certification, .skills-block {
                 width: 90%;
-                height: 180px;
+                height: 180px; /* Adjusted for projects */
             }
 
-            .certification {
-                height: 150px;
-            }
-
-            .skill {
-                padding: 6px 12px;
-                font-size: 0.85em;
+            .certification, .skills-block {
+                height: 150px; /* Consistent for certifications and skills */
             }
 
             section {
                 padding: 60px 15px;
+            }
+
+            .particle {
+                width: 4px;
+                height: 4px;
             }
 
             .section-divider {
@@ -480,6 +452,11 @@
                 font-size: 18px;
             }
 
+            .particle {
+                width: 3px;
+                height: 3px;
+            }
+
             .section-divider {
                 width: 30px;
                 height: 30px;
@@ -496,6 +473,9 @@
     </style>
 </head>
 <body>
+    <!-- Particle Background -->
+    <div id="particles"></div>
+
     <!-- Header with Navigation -->
     <header>
         <nav>
@@ -566,11 +546,14 @@
         </svg>
         <h2>Skills</h2>
         <div class="skills-container">
-            <div class="skill">Python</div>
-            <div class="skill">Machine Learning</div>
-            <div class="skill">Data Visualization</div>
-            <div class="skill">AI</div>
-            <div class="skill">Pandas</div>
+            <div class="skills-block" data-aos="flip-left">
+                <div class="skills-front">
+                    <p>Python | Machine Learning | SQL | AI | Pandas</p>
+                </div>
+                <div class="skills-back">
+                    <p>Proficient in Data Science Tools</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -674,6 +657,21 @@
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // Particle Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const particlesContainer = document.getElementById('particles');
+            let numParticles = window.innerWidth <= 480 ? 20 : window.innerWidth <= 768 ? 30 : 50;
+
+            for (let i = 0; i < numParticles; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                particlesContainer.appendChild(particle);
+            }
+        });
     </script>
 </body>
 </html>
