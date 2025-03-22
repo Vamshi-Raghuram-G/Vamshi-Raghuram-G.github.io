@@ -83,6 +83,10 @@
             z-index: 1;
         }
 
+        nav {
+            flex: 1; /* Takes available space */
+        }
+
         nav ul {
             list-style: none;
             padding: 0;
@@ -418,14 +422,33 @@
         /* Responsive Styles */
         @media (max-width: 768px) {
             header {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
+                flex-direction: row; /* Side-by-side scrolling */
+                overflow-x: auto; /* Enable horizontal scrolling */
+                white-space: nowrap; /* Prevent wrapping */
+                padding: 10px 15px;
+            }
+
+            nav {
+                flex: 1; /* Takes available space */
+                overflow-x: auto; /* Scrollable nav */
             }
 
             nav ul {
-                flex-direction: column;
-                gap: 10px;
+                flex-direction: row; /* Side-by-side links */
+                overflow-x: auto; /* Enable horizontal scrolling */
+                white-space: nowrap; /* Keep links in one line */
+                gap: 0; /* Remove gap, use padding instead */
+            }
+
+            .nav-button {
+                padding: 8px 12px; /* Adjusted padding for mobile */
+                display: inline-block;
+            }
+
+            .toggle-container {
+                width: 150px; /* Fixed width for toggle */
+                flex-shrink: 0; /* Prevent shrinking */
+                padding-left: 10px; /* Space from nav */
             }
 
             #hero {
@@ -494,6 +517,14 @@
             .section-divider {
                 width: 30px;
                 height: 30px;
+            }
+
+            .nav-button {
+                padding: 6px 10px; /* Smaller padding for smaller screens */
+            }
+
+            .toggle-container {
+                width: 130px; /* Slightly smaller for very small screens */
             }
         }
     </style>
