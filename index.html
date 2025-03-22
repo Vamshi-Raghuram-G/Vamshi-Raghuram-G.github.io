@@ -265,12 +265,18 @@
             justify-content: center;
             align-items: center;
             z-index: 1;
+            color: var(--text-light); /* Fixed color in both modes */
+        }
+
+        .certification h3 {
+            margin-top: 19px; /* Moves name down by ~0.5cm */
+            margin-bottom: 5px;
         }
 
         /* Skills Block */
         .skills-block {
             position: relative;
-            width: 80%; /* Increased to match project margins */
+            width: 94%; /* Increased to match project outer margins */
             height: 150px;
             background: var(--accent-light);
             border-radius: 10px;
