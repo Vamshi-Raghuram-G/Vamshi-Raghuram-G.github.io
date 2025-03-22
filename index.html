@@ -230,6 +230,25 @@
             font-size: 0.9em;
         }
 
+        /* Certifications Section */
+        .certifications-container {
+            max-width: 600px;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .certification {
+            background: var(--accent-light);
+            color: var(--text-light);
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
         /* Buttons */
         .resume-button, .social-button {
             text-decoration: none;
@@ -308,7 +327,7 @@
             color: var(--text-dark);
         }
 
-        .dark-mode .skill {
+        .dark-mode .skill, .dark-mode .certification {
             background: var(--accent-dark);
             color: var(--text-light);
         }
@@ -347,7 +366,7 @@
                 height: 180px;
             }
 
-            .skill {
+            .skill, .certification {
                 padding: 6px 12px;
                 font-size: 0.85em;
             }
@@ -388,6 +407,7 @@
                 <li><a href="#about" class="nav-button">About</a></li>
                 <li><a href="#projects" class="nav-button">Projects</a></li>
                 <li><a href="#skills" class="nav-button">Skills</a></li>
+                <li><a href="#certifications" class="nav-button">Certifications</a></li>
                 <li><a href="#resume" class="nav-button">Resume</a></li>
                 <li><a href="#contact" class="nav-button">Contact</a></li>
             </ul>
@@ -443,6 +463,16 @@
             <div class="skill">Data Visualization</div>
             <div class="skill">AI</div>
             <div class="skill">Pandas</div>
+        </div>
+    </section>
+
+    <section id="certifications" data-aos="fade-up">
+        <h2>Certifications</h2>
+        <div class="certifications-container">
+            <div class="certification">Google Data Analytics Professional Certificate</div>
+            <div class="certification">AWS Certified Machine Learning – Specialty</div>
+            <div class="certification">Microsoft Azure AI Engineer Associate</div>
+            <div class="certification">Coursera Deep Learning Specialization</div>
         </div>
     </section>
 
