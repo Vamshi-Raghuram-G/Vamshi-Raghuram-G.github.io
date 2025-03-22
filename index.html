@@ -36,7 +36,7 @@
             padding: 0;
             overflow-x: hidden;
             transition: all 0.3s ease-in-out;
-            font-size: 16px; /* Base font size */
+            font-size: 16px;
         }
 
         header {
@@ -124,12 +124,12 @@
         }
 
         section {
-            padding: 80px 20px; /* Reduced padding for smaller screens */
+            padding: 80px 20px;
         }
 
         /* Hero Section */
         #hero {
-            height: 100vh;
+            height: 60vh; /* Reduced from 100vh */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -138,12 +138,18 @@
             color: white;
         }
 
+        #hero h1 {
+            font-size: clamp(1.5em, 5vw, 2.5em); /* Responsive heading size */
+            margin: 0;
+        }
+
         .typing-effect {
-            font-size: clamp(1em, 4vw, 1.5em); /* Responsive font size */
+            font-size: clamp(0.9em, 3vw, 1.2em); /* Reduced and responsive */
             overflow: hidden;
             white-space: nowrap;
             border-right: 3px solid;
             animation: typing 4s steps(40, end) infinite, blink 0.75s step-end infinite;
+            margin-top: 10px; /* Added spacing */
         }
 
         @keyframes typing {
@@ -191,6 +197,10 @@
             background: var(--button-bg-light);
             color: white;
             transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .project:hover .project-front {
@@ -223,15 +233,15 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px; /* Reduced gap for smaller screens */
+            gap: 10px;
         }
 
         .skill {
             background: var(--accent-light);
-            padding: 8px 16px; /* Slightly smaller padding */
+            padding: 8px 16px;
             border-radius: 5px;
             font-weight: bold;
-            font-size: 0.9em; /* Slightly smaller font */
+            font-size: 0.9em;
         }
 
         /* Buttons */
@@ -315,8 +325,7 @@
         }
 
         .dark-mode #back-to-top {
-            backgroun
-d: var(--button-bg-dark);
+            background: var(--button-bg-dark);
         }
 
         .dark-mode #back-to-top:hover {
@@ -326,8 +335,8 @@ d: var(--button-bg-dark);
         /* Responsive Styles */
         @media (max-width: 768px) {
             header {
-                padding: 10px 15px; /* Slightly smaller padding */
-                flex-wrap: wrap; /* Allow wrapping if needed */
+                padding: 10px 15px;
+                flex-wrap: wrap;
             }
 
             .menu-icon {
@@ -358,37 +367,41 @@ d: var(--button-bg-dark);
             }
 
             .toggle-container {
-                position: static; /* Remove fixed positioning */
-                margin-left: auto; /* Align to right */
+                position: static;
+                margin-left: auto;
+            }
+
+            #hero {
+                height: 50vh; /* Further reduced for mobile */
             }
 
             #hero h1 {
-                font-size: 2em; /* Smaller heading on mobile */
+                font-size: 2em;
             }
 
             .project {
                 width: 90%;
-                height: 180px; /* Slightly smaller height */
+                height: 180px;
             }
 
             .skill {
-                padding: 6px 12px; /* Even smaller padding */
+                padding: 6px 12px;
                 font-size: 0.85em;
             }
 
             section {
-                padding: 60px 15px; /* Reduced padding */
+                padding: 60px 15px;
             }
         }
 
         @media (max-width: 480px) {
             .resume-button, .social-button {
-                padding: 10px 15px; /* Smaller buttons */
+                padding: 10px 15px;
                 font-size: 0.9em;
             }
 
             .project-button {
-                padding: 8px 12px; /* Smaller project buttons */
+                padding: 8px 12px;
                 font-size: 0.85em;
             }
 
@@ -396,6 +409,10 @@ d: var(--button-bg-dark);
                 width: 35px;
                 height: 35px;
                 font-size: 18px;
+            }
+
+            #hero {
+                height: 40vh; /* Even smaller for very small screens */
             }
         }
     </style>
@@ -408,7 +425,7 @@ d: var(--button-bg-dark);
     </section>
 
     <header>
-        <div class="menu-icon" onclick="toggleMenu()">☰</ FITdiv>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
         <nav>
             <ul class="nav-menu">
                 <li><a href="#about" class="nav-button">About</a></li>
@@ -440,7 +457,6 @@ d: var(--button-bg-dark);
                 <div class="project-back">
                     <p><strong>Tech Stack:</strong> Python, TensorFlow, Pandas</p>
                     <a href="#" class="project-button">View Project</a>
-                    <a href="#" class="project-button">Live Demo</a>
                 </div>
             </div>
             <div class="project" data-aos="flip-right">
@@ -451,7 +467,6 @@ d: var(--button-bg-dark);
                 <div class="project-back">
                     <p><strong>Tech Stack:</strong> Python, NLTK, Matplotlib</p>
                     <a href="#" class="project-button">View Project</a>
-                    <a href="#" class="project-button">Live Demo</a>
                 </div>
             </div>
         </div>
