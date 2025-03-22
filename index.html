@@ -20,6 +20,7 @@
             --button-bg-light: #3498DB; /* Blue */
             --button-hover-light: #2ECC71; /* Green */
             --project-back-light: #CED4DA; /* Mid Gray */
+            --skill-tag-bg: #E9ECEF; /* Light gray for tags */
 
             --primary-dark: #2C3E50; /* Dark Blue-Gray */
             --secondary-dark: #E9ECEF; /* Slightly Darker Gray */
@@ -28,6 +29,7 @@
             --button-bg-dark: #3498DB; /* Blue */
             --button-hover-dark: #2ECC71; /* Green */
             --project-back-dark: #CED4DA; /* Mid Gray */
+            --skill-tag-bg-dark: #7F8C8D; /* Darker gray for tags in dark mode */
         }
 
         body {
@@ -278,7 +280,7 @@
         }
 
         .certification .project-button {
-            margin-top: -19px; /* Moves button up by ~0.5cm */
+            margin-top: 19px; /* Moves button down by ~1cm */
         }
 
         /* Skills Block */
@@ -296,6 +298,29 @@
             align-items: center;
             z-index: 1;
             color: var(--text-light);
+        }
+
+        .skills-tags {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap; /* Ensures responsiveness */
+        }
+
+        .skills-tags span {
+            background: var(--skill-tag-bg);
+            color: var(--text-light);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+
+        .dark-mode .skills-tags span {
+            background: var(--skill-tag-bg-dark);
+            color: var(--text-light); /* Keeps text color consistent */
         }
 
         /* Containers */
@@ -445,6 +470,15 @@
                 width: 40px;
                 height: 40px;
             }
+
+            .skills-tags {
+                gap: 8px;
+            }
+
+            .skills-tags span {
+                padding: 5px 10px;
+                font-size: 0.95em;
+            }
         }
 
         @media (max-width: 480px) {
@@ -484,6 +518,15 @@
 
             .toggle-container {
                 width: 130px;
+            }
+
+            .skills-tags {
+                gap: 6px;
+            }
+
+            .skills-tags span {
+                padding: 4px 8px;
+                font-size: 0.9em;
             }
         }
     </style>
@@ -566,7 +609,13 @@
         <h2>Skills</h2>
         <div class="skills-container">
             <div class="skills-block">
-                <p><strong>Python  |  Machine Learning  |  SQL  |  AI  |  Pandas</strong></p>
+                <div class="skills-tags">
+                    <span>Python</span>
+                    <span>Machine Learning</span>
+                    <span>SQL</span>
+                    <span>AI</span>
+                    <span>Pandas</span>
+                </div>
             </div>
         </div>
     </section>
