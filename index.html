@@ -31,7 +31,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--primary-light);
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary-light));
             color: var(--text-light);
             text-align: center;
             margin: 0;
@@ -54,18 +54,23 @@
 
         .particle {
             position: absolute;
-            width: 5px;
-            height: 5px;
+            width: 6px;
+            height: 6px;
             background-color: #ADB5BD; /* Cool Gray */
             border-radius: 50%;
-            opacity: 0.5;
-            animation: float 10s infinite ease-in-out;
+            opacity: 0.4;
+            animation: drift 15s infinite ease-in-out;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
+        @keyframes drift {
+            0% { transform: translate(0, 0); opacity: 0.4; }
+            50% { transform: translate(10px, -10px); opacity: 0.6; }
+            100% { transform: translate(0, 0); opacity: 0.4; }
+        }
+
+        .dark-mode {
+            background: linear-gradient(135deg, var(--primary-dark), #212529);
+            color: var(--text-dark);
         }
 
         .dark-mode .particle {
@@ -388,37 +393,6 @@
             z-index: 1;
         }
 
-        /* Dark Mode */
-        .dark-mode {
-            background-color: var(--primary-dark);
-            color: var(--text-dark);
-        }
-
-        .dark-mode .resume-button, .dark-mode .social-button, .dark-mode .project-button {
-            background: var(--button-bg-dark);
-            color: var(--text-dark);
-        }
-
-        .dark-mode .project-front, .dark-mode .certification-front {
-            background: var(--accent-dark);
-        }
-
-        .dark-mode .project-back, .dark-mode .certification-back {
-            background: var(--project-back-dark);
-        }
-
-        .dark-mode .skill {
-            background: var(--accent-dark);
-        }
-
-        .dark-mode #back-to-top {
-            background: var(--button-bg-dark);
-        }
-
-        .dark-mode #back-to-top:hover {
-            background: var(--button-hover-dark);
-        }
-
         /* Responsive Styles */
         @media (max-width: 768px) {
             header {
@@ -712,17 +686,19 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Particle Animation
+        // Particle Animation (Freepik-inspired)
         document.addEventListener('DOMContentLoaded', () => {
             const particlesContainer = document.getElementById('particles');
-            let numParticles = window.innerWidth <= 480 ? 20 : window.innerWidth <= 768 ? 30 : 50;
+            let numParticles = window.innerWidth <= 480 ? 15 : window.innerWidth <= 768 ? 25 : 40;
 
             for (let i = 0; i < numParticles; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
                 particle.style.left = `${Math.random() * 100}vw`;
                 particle.style.top = `${Math.random() * 100}vh`;
-                particle.style.animationDelay = `${Math.random() * 10}s`;
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                particle.style.width = `${Math.random() * 4 + 2}px`; /* Vary size slightly */
+                particle.style.height = particle.style.width;
                 particlesContainer.appendChild(particle);
             }
         });
