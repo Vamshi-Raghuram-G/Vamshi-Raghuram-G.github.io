@@ -39,6 +39,37 @@
             overflow-x: hidden;
             transition: all 0.3s ease-in-out;
             font-size: 16px;
+            position: relative;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Behind content */
+            pointer-events: none; /* Allows clicks through */
+        }
+
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: #ADB5BD; /* Cool Gray */
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .dark-mode .particle {
+            background-color: #CED4DA; /* Mid Gray */
         }
 
         header {
@@ -48,6 +79,8 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
         }
 
         nav ul {
@@ -113,6 +146,22 @@
 
         section {
             padding: 80px 20px;
+            position: relative;
+        }
+
+        .section-divider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .dark-mode .section-divider {
+            fill: #CED4DA; /* Mid Gray in dark mode */
         }
 
         /* Hero Section */
@@ -162,6 +211,7 @@
             width: 45%;
             height: 200px;
             perspective: 1000px;
+            z-index: 1;
         }
 
         .project-front, .project-back {
@@ -246,6 +296,7 @@
             width: 45%;
             height: 150px;
             perspective: 1000px;
+            z-index: 1;
         }
 
         .certification-front, .certification-back {
@@ -317,6 +368,7 @@
             cursor: pointer;
             display: none;
             transition: 0.3s;
+            z-index: 2;
         }
 
         #back-to-top:hover {
@@ -328,6 +380,8 @@
             padding: 20px;
             margin-top: 40px;
             color: var(--text-light);
+            position: relative;
+            z-index: 1;
         }
 
         /* Dark Mode */
@@ -399,6 +453,16 @@
             section {
                 padding: 60px 15px;
             }
+
+            .particle {
+                width: 4px;
+                height: 4px;
+            }
+
+            .section-divider {
+                width: 40px;
+                height: 40px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -421,10 +485,23 @@
                 height: 35px;
                 font-size: 18px;
             }
+
+            .particle {
+                width: 3px;
+                height: 3px;
+            }
+
+            .section-divider {
+                width: 30px;
+                height: 30px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Particle Background -->
+    <div id="particles"></div>
+
     <!-- Header with Navigation -->
     <header>
         <nav>
@@ -445,16 +522,25 @@
 
     <!-- Hero Section -->
     <section id="hero" data-aos="fade-down">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
+            <circle cx="50" cy="50" r="40" />
+        </svg>
         <h1>Hi, I'm [Your Name]</h1>
         <p class="typing-effect"></p>
     </section>
 
     <section id="about" data-aos="fade-up">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
+            <circle cx="50" cy="50" r="40" />
+        </svg>
         <h2>About Me</h2>
         <p>I'm a passionate Data Scientist specializing in Machine Learning, AI, and Data Visualization.</p>
     </section>
 
     <section id="projects" data-aos="fade-up">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
+            <circle cx="50" cy="50" r="40" />
+        </svg>
         <h2>Projects</h2>
         <div class="project-container">
             <div class="project" data-aos="flip-left">
@@ -481,6 +567,9 @@
     </section>
 
     <section id="skills" data-aos="fade-up">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
+            <circle cx="50" cy="50" r="40" />
+        </svg>
         <h2>Skills</h2>
         <div class="skills-container">
             <div class="skill">Python</div>
@@ -492,6 +581,9 @@
     </section>
 
     <section id="certifications" data-aos="fade-up">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
+            <circle cx="50" cy="50" r="40" />
+        </svg>
         <h2>Certifications</h2>
         <div class="certifications-container">
             <div class="certification" data-aos="flip-left">
@@ -534,11 +626,17 @@
     </section>
 
     <section id="resume" data-aos="fade-up">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
+            <circle cx="50" cy="50" r="40" />
+        </svg>
         <h2>Access My Professional Portfolio</h2>
         <a href="resume.pdf" download class="resume-button"><i class="fas fa-download"></i> Download Resume</a>
     </section>
 
     <section id="contact" data-aos="fade-up">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
+            <circle cx="50" cy="50" r="40" />
+        </svg>
         <h2>Find Me Online</h2>
         <div>
             <a href="https://linkedin.com" class="social-button"><i class="fab fa-linkedin"></i> LinkedIn</a>
@@ -582,6 +680,21 @@
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // Particle Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const particlesContainer = document.getElementById('particles');
+            let numParticles = window.innerWidth <= 480 ? 20 : window.innerWidth <= 768 ? 30 : 50;
+
+            for (let i = 0; i < numParticles; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                particlesContainer.appendChild(particle);
+            }
+        });
     </script>
 </body>
 </html>
