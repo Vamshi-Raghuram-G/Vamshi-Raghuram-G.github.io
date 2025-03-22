@@ -203,8 +203,8 @@
             50% { border-color: var(--text-light) }
         }
 
-        /* Flip Card Base Styles */
-        .project, .certification, .skills-block {
+        /* Flip Card Base Styles (Projects and Certifications) */
+        .project, .certification {
             position: relative;
             width: 45%;
             height: 200px; /* Default for projects */
@@ -213,8 +213,7 @@
         }
 
         .project-front, .project-back, 
-        .certification-front, .certification-back,
-        .skills-front, .skills-back {
+        .certification-front, .certification-back {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -225,7 +224,7 @@
             box-sizing: border-box;
         }
 
-        .project-front, .certification-front, .skills-front {
+        .project-front, .certification-front {
             background: var(--accent-light);
             color: var(--text-light);
             z-index: 2;
@@ -235,7 +234,7 @@
             align-items: center;
         }
 
-        .project-back, .certification-back, .skills-back {
+        .project-back, .certification-back {
             background: var(--project-back-light);
             color: var(--text-light);
             transform: rotateY(180deg);
@@ -246,18 +245,32 @@
         }
 
         .project:hover .project-front, 
-        .certification:hover .certification-front,
-        .skills-block:hover .skills-front {
+        .certification:hover .certification-front {
             transform: rotateY(-180deg);
         }
 
         .project:hover .project-back, 
-        .certification:hover .certification-back,
-        .skills-block:hover .skills-back {
+        .certification:hover .certification-back {
             transform: rotateY(0deg);
         }
 
-        /* Project Container */
+        /* Skills Block (No Flip) */
+        .skills-block {
+            position: relative;
+            width: 45%;
+            height: 150px;
+            background: var(--accent-light);
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        /* Containers */
         .project-container, .certifications-container, .skills-container {
             display: flex;
             flex-wrap: wrap;
@@ -271,10 +284,6 @@
 
         .certification {
             height: 150px; /* Specific to certifications */
-        }
-
-        .skills-block {
-            height: 150px; /* Matches certifications */
         }
 
         .project-button {
@@ -352,11 +361,11 @@
             color: var(--text-dark);
         }
 
-        .dark-mode .project-front, .dark-mode .certification-front, .dark-mode .skills-front {
+        .dark-mode .project-front, .dark-mode .certification-front, .dark-mode .skills-block {
             background: var(--accent-dark);
         }
 
-        .dark-mode .project-back, .dark-mode .certification-back, .dark-mode .skills-back {
+        .dark-mode .project-back, .dark-mode .certification-back {
             background: var(--project-back-dark);
         }
 
@@ -546,13 +555,8 @@
         </svg>
         <h2>Skills</h2>
         <div class="skills-container">
-            <div class="skills-block" data-aos="flip-left">
-                <div class="skills-front">
-                    <p>Python | Machine Learning | SQL | AI | Pandas</p>
-                </div>
-                <div class="skills-back">
-                    <p>Proficient in Data Science Tools</p>
-                </div>
+            <div class="skills-block">
+                <p><strong>Python | Machine Learning | SQL | AI | Pandas</strong></p>
             </div>
         </div>
     </section>
