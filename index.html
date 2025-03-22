@@ -12,23 +12,23 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root {
-            --primary-light: #F0F4F8;    /* Soft Blue-Gray */
-            --secondary-light: #DCE8F0;  /* Pale Cyan */
-            --accent-light: #1A3C5A;     /* Deep Ocean Blue */
-            --text-light: #1A3C5A;       /* Deep Ocean Blue */
-            --text-fixed: #1A3C5A;       /* Deep Ocean Blue */
-            --button-bg-light: #FF6F61;  /* Coral */
-            --button-hover-light: #FF9F85; /* Light Coral */
-            --project-back-light: #A3BFFA; /* Soft Lavender-Blue */
-            --skill-tag-bg: #E6F0FA;     /* Very Light Blue */
+            --primary-light: #F5F6F5;    /* Off-White */
+            --secondary-light: #D8E2DC;  /* Light Sage */
+            --accent-light: #355E3B;     /* Forest Green */
+            --text-light: #355E3B;       /* Forest Green - Dark for visibility */
+            --text-fixed: #355E3B;       /* Forest Green - Consistent across modes */
+            --button-bg-light: #D4A017;  /* Gold */
+            --button-hover-light: #E8C04A; /* Lighter Gold for hover */
+            --project-back-light: #D8E2DC; /* Light Sage */
+            --skill-tag-bg: #E8ECE8;     /* Very Light Sage - Subtle and readable */
 
-            --primary-dark: #1A2526;     /* Deep Teal-Black */
-            --secondary-dark: #2E3A4D;   /* Dark Slate Blue */
-            --accent-dark: #A3BFFA;      /* Soft Lavender-Blue */
-            --text-dark: #DCE8F0;        /* Pale Cyan */
-            --button-bg-dark: #FF6F61;   /* Coral */
-            --button-hover-dark: #FF9F85; /* Light Coral */
-            --project-back-dark: #4A6FA5; /* Midnight Blue */
+            --primary-dark: #1F2A24;     /* Dark Forest */
+            --secondary-dark: #3A4F3F;   /* Deep Green */
+            --accent-dark: #F5E8B7;      /* Pale Gold */
+            --text-dark: #F5E8B7;        /* Pale Gold - Light for visibility */
+            --button-bg-dark: #D4A017;   /* Gold */
+            --button-hover-dark: #E8C04A; /* Lighter Gold for hover */
+            --project-back-dark: #3A4F3F; /* Deep Green */
         }
 
         body {
@@ -58,7 +58,7 @@
             position: absolute;
             width: 5px;
             height: 5px;
-            background-color: #A3BFFA; /* Soft Lavender-Blue */
+            background-color: #D8E2DC; /* Light Sage */
             border-radius: 50%;
             opacity: 0.5;
             animation: float 10s infinite ease-in-out;
@@ -71,7 +71,7 @@
         }
 
         .dark-mode .particle {
-            background-color: #4A6FA5; /* Midnight Blue */
+            background-color: #F5E8B7; /* Pale Gold */
         }
 
         header {
@@ -164,11 +164,11 @@
             height: 50px;
             opacity: 0.2;
             z-index: 0;
-            fill: #1A3C5A; /* Deep Ocean Blue */
+            fill: #355E3B; /* Forest Green */
         }
 
         .dark-mode .section-divider {
-            fill: #A3BFFA; /* Soft Lavender-Blue */
+            fill: #F5E8B7; /* Pale Gold */
         }
 
         /* Hero Section */
@@ -178,7 +178,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #DCE8F0, #F0F4F8); /* Pale Cyan to Soft Blue-Gray */
+            background: linear-gradient(135deg, #D8E2DC, #F5F6F5); /* Light Sage to Off-White */
             color: var(--text-light);
         }
 
@@ -327,7 +327,6 @@
 
         .project-button, .social-button {
             text-decoration: none;
-            color: var(--text-dark);
             background: var(--button-bg-light);
             padding: 10px 15px;
             border-radius: 5px;
@@ -335,6 +334,7 @@
             margin: 5px;
             transition: background 0.3s;
             opacity: 1;
+            color: #1F2A24; /* Dark Forest for contrast on Gold */
         }
 
         .project-button:hover, .social-button:hover {
@@ -344,7 +344,6 @@
         /* Buttons */
         .resume-button {
             text-decoration: none;
-            color: var(--text-dark);
             background: var(--button-bg-light);
             padding: 12px 20px;
             border-radius: 5px;
@@ -352,6 +351,7 @@
             margin: 10px;
             transition: background 0.3s;
             opacity: 1;
+            color: #1F2A24; /* Dark Forest for contrast on Gold */
         }
 
         .resume-button:hover {
@@ -363,7 +363,7 @@
             bottom: 20px;
             right: 20px;
             background: var(--button-bg-light);
-            color: var(--text-dark);
+            color: #1F2A24; /* Dark Forest for contrast */
             border: none;
             border-radius: 50%;
             width: 40px;
@@ -410,7 +410,7 @@
         .dark-mode .project-button, .dark-mode .social-button, 
         .dark-mode .resume-button {
             background: var(--button-bg-dark);
-            color: var(--text-dark);
+            color: #1F2A24; /* Dark Forest for contrast on Gold */
         }
 
         .dark-mode .project-button:hover, .dark-mode .social-button:hover, 
@@ -420,11 +420,16 @@
 
         .dark-mode #back-to-top {
             background: var(--button-bg-dark);
-            color: var(--text-dark);
+            color: #1F2A24; /* Dark Forest for contrast */
         }
 
         .dark-mode #back-to-top:hover {
             background: var(--button-hover-dark);
+        }
+
+        .dark-mode .project-front, .dark-mode .project-back,
+        .dark-mode .certification {
+            color: var(--text-dark); /* Pale Gold for visibility */
         }
 
         /* Responsive Styles */
