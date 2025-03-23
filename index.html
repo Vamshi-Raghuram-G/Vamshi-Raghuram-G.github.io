@@ -184,6 +184,10 @@
             color: var(--text-light);
         }
 
+        .dark-mode #hero {
+            color: var(--text-dark); /* Ensure text is visible in dark mode */
+        }
+
         #hero h1 {
             font-size: clamp(1.5em, 5vw, 2.5em);
             margin: 0;
@@ -197,6 +201,10 @@
             animation: typing 4s steps(40, end) infinite, blink 0.75s step-end infinite;
         }
 
+        .dark-mode .typing-effect {
+            border-right: 3px solid var(--text-dark); /* Match cursor to text color in dark mode */
+        }
+
         @keyframes typing {
             from { width: 0 }
             to { width: 50% }
@@ -205,6 +213,11 @@
         @keyframes blink {
             from, to { border-color: transparent }
             50% { border-color: var(--text-light) }
+        }
+
+        .dark-mode @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--text-dark) }
         }
 
         /* Flip Card Styles (Projects Only) */
