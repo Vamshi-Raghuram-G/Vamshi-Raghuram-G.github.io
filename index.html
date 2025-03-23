@@ -270,6 +270,10 @@
             color: var(--text-light); /* Fixed color in both modes */
         }
 
+        .certification:only-child {
+            width: calc(45% + 45% + 20px); /* Matches skills-block width when only one certification */
+        }
+
         .certification h3 {
             margin-top: 19px; /* Moves name down by ~0.5cm */
             margin-bottom: 0;
@@ -341,7 +345,7 @@
             background: var(--button-hover-light);
         }
 
-         Buttons
+        /* Buttons */
         .resume-button {
             text-decoration: none;
             color: var(--text-dark);
