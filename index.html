@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Data Science Portfolio</title>
+    <title>Vamshi Raghuram's Portfolio</title> <!-- Updated title -->
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -12,24 +12,24 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root {
-            --primary-light: #F8F9FA; /* Light Gray */
-            --secondary-light: #E9ECEF; /* Slightly Darker Gray */
-            --accent-light: #DEE2E6; /* Gray */
-            --text-light: #2C3E50; /* Dark Blue-Gray */
-            --text-fixed: #343A40; /* Fixed text color */
-            --button-bg-light: #3498DB; /* Blue */
-            --button-hover-light: #2ECC71; /* Green */
-            --project-back-light: #CED4DA; /* Mid Gray */
-            --skill-tag-bg: #E9ECEF; /* Light gray for tags */
+            --primary-light: #F8F9FA;
+            --secondary-light: #E9ECEF;
+            --accent-light: #DEE2E6;
+            --text-light: #2C3E50;
+            --text-fixed: #343A40;
+            --button-bg-light: #3498DB;
+            --button-hover-light: #2ECC71;
+            --project-back-light: #CED4DA;
+            --skill-tag-bg: #E9ECEF;
 
-            --primary-dark: #2C3E50; /* Dark Blue-Gray */
-            --secondary-dark: #E9ECEF; /* Slightly Darker Gray */
-            --accent-dark: #DEE2E6; /* Gray */
-            --text-dark: #ECF0F1; /* Light Gray */
-            --button-bg-dark: #3498DB; /* Blue */
-            --button-hover-dark: #2ECC71; /* Green */
-            --project-back-dark: #CED4DA; /* Mid Gray */
-            --skill-tag-bg-dark: #7F8C8D; /* Darker gray for tags in dark mode (unused) */
+            --primary-dark: #2C3E50;
+            --secondary-dark: #E9ECEF;
+            --accent-dark: #DEE2E6;
+            --text-dark: #ECF0F1;
+            --button-bg-dark: #3498DB;
+            --button-hover-dark: #2ECC71;
+            --project-back-dark: #CED4DA;
+            --skill-tag-bg-dark: #7F8C8D;
         }
 
         body {
@@ -173,7 +173,7 @@
 
         /* Hero Section */
         #hero {
-            height: calc(30vh - 48px); /* Default height */
+            height: calc(30vh - 48px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -192,7 +192,7 @@
             overflow: hidden;
             white-space: nowrap;
             border-right: 3px solid var(--text-light);
-            animation: typing 4s steps(40, end) infinite, blink 0.75s step-end infinite;
+            animation: typing 4s steps(40) forwards, blink 0.75s step-end infinite;
         }
 
         @keyframes typing {
@@ -201,8 +201,20 @@
         }
 
         @keyframes blink {
-            from, to { border-color: transparent }
-            50% { border-color: var(--text-light) }
+            0%, 100% { border-color: var(--text-light); }
+            50% { border-color: transparent; }
+        }
+
+        /* Adjusted Typing Animation for Large Devices */
+        @media (min-width: 769px) {
+            .typing-effect {
+                animation: typing 4s steps(40) infinite, blink 0.75s step-end infinite;
+            }
+            @keyframes typing {
+                0% { width: 0 }
+                50% { width: 100% }
+                100% { width: 100% } /* Cursor stops at end before restarting */
+            }
         }
 
         /* Flip Card Styles (Projects Only) */
@@ -451,7 +463,7 @@
             }
 
             #hero {
-                height: calc(35vh - 48px); /* Increased height for mobile */
+                height: calc(35vh - 48px);
             }
 
             #hero h1 {
@@ -460,10 +472,10 @@
 
             .typing-effect {
                 font-size: clamp(0.8em, 2.5vw, 1.2em);
-                overflow: visible; /* Ensure text isn’t cut off */
-                white-space: normal; /* Allow wrapping */
-                border-right: none; /* Remove cursor effect for clarity */
-                animation: none; /* Disable animation for simplicity */
+                overflow: hidden;
+                white-space: nowrap;
+                border-right: 3px solid var(--text-light);
+                animation: typing 4s steps(40) infinite, blink 0.75s step-end infinite;
             }
 
             .project, .certification, .skills-block {
@@ -485,8 +497,8 @@
             }
 
             .skills-block {
-                height: 180px; /* Increased height for better fit */
-                padding: 10px; /* Reduced padding */
+                height: 200px; /* Increased to fit all tags */
+                padding: 10px;
             }
 
             .skills-tags {
@@ -515,7 +527,7 @@
 
         @media (max-width: 480px) {
             #hero {
-                height: calc(40vh - 48px); /* Further increased for smallest screens */
+                height: calc(40vh - 48px);
             }
 
             #hero h1 {
@@ -524,10 +536,10 @@
 
             .typing-effect {
                 font-size: clamp(0.7em, 2vw, 1em);
-                overflow: visible;
-                white-space: normal;
-                border-right: none;
-                animation: none;
+                overflow: hidden;
+                white-space: nowrap;
+                border-right: 3px solid var(--text-light);
+                animation: typing 4s steps(40) infinite, blink 0.75s step-end infinite;
             }
 
             .resume-button, .social-button {
@@ -541,11 +553,11 @@
             }
 
             .project, .certification, .skills-block {
-                height: 240px; /* Increased for content fit */
+                height: 240px;
             }
 
             .skills-block {
-                height: 200px; /* Adjusted for small screens */
+                height: 220px; /* Adjusted to contain all skills */
                 padding: 8px;
             }
 
