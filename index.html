@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vamshi Raghuram's Portfolio</title> <!-- Updated title -->
+    <title>Vamshi Raghuram's Portfolio</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -192,29 +192,18 @@
             overflow: hidden;
             white-space: nowrap;
             border-right: 3px solid var(--text-light);
-            animation: typing 4s steps(40) forwards, blink 0.75s step-end infinite;
+            animation: typing 6s steps(40) infinite, blink 0.75s step-end infinite; /* Slower speed: 6s */
         }
 
         @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+            0% { width: 0 }
+            70% { width: 100% } /* Typing completes at 70% of duration */
+            100% { width: 100% } /* Cursor stays at end until restart */
         }
 
         @keyframes blink {
             0%, 100% { border-color: var(--text-light); }
             50% { border-color: transparent; }
-        }
-
-        /* Adjusted Typing Animation for Large Devices */
-        @media (min-width: 769px) {
-            .typing-effect {
-                animation: typing 4s steps(40) infinite, blink 0.75s step-end infinite;
-            }
-            @keyframes typing {
-                0% { width: 0 }
-                50% { width: 100% }
-                100% { width: 100% } /* Cursor stops at end before restarting */
-            }
         }
 
         /* Flip Card Styles (Projects Only) */
@@ -472,10 +461,7 @@
 
             .typing-effect {
                 font-size: clamp(0.8em, 2.5vw, 1.2em);
-                overflow: hidden;
-                white-space: nowrap;
-                border-right: 3px solid var(--text-light);
-                animation: typing 4s steps(40) infinite, blink 0.75s step-end infinite;
+                animation: typing 6s steps(40) infinite, blink 0.75s step-end infinite; /* Slower speed: 6s */
             }
 
             .project, .certification, .skills-block {
@@ -497,7 +483,7 @@
             }
 
             .skills-block {
-                height: 200px; /* Increased to fit all tags */
+                height: 250px; /* Increased height to fit all tags */
                 padding: 10px;
             }
 
@@ -536,10 +522,7 @@
 
             .typing-effect {
                 font-size: clamp(0.7em, 2vw, 1em);
-                overflow: hidden;
-                white-space: nowrap;
-                border-right: 3px solid var(--text-light);
-                animation: typing 4s steps(40) infinite, blink 0.75s step-end infinite;
+                animation: typing 6s steps(40) infinite, blink 0.75s step-end infinite; /* Slower speed: 6s */
             }
 
             .resume-button, .social-button {
@@ -557,7 +540,7 @@
             }
 
             .skills-block {
-                height: 220px; /* Adjusted to contain all skills */
+                height: 280px; /* Further increased for smallest screens */
                 padding: 8px;
             }
 
