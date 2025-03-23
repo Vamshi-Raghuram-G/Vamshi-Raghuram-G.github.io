@@ -173,7 +173,7 @@
 
         /* Hero Section */
         #hero {
-            height: calc(30vh - 48px); /* Reduced by ~0.5 inch (48px) */
+            height: calc(30vh - 48px); /* Default height */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -197,7 +197,7 @@
 
         @keyframes typing {
             from { width: 0 }
-            to { width: 100% } /* Changed to 100% for full visibility */
+            to { width: 100% }
         }
 
         @keyframes blink {
@@ -212,7 +212,7 @@
             height: 200px;
             perspective: 1000px;
             z-index: 1;
-            margin: 10px auto; /* Centered with consistent margin */
+            margin: 10px auto;
         }
 
         .project-front, .project-back {
@@ -278,24 +278,24 @@
             justify-content: center;
             align-items: center;
             z-index: 1;
-            color: var(--text-light); /* Fixed color in both modes */
+            color: var(--text-light);
         }
 
         .certification:only-child {
-            width: calc(45% + 45% + 20px); /* Matches skills-block width when only one certification */
+            width: calc(45% + 45% + 20px);
         }
 
         .certification h3 {
-            margin-top: 19px; /* Moves name down by ~0.5cm */
+            margin-top: 19px;
             margin-bottom: 0;
         }
 
         .certification p {
-            margin: 10px 0; /* Centers issuer between name and button */
+            margin: 10px 0;
         }
 
         .certification .project-button {
-            margin-top: 0; /* Moved up by ~0.5cm from previous 19px */
+            margin-top: 0;
         }
 
         /* Skills Block */
@@ -313,7 +313,7 @@
             align-items: center;
             z-index: 1;
             color: var(--text-light);
-            margin: 0 auto; /* Centered */
+            margin: 0 auto;
         }
 
         .skills-tags {
@@ -451,7 +451,7 @@
             }
 
             #hero {
-                height: calc(25vh - 48px);
+                height: calc(35vh - 48px); /* Increased height for mobile */
             }
 
             #hero h1 {
@@ -460,12 +460,15 @@
 
             .typing-effect {
                 font-size: clamp(0.8em, 2.5vw, 1.2em);
-                white-space: normal; /* Allows wrapping if needed */
+                overflow: visible; /* Ensure text isn’t cut off */
+                white-space: normal; /* Allow wrapping */
+                border-right: none; /* Remove cursor effect for clarity */
+                animation: none; /* Disable animation for simplicity */
             }
 
             .project, .certification, .skills-block {
                 width: 90%;
-                height: 220px; /* Increased height slightly for better content fit */
+                height: 220px;
                 margin: 10px auto;
             }
 
@@ -477,8 +480,22 @@
                 font-size: 0.85em;
             }
 
-            .certification, .skills-block {
-                height: 160px; /* Adjusted for consistency */
+            .certification {
+                height: 160px;
+            }
+
+            .skills-block {
+                height: 180px; /* Increased height for better fit */
+                padding: 10px; /* Reduced padding */
+            }
+
+            .skills-tags {
+                gap: 6px;
+            }
+
+            .skills-tags span {
+                padding: 4px 8px;
+                font-size: 0.85em;
             }
 
             section {
@@ -494,25 +511,23 @@
                 width: 40px;
                 height: 40px;
             }
-
-            .skills-tags {
-                gap: 6px;
-            }
-
-            .skills-tags span {
-                padding: 4px 8px;
-                font-size: 0.85em;
-            }
         }
 
         @media (max-width: 480px) {
             #hero {
-                height: calc(20vh - 48px);
+                height: calc(40vh - 48px); /* Further increased for smallest screens */
+            }
+
+            #hero h1 {
+                font-size: 1.8em;
             }
 
             .typing-effect {
                 font-size: clamp(0.7em, 2vw, 1em);
+                overflow: visible;
                 white-space: normal;
+                border-right: none;
+                animation: none;
             }
 
             .resume-button, .social-button {
@@ -523,6 +538,24 @@
             .project-button {
                 padding: 8px 12px;
                 font-size: 0.85em;
+            }
+
+            .project, .certification, .skills-block {
+                height: 240px; /* Increased for content fit */
+            }
+
+            .skills-block {
+                height: 200px; /* Adjusted for small screens */
+                padding: 8px;
+            }
+
+            .skills-tags {
+                gap: 5px;
+            }
+
+            .skills-tags span {
+                padding: 3px 6px;
+                font-size: 0.8em;
             }
 
             #back-to-top {
@@ -547,15 +580,6 @@
 
             .toggle-container {
                 width: 130px;
-            }
-
-            .skills-tags {
-                gap: 5px;
-            }
-
-            .skills-tags span {
-                padding: 3px 6px;
-                font-size: 0.8em;
             }
         }
     </style>
