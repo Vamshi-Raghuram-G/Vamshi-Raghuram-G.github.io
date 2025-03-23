@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root {
-            --primary-light: #FFFFFF; /* White for light mode */
-            --secondary-light: #FFFFFF; /* White for header/footer in light mode */
+            --primary-light: #F8F9FA; /* Light Gray */
+            --secondary-light: #E9ECEF; /* Slightly Darker Gray */
             --accent-light: #DEE2E6; /* Gray */
             --text-light: #2C3E50; /* Dark Blue-Gray */
             --text-fixed: #343A40; /* Fixed text color */
@@ -22,8 +22,8 @@
             --project-back-light: #CED4DA; /* Mid Gray */
             --skill-tag-bg: #E9ECEF; /* Light gray for tags */
 
-            --primary-dark: #000000; /* Black for dark mode */
-            --secondary-dark: #000000; /* Black for header/footer in dark mode */
+            --primary-dark: #2C3E50; /* Dark Blue-Gray */
+            --secondary-dark: #E9ECEF; /* Slightly Darker Gray */
             --accent-dark: #DEE2E6; /* Gray */
             --text-dark: #ECF0F1; /* Light Gray */
             --button-bg-dark: #3498DB; /* Blue */
@@ -59,7 +59,7 @@
             position: absolute;
             width: 5px;
             height: 5px;
-            background-color: #666666; /* Mid-gray for light mode */
+            background-color: #ADB5BD;
             border-radius: 50%;
             opacity: 0.5;
             animation: float 10s infinite ease-in-out;
@@ -72,7 +72,7 @@
         }
 
         .dark-mode .particle {
-            background-color: #999999; /* Lighter gray for dark mode */
+            background-color: #CED4DA;
         }
 
         header {
@@ -173,12 +173,12 @@
 
         /* Hero Section */
         #hero {
-            height: 30vh;
+            height: calc(30vh - 48px); /* Reduced by ~0.5 inch (48px) */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: var(--primary-light); /* White in light, black in dark */
+            background: linear-gradient(135deg, var(--accent-light), var(--secondary-light));
             color: var(--text-light);
         }
 
@@ -394,14 +394,6 @@
             color: var(--text-dark);
         }
 
-        .dark-mode header, .dark-mode footer {
-            background: var(--secondary-dark);
-        }
-
-        .dark-mode #hero {
-            background: var(--primary-dark);
-        }
-
         .dark-mode .project-front, .dark-mode .certification, 
         .dark-mode .skills-block {
             background: var(--accent-dark);
@@ -443,7 +435,7 @@
             }
 
             #hero {
-                height: 25vh;
+                height: calc(25vh - 48px); /* Adjusted for smaller screens */
             }
 
             #hero h1 {
@@ -485,7 +477,7 @@
 
         @media (max-width: 480px) {
             #hero {
-                height: 20vh;
+                height: calc(20vh - 48px); /* Adjusted for smaller screens */
             }
 
             .resume-button, .social-button {
