@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root {
-            --primary-light: #F8F9FA; /* Light Gray */
-            --secondary-light: #E9ECEF; /* Slightly Darker Gray */
+            --primary-light: #FFFFFF; /* White for light mode */
+            --secondary-light: #FFFFFF; /* White for header/footer in light mode */
             --accent-light: #DEE2E6; /* Gray */
             --text-light: #2C3E50; /* Dark Blue-Gray */
             --text-fixed: #343A40; /* Fixed text color */
@@ -22,8 +22,8 @@
             --project-back-light: #CED4DA; /* Mid Gray */
             --skill-tag-bg: #E9ECEF; /* Light gray for tags */
 
-            --primary-dark: #2C3E50; /* Dark Blue-Gray */
-            --secondary-dark: #E9ECEF; /* Slightly Darker Gray */
+            --primary-dark: #000000; /* Black for dark mode */
+            --secondary-dark: #000000; /* Black for header/footer in dark mode */
             --accent-dark: #DEE2E6; /* Gray */
             --text-dark: #ECF0F1; /* Light Gray */
             --button-bg-dark: #3498DB; /* Blue */
@@ -59,7 +59,7 @@
             position: absolute;
             width: 5px;
             height: 5px;
-            background-color: #ADB5BD;
+            background-color: #666666; /* Mid-gray for light mode */
             border-radius: 50%;
             opacity: 0.5;
             animation: float 10s infinite ease-in-out;
@@ -72,7 +72,7 @@
         }
 
         .dark-mode .particle {
-            background-color: #CED4DA;
+            background-color: #999999; /* Lighter gray for dark mode */
         }
 
         header {
@@ -178,7 +178,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, var(--accent-light), var(--secondary-light));
+            background: var(--primary-light); /* White in light, black in dark */
             color: var(--text-light);
         }
 
@@ -392,6 +392,14 @@
         .dark-mode {
             background-color: var(--primary-dark);
             color: var(--text-dark);
+        }
+
+        .dark-mode header, .dark-mode footer {
+            background: var(--secondary-dark);
+        }
+
+        .dark-mode #hero {
+            background: var(--primary-dark);
         }
 
         .dark-mode .project-front, .dark-mode .certification, 
