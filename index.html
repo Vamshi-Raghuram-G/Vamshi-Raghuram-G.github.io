@@ -34,7 +34,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--primary-light);
+            background: linear-gradient(135deg, #1B263B, #0D1B2A);
             color: var(--text-light);
             text-align: center;
             margin: 0;
@@ -43,9 +43,10 @@
             transition: all 0.3s ease-in-out;
             font-size: 16px;
             position: relative;
+            min-height: 100vh;
         }
 
-        #particles {
+        .hero-particles {
             position: fixed;
             top: 0;
             left: 0;
@@ -55,24 +56,20 @@
             pointer-events: none;
         }
 
-        .particle {
+        .hero-particle {
             position: absolute;
-            width: 5px;
-            height: 5px;
-            background-color: #ADB5BD;
+            width: 2px;
+            height: 2px;
+            background-color: #FFFFFF;
             border-radius: 50%;
-            opacity: 0.5;
-            animation: float 10s infinite ease-in-out;
+            opacity: 0.7;
+            animation: drift 15s infinite ease-in-out;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
-        }
-
-        .dark-mode .particle {
-            background-color: #CED4DA;
+        @keyframes drift {
+            0% { transform: translate(0, 0); opacity: 0.7; }
+            50% { transform: translate(20px, -10px); opacity: 0.3; }
+            100% { transform: translate(0, 0); opacity: 0.7; }
         }
 
         header {
@@ -178,40 +175,11 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #1B263B, #0D1B2A);
-            position: relative;
-            overflow: hidden;
             color: var(--text-light);
         }
 
         .dark-mode #hero {
             color: var(--text-dark); /* Ensure text is visible in dark mode */
-        }
-
-        .hero-particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .hero-particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background-color: #FFFFFF;
-            border-radius: 50%;
-            opacity: 0.7;
-            animation: drift 15s infinite ease-in-out;
-        }
-
-        @keyframes drift {
-            0% { transform: translate(0, 0); opacity: 0.7; }
-            50% { transform: translate(20px, -10px); opacity: 0.3; }
-            100% { transform: translate(0, 0); opacity: 0.7; }
         }
 
         #hero h1 {
@@ -435,7 +403,7 @@
 
         /* Dark Mode */
         .dark-mode {
-            background-color: var(--primary-dark);
+            background: linear-gradient(135deg, #1B263B, #0D1B2A); /* Consistent with default */
             color: var(--text-dark);
         }
 
@@ -500,11 +468,6 @@
                 padding: 60px 15px;
             }
 
-            .particle {
-                width: 4px;
-                height: 4px;
-            }
-
             .section-divider {
                 width: 40px;
                 height: 40px;
@@ -541,11 +504,6 @@
                 font-size: 18px;
             }
 
-            .particle {
-                width: 3px;
-                height: 3px;
-            }
-
             .section-divider {
                 width: 30px;
                 height: 30px;
@@ -571,8 +529,8 @@
     </style>
 </head>
 <body class="dark-mode">
-    <!-- Particle Background -->
-    <div id="particles"></div>
+    <!-- Animated Background Particles -->
+    <div class="hero-particles"></div>
 
     <!-- Header with Navigation -->
     <header>
@@ -597,7 +555,6 @@
         <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
-        <div class="hero-particles"></div>
         <h1>Hi, I'm [Your Name]</h1>
         <p class="typing-effect"></p>
     </section>
@@ -738,27 +695,15 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Particle Animation (Full Page)
+        // Animated Background Particles (Full Page)
         document.addEventListener('DOMContentLoaded', () => {
-            const particlesContainer = document.getElementById('particles');
-            let numParticles = window.innerWidth <= 480 ? 20 : window.innerWidth <= 768 ? 30 : 50;
+            const heroParticlesContainer = document.querySelector('.hero-particles');
+            let numParticles = window.innerWidth <= 480 ? 30 : window.innerWidth <= 768 ? 50 : 80; // Adjusted for full page
             for (let i = 0; i < numParticles; i++) {
                 const particle = document.createElement('div');
-                particle.classList.add('particle');
+                particle.classList.add('hero-particle');
                 particle.style.left = `${Math.random() * 100}vw`;
                 particle.style.top = `${Math.random() * 100}vh`;
-                particle.style.animationDelay = `${Math.random() * 10}s`;
-                particlesContainer.appendChild(particle);
-            }
-
-            // Hero Particle Animation
-            const heroParticlesContainer = document.querySelector('.hero-particles');
-            const heroParticleCount = 15; // Fewer particles for subtlety
-            for (let i = 0; i < heroParticleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('hero-particle');
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
                 particle.style.animationDelay = `${Math.random() * 15}s`;
                 heroParticlesContainer.appendChild(particle);
             }
