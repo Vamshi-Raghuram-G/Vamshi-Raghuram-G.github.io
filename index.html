@@ -178,32 +178,15 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #2C3E50 0%, #1B263B 100%);
+            background: linear-gradient(135deg, #2C3E50 0%, #1B263B 100%),
+                        repeating-linear-gradient(60deg, rgba(236, 240, 241, 0.1), rgba(236, 240, 241, 0.1) 10px, transparent 10px, transparent 20px),
+                        repeating-linear-gradient(-60deg, rgba(236, 240, 241, 0.1), rgba(236, 240, 241, 0.1) 10px, transparent 10px, transparent 20px);
+            background-blend-mode: overlay;
             color: var(--text-light);
-            position: relative;
-            overflow: hidden;
-        }
-
-        #hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, transparent 50%);
-            filter: blur(15px);
-            opacity: 0.5;
-            z-index: 1;
         }
 
         .dark-mode #hero {
             color: var(--text-dark);
-        }
-
-        #hero h1, #hero p {
-            position: relative;
-            z-index: 2;
         }
 
         #hero h1 {
