@@ -59,11 +59,11 @@
             position: absolute;
             width: 5px;
             height: 5px;
-            background-color: #3498DB; /* Neon red in light mode */
+            background-color: #3498DB; /* Updated to blue in light mode */
             border-radius: 50%;
             opacity: 0.5;
             animation: float 10s infinite ease-in-out;
-            box-shadow: 0 0 5px #3498DB; /* Glow effect in light mode */
+            box-shadow: 0 0 5px #3498DB; /* Glow effect updated to blue in light mode */
         }
 
         @keyframes float {
@@ -73,8 +73,8 @@
         }
 
         .dark-mode .particle {
-            background-color: #E9ECEF; /* Neon red in dark mode */
-            box-shadow: 0 0 5px #E9ECEF; /* Glow effect in dark mode */
+            background-color: #3498DB; /* Updated to blue in dark mode */
+            box-shadow: 0 0 5px #3498DB; /* Glow effect updated to blue in dark mode */
         }
 
         header {
@@ -178,8 +178,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #1C2526, #3A4042); /* Apple-inspired dark gradient */
-            color: var(--text-dark); /* White text for contrast */
+            background: linear-gradient(135deg, var(--accent-light), var(--secondary-light));
+            color: var(--text-light);
         }
 
         #hero h1 {
@@ -790,7 +790,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Particle Animation with Neon Red Effect
+        // Particle Animation with Updated Blue Color
         document.addEventListener('DOMContentLoaded', () => {
             const particlesContainer = document.getElementById('particles');
             let numParticles = window.innerWidth <= 480 ? 20 : window.innerWidth <= 768 ? 30 : 50;
