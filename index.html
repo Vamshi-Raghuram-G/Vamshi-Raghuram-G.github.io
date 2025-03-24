@@ -282,7 +282,7 @@
         /* Static Certification Block */
         .certification {
             position: relative;
-            width: calc(35% - 192px); /* Reduced by 2 inches (96px per side) from 35% */
+            width: calc(35% - 192px); /* Reduced by 2 inches from previous 35% */
             height: 150px;
             background: var(--accent-light);
             border-radius: 10px;
@@ -294,7 +294,7 @@
             align-items: center;
             z-index: 1;
             color: var(--text-light);
-            margin: 10px 40px; /* Distinct from skills */
+            margin: 0 auto; /* Matched with skills-block */
         }
 
         .certification:only-child {
@@ -482,7 +482,7 @@
             .project, .certification, .skills-block {
                 width: 90%;
                 height: 220px;
-                margin: 10px auto; /* Matched with skills */
+                margin: 10px auto; /* Matched with skills-block */
             }
 
             .project-front h3 {
@@ -494,7 +494,7 @@
             }
 
             .certification {
-                width: 70%; /* No additional reduction */
+                width: 70%;
                 height: 160px;
             }
 
@@ -553,7 +553,7 @@
 
             .project, .certification, .skills-block {
                 height: 240px;
-                margin: 10px auto; /* Matched with skills */
+                margin: 10px auto; /* Matched with skills-block */
             }
 
             .certification {
