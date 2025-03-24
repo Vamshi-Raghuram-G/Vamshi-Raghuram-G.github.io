@@ -24,7 +24,7 @@
 
             --primary-dark: #2C3E50;
             --secondary-dark: #E9ECEF;
-            --accent-dark: #DEE2E6; /* Reverted from neon green for sections */
+            --accent-dark: #DEE2E6;
             --text-dark: #ECF0F1;
             --button-bg-dark: #3498DB;
             --button-hover-dark: #2ECC71;
@@ -171,21 +171,6 @@
             position: relative;
         }
 
-        .section-divider {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 50px;
-            opacity: 0.2;
-            z-index: 0;
-        }
-
-        .dark-mode .section-divider {
-            fill: #CED4DA;
-        }
-
         /* Hero Section */
         #hero {
             height: calc(30vh - 48px);
@@ -212,9 +197,9 @@
         }
 
         @keyframes typing {
-            0% { width: 0 }
-            70% { width: 100% }
-            100% { width: 100% }
+            0% { width: 0; }
+            70% { width: 100%; }
+            100% { width: 100%; }
         }
 
         @keyframes blink {
@@ -430,7 +415,7 @@
         .dark-mode .project-front, 
         .dark-mode .certification, 
         .dark-mode .skills-block {
-            background: var(--accent-dark); /* Reverted to neutral gray */
+            background: var(--accent-dark);
         }
 
         .dark-mode .project-back {
@@ -528,11 +513,6 @@
                 width: 4px;
                 height: 4px;
             }
-
-            .section-divider {
-                width: 40px;
-                height: 40px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -593,11 +573,6 @@
                 height: 3px;
             }
 
-            .section-divider {
-                width: 30px;
-                height: 30px;
-            }
-
             .nav-button {
                 padding: 6px 10px;
             }
@@ -632,33 +607,24 @@
 
     <!-- Hero Section -->
     <section id="hero" data-aos="fade-down">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
-            <circle cx="50" cy="50" r="40" />
-        </svg>
         <h1>Hi, I'm Vamshi Raghuram</h1>
         <p class="typing-effect"></p>
     </section>
 
     <!-- About Section -->
     <section id="about" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
-            <circle cx="50" cy="50" r="40" />
-        </svg>
         <h2>About Me</h2>
         <p>I’m a Data Scientist who doesn’t just crunch numbers—I sculpt insights. From machine learning models that think ahead to visualizations that speak volumes, I bridge the gap between raw data and real-world impact.</p>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
-            <circle cx="50" cy="50" r="40" />
-        </svg>
         <h2>Projects</h2>
         <div class="project-container">
             <div class="project" data-aos="flip-left">
                 <div class="project-front">
                     <h3>Drug Recommendation System</h3>
-                    <p>Sentiment analysis for drug reviews using ML.</p>
+                    <p>Developed a drug recommendation system using sentiment analysis of drug reviews with machine learning techniques.</p>
                 </div>
                 <div class="project-back">
                     <a href="https://github.com/Vamshi-Raghuram-G/Drug-Recommendation-System-Based-On-Sentiment-Analysis-Of-Drug-Reviews-Using-Machine-Learning.git" class="project-button">View Project</a>
@@ -667,7 +633,7 @@
             <div class="project" data-aos="flip-right">
                 <div class="project-front">
                     <h3>Retail Sales Prediction</h3>
-                    <p>Forecasting sales for 3,000+ drug stores.</p>
+                    <p>Built a sales forecasting model for over 3,000 drug stores using time series analysis and machine learning.</p>
                 </div>
                 <div class="project-back">
                     <a href="https://github.com/Vamshi-Raghuram-G/Retail-Sales-Prediction.git" class="project-button">View Project</a>
@@ -676,7 +642,7 @@
             <div class="project" data-aos="flip-left">
                 <div class="project-front">
                     <h3>Tableau & Power BI Projects</h3>
-                    <p>Interactive dashboards and reports.</p>
+                    <p>Created interactive dashboards and reports using Tableau and Power BI for data-driven decision-making.</p>
                 </div>
                 <div class="project-back">
                     <a href="https://github.com/Vamshi-Raghuram-G/Tableau-Power-BI-Projects.git" class="project-button">View Project</a>
@@ -685,7 +651,7 @@
             <div class="project" data-aos="flip-right">
                 <div class="project-front">
                     <h3>SQL Data Warehouse Project</h3>
-                    <p>Data warehousing with Medallion Architecture.</p>
+                    <p>Designed a data warehouse using SQL with Medallion Architecture for efficient data storage and retrieval.</p>
                 </div>
                 <div class="project-back">
                     <a href="https://github.com/Vamshi-Raghuram-G/SQL-Data-Warehouse-Project.git" class="project-button">View Project</a>
@@ -694,7 +660,7 @@
             <div class="project" data-aos="flip-left">
                 <div class="project-front">
                     <h3>Fashion MNIST</h3>
-                    <p>Deep learning for clothing recognition.</p>
+                    <p>Implemented a deep learning model to classify clothing items from the Fashion MNIST dataset with high accuracy.</p>
                 </div>
                 <div class="project-back">
                     <a href="https://github.com/Vamshi-Raghuram-G/Fashion-mnist.git" class="project-button">View Project</a>
@@ -703,7 +669,7 @@
             <div class="project" data-aos="flip-right">
                 <div class="project-front">
                     <h3>Insurance Forecast</h3>
-                    <p>Predicting healthcare costs with DL.</p>
+                    <p>Developed a deep learning model to predict healthcare costs for insurance forecasting using patient data.</p>
                 </div>
                 <div class="project-back">
                     <a href="https://github.com/Vamshi-Raghuram-G/Insurance-Forecast.git" class="project-button">View Project</a>
@@ -714,9 +680,6 @@
 
     <!-- Skills Section -->
     <section id="skills" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
-            <circle cx="50" cy="50" r="40" />
-        </svg>
         <h2>Skills</h2>
         <div class="skills-container">
             <div class="skills-block">
@@ -747,9 +710,6 @@
 
     <!-- Certifications Section -->
     <section id="certifications" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
-            <circle cx="50" cy="50" r="40" />
-        </svg>
         <h2>Certifications</h2>
         <div class="certifications-container">
             <div class="certification" data-aos="fade-up">
@@ -762,18 +722,12 @@
 
     <!-- Resume Section -->
     <section id="resume" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
-            <circle cx="50" cy="50" r="40" />
-        </svg>
         <h2>Resume</h2>
         <a href="resume.pdf" download class="resume-button"><i class="fas fa-download"></i> Download Resume</a>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" data-aos="fade-up">
-        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
-            <circle cx="50" cy="50" r="40" />
-        </svg>
         <h2>Find Me Online</h2>
         <div>
             <a href="https://www.linkedin.com/in/vamshi-raghuram-g" class="social-button"><i class="fab fa-linkedin"></i> LinkedIn</a>
@@ -800,23 +754,28 @@
             document.body.classList.toggle("dark-mode");
         }
 
-        // Typing Effect
-        const text = "Data Scientist | Data Maverick | Insight Catalyst";
-        const typingElement = document.querySelector('.typing-effect');
-        typingElement.textContent = text;
-        const tempSpan = document.createElement('span');
-        tempSpan.style.visibility = 'hidden';
-        tempSpan.style.position = 'absolute';
-        tempSpan.style.fontSize = getComputedStyle(typingElement).fontSize;
-        tempSpan.style.fontFamily = getComputedStyle(typingElement).fontFamily;
-        tempSpan.style.whiteSpace = 'nowrap';
-        tempSpan.textContent = text;
-        document.body.appendChild(tempSpan);
-        const textWidth = tempSpan.offsetWidth;
-        document.body.removeChild(tempSpan);
-        typingElement.style.maxWidth = `${textWidth}px`;
-        typingElement.style.width = '0';
-        typingElement.style.animation = `typing 6s steps(${text.length}, end) infinite, blink 0.75s step-end infinite`;
+        // Typing Effect Fix
+        document.addEventListener('DOMContentLoaded', () => {
+            const text = "Data Scientist | Data Maverick | Insight Catalyst";
+            const typingElement = document.querySelector('.typing-effect');
+            typingElement.textContent = text; // Set full text immediately
+            typingElement.style.width = '0'; // Start with zero width
+            // Force reflow to ensure animation starts after DOM load
+            void typingElement.offsetWidth;
+            typingElement.style.animation = `typing 6s steps(${text.length}, end) infinite, blink 0.75s step-end infinite`;
+            // Set max-width to ensure full text fits
+            const tempSpan = document.createElement('span');
+            tempSpan.style.visibility = 'hidden';
+            tempSpan.style.position = 'absolute';
+            tempSpan.style.fontSize = getComputedStyle(typingElement).fontSize;
+            tempSpan.style.fontFamily = getComputedStyle(typingElement).fontFamily;
+            tempSpan.style.whiteSpace = 'nowrap';
+            tempSpan.textContent = text;
+            document.body.appendChild(tempSpan);
+            const textWidth = tempSpan.offsetWidth;
+            document.body.removeChild(tempSpan);
+            typingElement.style.maxWidth = `${textWidth}px`;
+        });
 
         // Back-to-Top Button
         window.onscroll = function() {
