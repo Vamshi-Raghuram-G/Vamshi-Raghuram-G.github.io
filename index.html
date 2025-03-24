@@ -8,13 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Three.js for 3D -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <!-- Vanilla Tilt for Hover Effects -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-    <!-- GSAP and ScrollTrigger for Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <!-- AOS Animation -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root {
             --primary-light: #F8F9FA;
@@ -27,13 +22,13 @@
             --project-back-light: #CED4DA;
             --skill-tag-bg: #E9ECEF;
 
-            --primary-dark: #1a1a1a; /* Darker base like Lusion */
-            --secondary-dark: #2C2C2C;
-            --accent-dark: #00ffcc; /* Neon cyan */
+            --primary-dark: #2C3E50;
+            --secondary-dark: #E9ECEF;
+            --accent-dark: #00ffcc; /* Neon green (cyan) retained */
             --text-dark: #ECF0F1;
-            --button-bg-dark: #ff007a; /* Neon pink */
-            --button-hover-dark: #00ffcc; /* Neon cyan on hover */
-            --project-back-dark: #333333;
+            --button-bg-dark: #3498DB;
+            --button-hover-dark: #2ECC71;
+            --project-back-dark: #CED4DA;
             --skill-tag-bg-dark: #7F8C8D;
         }
 
@@ -77,7 +72,7 @@
         }
 
         .dark-mode .particle {
-            background-color: #00ffcc; /* Neon accent */
+            background-color: #00ffcc; /* Neon green effect */
             box-shadow: 0 0 5px #00ffcc; /* Glow effect */
         }
 
@@ -187,7 +182,7 @@
         }
 
         .dark-mode .section-divider {
-            fill: #00ffcc; /* Neon accent */
+            fill: #CED4DA;
         }
 
         /* Hero Section */
@@ -201,19 +196,29 @@
             color: var(--text-light);
         }
 
-        .dark-mode #hero {
-            background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
-        }
-
         #hero h1 {
             font-size: clamp(1.5em, 5vw, 2.5em);
             margin: 0;
-            text-shadow: 0 0 10px var(--accent-dark); /* Glow in dark mode */
         }
 
-        #hero-3d {
-            width: 100%;
-            height: 200px;
+        .typing-effect {
+            font-size: clamp(0.9em, 3vw, 1.5em);
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--text-light);
+            animation: typing 6s steps(43) infinite, blink 0.75s step-end infinite;
+            display: inline-block;
+        }
+
+        @keyframes typing {
+            0% { width: 0 }
+            70% { width: 100% }
+            100% { width: 100% }
+        }
+
+        @keyframes blink {
+            0%, 100% { border-color: var(--text-light); }
+            50% { border-color: transparent; }
         }
 
         /* Flip Card Styles (Projects) */
@@ -235,7 +240,6 @@
             border-radius: 10px;
             padding: 15px;
             box-sizing: border-box;
-            box-shadow: 0 0 10px rgba(0, 255, 204, 0.5); /* Glow effect */
         }
 
         .project-front {
@@ -292,7 +296,6 @@
             z-index: 1;
             color: var(--text-light);
             margin: 10px auto;
-            box-shadow: 0 0 10px rgba(0, 255, 204, 0.5); /* Glow effect */
         }
 
         .certification:only-child {
@@ -306,6 +309,10 @@
 
         .certification p {
             margin: 10px 0;
+        }
+
+        .certification .project-button {
+            margin-top: 0;
         }
 
         /* Skills Block */
@@ -324,7 +331,6 @@
             z-index: 1;
             color: var(--text-light);
             margin: 10px auto;
-            box-shadow: 0 0 10px rgba(0, 255, 204, 0.5); /* Glow effect */
         }
 
         .skills-tags {
@@ -360,12 +366,12 @@
             border-radius: 5px;
             display: inline-block;
             margin: 5px;
-            transition: background 0.3s, box-shadow 0.3s;
+            transition: background 0.3s;
+            opacity: 1;
         }
 
         .project-button:hover, .social-button:hover {
             background: var(--button-hover-light);
-            box-shadow: 0 0 15px var(--button-hover-light); /* Glow on hover */
         }
 
         .resume-button {
@@ -376,19 +382,19 @@
             border-radius: 5px;
             display: inline-block;
             margin: 10px;
-            transition: background 0.3s, box-shadow 0.3s;
+            transition: background 0.3s;
+            opacity: 1;
         }
 
         .resume-button:hover {
             background: var(--button-hover-light);
-            box-shadow: 0 0 15px var(--button-hover-light);
         }
 
         #back-to-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: var(--button-bg-dark);
+            background: var(--button-bg-light);
             color: var(--text-dark);
             border: none;
             border-radius: 50%;
@@ -397,13 +403,12 @@
             font-size: 20px;
             cursor: pointer;
             display: none;
-            transition: background 0.3s, box-shadow 0.3s;
+            transition: background 0.3s;
             z-index: 2;
         }
 
         #back-to-top:hover {
-            background: var(--button-hover-dark);
-            box-shadow: 0 0 15px var(--button-hover-dark);
+            background: var(--button-hover-light);
         }
 
         footer {
@@ -423,18 +428,11 @@
 
         .dark-mode .project-front, .dark-mode .certification, 
         .dark-mode .skills-block {
-            background: var(--secondary-dark);
+            background: var(--accent-dark);
         }
 
         .dark-mode .project-back {
             background: var(--project-back-dark);
-        }
-
-        /* Data Visualization Teaser */
-        #data-viz {
-            width: 100%;
-            height: 200px;
-            margin-top: 20px;
         }
 
         /* Responsive Styles */
@@ -446,7 +444,15 @@
                 padding: 10px 15px;
             }
 
+            nav {
+                flex: 1;
+                overflow-x: auto;
+            }
+
             nav ul {
+                flex-direction: row;
+                overflow-x: auto;
+                white-space: nowrap;
                 gap: 0;
             }
 
@@ -468,8 +474,15 @@
                 font-size: 2em;
             }
 
-            #hero-3d {
-                height: 150px;
+            .typing-effect {
+                font-size: clamp(0.8em, 2.5vw, 1.2em);
+                animation: typing-mobile 6s steps(43) infinite, blink 0.75s step-end infinite;
+            }
+
+            @keyframes typing-mobile {
+                0% { width: 0 }
+                70% { width: 100% }
+                100% { width: 100% }
             }
 
             .project, .certification, .skills-block {
@@ -478,7 +491,16 @@
                 margin: 10px auto;
             }
 
+            .project-front h3 {
+                font-size: 1em;
+            }
+
+            .project-front p {
+                font-size: 0.85em;
+            }
+
             .certification {
+                width: 90%;
                 height: 160px;
             }
 
@@ -504,6 +526,11 @@
                 width: 4px;
                 height: 4px;
             }
+
+            .section-divider {
+                width: 40px;
+                height: 40px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -515,8 +542,9 @@
                 font-size: 1.8em;
             }
 
-            #hero-3d {
-                height: 120px;
+            .typing-effect {
+                font-size: clamp(0.7em, 2vw, 1em);
+                animation: typing-mobile 6s steps(43) infinite, blink 0.75s step-end infinite;
             }
 
             .resume-button, .social-button {
@@ -531,11 +559,20 @@
 
             .project, .certification, .skills-block {
                 height: 240px;
+                margin: 10px auto;
+            }
+
+            .certification {
+                width: 90%;
             }
 
             .skills-block {
                 height: 280px;
                 padding: 8px;
+            }
+
+            .skills-tags {
+                gap: 5px;
             }
 
             .skills-tags span {
@@ -547,6 +584,24 @@
                 width: 35px;
                 height: 35px;
                 font-size: 18px;
+            }
+
+            .particle {
+                width: 3px;
+                height: 3px;
+            }
+
+            .section-divider {
+                width: 30px;
+                height: 30px;
+            }
+
+            .nav-button {
+                padding: 6px 10px;
+            }
+
+            .toggle-container {
+                width: 130px;
             }
         }
     </style>
@@ -573,32 +628,32 @@
         </div>
     </header>
 
-    <!-- Hero Section with 3D -->
-    <section id="hero">
-        <svg class="section-divider" viewBox="0 0 100 100">
+    <!-- Hero Section -->
+    <section id="hero" data-aos="fade-down">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h1>Hi, I'm Vamshi Raghuram</h1>
-        <div id="hero-3d"></div>
+        <p class="typing-effect"></p>
     </section>
 
     <!-- About Section -->
-    <section id="about">
-        <svg class="section-divider" viewBox="0 0 100 100">
+    <section id="about" data-aos="fade-up">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>About Me</h2>
-        <p>I’m a Data Scientist who sculpts insights from raw data, bridging the gap between numbers and real-world impact with machine learning and visualizations.</p>
+        <p>I’m a Data Scientist who doesn’t just crunch numbers—I sculpt insights. From machine learning models that think ahead to visualizations that speak volumes, I bridge the gap between raw data and real-world impact.</p>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects">
-        <svg class="section-divider" viewBox="0 0 100 100">
+    <section id="projects" data-aos="fade-up">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>Projects</h2>
         <div class="project-container">
-            <div class="project">
+            <div class="project" data-aos="flip-left">
                 <div class="project-front">
                     <h3>Drug Recommendation System</h3>
                     <p>Sentiment analysis for drug reviews using ML.</p>
@@ -607,7 +662,7 @@
                     <a href="https://github.com/Vamshi-Raghuram-G/Drug-Recommendation-System-Based-On-Sentiment-Analysis-Of-Drug-Reviews-Using-Machine-Learning.git" class="project-button">View Project</a>
                 </div>
             </div>
-            <div class="project">
+            <div class="project" data-aos="flip-right">
                 <div class="project-front">
                     <h3>Retail Sales Prediction</h3>
                     <p>Forecasting sales for 3,000+ drug stores.</p>
@@ -616,34 +671,86 @@
                     <a href="https://github.com/Vamshi-Raghuram-G/Retail-Sales-Prediction.git" class="project-button">View Project</a>
                 </div>
             </div>
-            <!-- Add more projects as needed -->
+            <div class="project" data-aos="flip-left">
+                <div class="project-front">
+                    <h3>Tableau & Power BI Projects</h3>
+                    <p>Interactive dashboards and reports.</p>
+                </div>
+                <div class="project-back">
+                    <a href="https://github.com/Vamshi-Raghuram-G/Tableau-Power-BI-Projects.git" class="project-button">View Project</a>
+                </div>
+            </div>
+            <div class="project" data-aos="flip-right">
+                <div class="project-front">
+                    <h3>SQL Data Warehouse Project</h3>
+                    <p>Data warehousing with Medallion Architecture.</p>
+                </div>
+                <div class="project-back">
+                    <a href="https://github.com/Vamshi-Raghuram-G/SQL-Data-Warehouse-Project.git" class="project-button">View Project</a>
+                </div>
+            </div>
+            <div class="project" data-aos="flip-left">
+                <div class="project-front">
+                    <h3>Fashion MNIST</h3>
+                    <p>Deep learning for clothing recognition.</p>
+                </div>
+                <div class="project-back">
+                    <a href="https://github.com/Vamshi-Raghuram-G/Fashion-mnist.git" class="project-button">View Project</a>
+                </div>
+            </div>
+            <div class="project" data-aos="flip-right">
+                <div class="project-front">
+                    <h3>Insurance Forecast</h3>
+                    <p>Predicting healthcare costs with DL.</p>
+                </div>
+                <div class="project-back">
+                    <a href="https://github.com/Vamshi-Raghuram-G/Insurance-Forecast.git" class="project-button">View Project</a>
+                </div>
+            </div>
         </div>
-        <div id="data-viz"></div> <!-- Data Viz Teaser -->
     </section>
 
     <!-- Skills Section -->
-    <section id="skills">
-        <svg class="section-divider" viewBox="0 0 100 100">
+    <section id="skills" data-aos="fade-up">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>Skills</h2>
         <div class="skills-container">
             <div class="skills-block">
                 <div class="skills-tags">
-                    <span>Python</span><span>SQL</span><span>Machine Learning</span><span>Deep Learning</span><span>Tensorflow</span><span>Tableau</span><span>Power BI</span><span>IBM SPSS</span><span>MongoDB</span><span>EDA</span><span>Data Cleaning</span><span>Data Viz</span><span>OOP</span><span>Time Series</span><span>Azure</span><span>Web Scraping</span><span>Stats</span><span>Jira</span><span>Git</span>
+                    <span>Python</span>
+                    <span>SQL</span>
+                    <span>Machine Learning</span>
+                    <span>Deep Learning</span>
+                    <span>Tensorflow</span>
+                    <span>Tableau</span>
+                    <span>Power BI</span>
+                    <span>IBM SPSS Statistics</span>
+                    <span>MongoDB</span>
+                    <span>Exploratory Data Analysis</span>
+                    <span>Data Cleaning</span>
+                    <span>Data Visualization</span>
+                    <span>Object Oriented Programming</span>
+                    <span>Time Series Forecasting</span>
+                    <span>Microsoft Azure</span>
+                    <span>Web Scraping</span>
+                    <span>Statistics</span>
+                    <span>Jira</span>
+                    <span>Git</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Certifications Section -->
-    <section id="certifications">
-        <svg class="section-divider" viewBox="0 0 100 100">
+    <section id="certifications" data-aos="fade-up">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>Certifications</h2>
         <div class="certifications-container">
-            <div class="certification">
+            <div class="certification" data-aos="fade-up">
                 <h3>Data Science and AI</h3>
                 <p><strong>Issuer:</strong> IBM</p>
                 <a href="https://learnvista.skillsnetwork.site/certificates/d8e7f8cc-4c69-48ce-ad36-aa8b0c1a9f80" class="project-button">Verify Certificate</a>
@@ -652,8 +759,8 @@
     </section>
 
     <!-- Resume Section -->
-    <section id="resume">
-        <svg class="section-divider" viewBox="0 0 100 100">
+    <section id="resume" data-aos="fade-up">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>Resume</h2>
@@ -661,8 +768,8 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
-        <svg class="section-divider" viewBox="0 0 100 100">
+    <section id="contact" data-aos="fade-up">
+        <svg class="section-divider" viewBox="0 0 100 100" fill="#DEE2E6">
             <circle cx="50" cy="50" r="40" />
         </svg>
         <h2>Find Me Online</h2>
@@ -673,108 +780,41 @@
     </section>
 
     <footer>
-        <p>Built with creativity and interstellar vision. © 2025 Vamshi Raghuram</p>
+        <p>Built with dash of creativity, curiosity, and interstellar vision. © 2025 Vamshi Raghuram</p>
     </footer>
 
     <!-- Back-to-Top Button -->
     <button id="back-to-top" onclick="scrollToTop()">⬆</button>
 
     <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Dark Mode Toggle
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+
         function toggleDarkMode() {
             document.body.classList.toggle("dark-mode");
         }
 
-        // 3D Hero Element
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 200, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(window.innerWidth, 200);
-        document.getElementById('hero-3d').appendChild(renderer.domElement);
-        const geometry = new THREE.SphereGeometry(1, 32, 32);
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ffcc, wireframe: true });
-        const sphere = new THREE.Mesh(geometry, material);
-        scene.add(sphere);
-        camera.position.z = 5;
-        function animate() {
-            requestAnimationFrame(animate);
-            sphere.rotation.x += 0.01;
-            sphere.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
-        animate();
-        document.addEventListener('mousemove', (e) => {
-            sphere.rotation.x = (e.clientY / window.innerHeight) * 2 - 1;
-            sphere.rotation.y = (e.clientX / window.innerWidth) * 2 - 1;
-        });
-
-        // Tilt Effect on Projects
-        VanillaTilt.init(document.querySelectorAll(".project"), {
-            max: 25,
-            speed: 400,
-            glare: true,
-            "max-glare": 0.5
-        });
-
-        // GSAP Scroll Animations
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.from(".project", {
-            scrollTrigger: {
-                trigger: "#projects",
-                start: "top 80%",
-            },
-            y: 100,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: "power2.out"
-        });
-        gsap.from(".certification", {
-            scrollTrigger: {
-                trigger: "#certifications",
-                start: "top 80%",
-            },
-            rotationX: 90,
-            opacity: 0,
-            duration: 1,
-            ease: "back.out"
-        });
-        gsap.from(".skills-block", {
-            scrollTrigger: {
-                trigger: "#skills",
-                start: "top 80%",
-            },
-            scale: 0.8,
-            opacity: 0,
-            duration: 1,
-            ease: "elastic.out(1, 0.5)"
-        });
-
-        // Data Visualization Teaser
-        const vizScene = new THREE.Scene();
-        const vizCamera = new THREE.PerspectiveCamera(75, window.innerWidth / 200, 0.1, 1000);
-        const vizRenderer = new THREE.WebGLRenderer({ antialias: true });
-        vizRenderer.setSize(window.innerWidth, 200);
-        document.getElementById('data-viz').appendChild(vizRenderer.domElement);
-        const barGeometry = new THREE.BoxGeometry(0.5, 2, 0.5);
-        const bars = [];
-        for (let i = 0; i < 5; i++) {
-            const barMaterial = new THREE.MeshBasicMaterial({ color: 0x00ffcc });
-            const bar = new THREE.Mesh(barGeometry, barMaterial);
-            bar.position.x = i - 2;
-            bars.push(bar);
-            vizScene.add(bar);
-        }
-        vizCamera.position.z = 5;
-        function vizAnimate() {
-            requestAnimationFrame(vizAnimate);
-            bars.forEach((bar, i) => {
-                bar.scale.y = Math.sin(Date.now() * 0.001 + i) + 1.5;
-            });
-            vizRenderer.render(vizScene, vizCamera);
-        }
-        vizAnimate();
+        // Typing Effect
+        const text = "Data Scientist | Data Maverick | Insight Catalyst";
+        const typingElement = document.querySelector('.typing-effect');
+        typingElement.textContent = text;
+        const tempSpan = document.createElement('span');
+        tempSpan.style.visibility = 'hidden';
+        tempSpan.style.position = 'absolute';
+        tempSpan.style.fontSize = getComputedStyle(typingElement).fontSize;
+        tempSpan.style.fontFamily = getComputedStyle(typingElement).fontFamily;
+        tempSpan.style.whiteSpace = 'nowrap';
+        tempSpan.textContent = text;
+        document.body.appendChild(tempSpan);
+        const textWidth = tempSpan.offsetWidth;
+        document.body.removeChild(tempSpan);
+        typingElement.style.maxWidth = `${textWidth}px`;
+        typingElement.style.width = '0';
+        typingElement.style.animation = `typing 6s steps(${text.length}, end) infinite, blink 0.75s step-end infinite`;
 
         // Back-to-Top Button
         window.onscroll = function() {
@@ -790,7 +830,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Particle Animation
+        // Particle Animation with Neon Green Effect
         document.addEventListener('DOMContentLoaded', () => {
             const particlesContainer = document.getElementById('particles');
             let numParticles = window.innerWidth <= 480 ? 20 : window.innerWidth <= 768 ? 30 : 50;
