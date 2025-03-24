@@ -192,7 +192,7 @@
             overflow: hidden;
             white-space: nowrap;
             border-right: 3px solid var(--text-light);
-            animation: typing 6s steps(49) infinite, blink 0.75s step-end infinite; /* Updated steps to 49 */
+            animation: typing 6s steps(52) infinite, blink 0.75s step-end infinite; /* Updated steps to 49 */
             display: inline-block;
         }
 
@@ -463,7 +463,7 @@
 
             .typing-effect {
                 font-size: clamp(0.8em, 2.5vw, 1.2em);
-                animation: typing-mobile 6s steps(49) infinite, blink 0.75s step-end infinite; /* Updated steps to 49 */
+                animation: typing-mobile 6s steps(52) infinite, blink 0.75s step-end infinite; /* Updated steps to 49 */
             }
 
             @keyframes typing-mobile {
@@ -526,7 +526,7 @@
 
             .typing-effect {
                 font-size: clamp(0.7em, 2vw, 1em);
-                animation: typing-mobile 6s steps(49) infinite, blink 0.75s step-end infinite; /* Updated steps to 49 */
+                animation: typing-mobile 6s steps(52) infinite, blink 0.75s step-end infinite; /* Updated steps to 49 */
             }
 
             .resume-button, .social-button {
@@ -774,7 +774,7 @@
         // Set the width and ensure animation respects it
         typingElement.style.maxWidth = `${textWidth}px`;
         typingElement.style.width = '0'; // Start at 0 for animation
-        typingElement.style.animation = `typing 6s steps(49, end) infinite, blink 0.75s step-end infinite`; // Updated steps to 49
+        typingElement.style.animation = `typing 6s steps(52, end) infinite, blink 0.75s step-end infinite`; // Updated steps to 49
 
         // Back-to-Top Button
         window.onscroll = function() {
