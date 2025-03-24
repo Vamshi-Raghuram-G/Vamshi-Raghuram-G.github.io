@@ -205,7 +205,7 @@
             overflow: hidden;
             white-space: nowrap;
             border-right: 3px solid var(--text-light);
-            animation: typing 6s steps(40) infinite, blink 0.75s step-end infinite;
+            animation: typing 6s steps(43) infinite, blink 0.75s step-end infinite;
             display: inline-block;
         }
 
@@ -282,7 +282,7 @@
         /* Static Certification Block */
         .certification {
             position: relative;
-            width: calc(30% - 768px); /* Reduced by 4 inches (384px) on each side */
+            width: 45%; /* Matches projects block */
             height: 150px;
             background: var(--accent-light);
             border-radius: 10px;
@@ -298,7 +298,7 @@
         }
 
         .certification:only-child {
-            width: calc(60% - 768px); /* Adjusted for single certification */
+            width: 90%; /* Matches projects behavior when alone */
         }
 
         .certification h3 {
@@ -476,7 +476,7 @@
 
             .typing-effect {
                 font-size: clamp(0.8em, 2.5vw, 1.2em);
-                animation: typing-mobile 6s steps(40) infinite, blink 0.75s step-end infinite;
+                animation: typing-mobile 6s steps(43) infinite, blink 0.75s step-end infinite;
             }
 
             @keyframes typing-mobile {
@@ -500,7 +500,7 @@
             }
 
             .certification {
-                width: 70%;
+                width: 90%; /* Matches projects */
                 height: 160px;
             }
 
@@ -544,7 +544,7 @@
 
             .typing-effect {
                 font-size: clamp(0.7em, 2vw, 1em);
-                animation: typing-mobile 6s steps(40) infinite, blink 0.75s step-end infinite;
+                animation: typing-mobile 6s steps(43) infinite, blink 0.75s step-end infinite;
             }
 
             .resume-button, .social-button {
@@ -563,7 +563,7 @@
             }
 
             .certification {
-                width: 80%;
+                width: 90%; /* Matches projects */
             }
 
             .skills-block {
@@ -809,12 +809,16 @@
         tempSpan.style.position = 'absolute';
         tempSpan.style.fontSize = getComputedStyle(typingElement).fontSize;
         tempSpan.style.fontFamily = getComputedStyle(typingElement).fontFamily;
+        tempSpan.style.whiteSpace = 'nowrap';
         tempSpan.textContent = text;
         document.body.appendChild(tempSpan);
         const textWidth = tempSpan.offsetWidth;
         document.body.removeChild(tempSpan);
 
-        typingElement.style.width = `${textWidth}px`; // Set exact width
+        // Set the width and ensure animation respects it
+        typingElement.style.maxWidth = `${textWidth}px`;
+        typingElement.style.width = '0'; // Start at 0 for animation
+        typingElement.style.animation = `typing 6s steps(${text.length}, end) infinite, blink 0.75s step-end infinite`;
 
         // Back-to-Top Button
         window.onscroll = function() {
