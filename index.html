@@ -24,7 +24,7 @@
 
             --primary-dark: #2C3E50;
             --secondary-dark: #E9ECEF;
-            --accent-dark: #00ffcc; /* Neon green (cyan) retained */
+            --accent-dark: #DEE2E6; /* Reverted from neon green for sections */
             --text-dark: #ECF0F1;
             --button-bg-dark: #3498DB;
             --button-hover-dark: #2ECC71;
@@ -59,10 +59,11 @@
             position: absolute;
             width: 5px;
             height: 5px;
-            background-color: #ADB5BD;
+            background-color: #00ffcc; /* Neon green in light mode */
             border-radius: 50%;
             opacity: 0.5;
             animation: float 10s infinite ease-in-out;
+            box-shadow: 0 0 5px #00ffcc; /* Glow effect in light mode */
         }
 
         @keyframes float {
@@ -72,8 +73,8 @@
         }
 
         .dark-mode .particle {
-            background-color: #00ffcc; /* Neon green effect */
-            box-shadow: 0 0 5px #00ffcc; /* Glow effect */
+            background-color: #00ffcc; /* Neon green in dark mode */
+            box-shadow: 0 0 5px #00ffcc; /* Glow effect in dark mode */
         }
 
         header {
@@ -426,9 +427,10 @@
             color: var(--text-dark);
         }
 
-        .dark-mode .project-front, .dark-mode .certification, 
+        .dark-mode .project-front, 
+        .dark-mode .certification, 
         .dark-mode .skills-block {
-            background: var(--accent-dark);
+            background: var(--accent-dark); /* Reverted to neutral gray */
         }
 
         .dark-mode .project-back {
