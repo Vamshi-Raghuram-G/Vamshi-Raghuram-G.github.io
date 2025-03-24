@@ -12,24 +12,24 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root {
-            --primary-light: #F5F6F5; /* Soft off-white */
-            --secondary-light: #E0E7E9; /* Light gray-teal */
-            --accent-light: #B2DFDB; /* Pale teal */
-            --text-light: #1A2526; /* Deep space blue */
-            --text-fixed: #263238; /* Slightly lighter blue-gray */
-            --button-bg: #26A69A; /* Cosmic teal */
-            --button-hover: #4DB6AC; /* Brighter teal */
-            --project-back-light: #CFD8DC; /* Soft gray-teal */
-            --skill-tag-bg: #E0E7E9; /* Matches secondary-light */
+            --primary-light: #F8F9FA;
+            --secondary-light: #E9ECEF;
+            --accent-light: #DEE2E6;
+            --text-light: #2C3E50;
+            --text-fixed: #343A40;
+            --button-bg-light: #3498DB;
+            --button-hover-light: #2ECC71;
+            --project-back-light: #CED4DA;
+            --skill-tag-bg: #E9ECEF;
 
-            --primary-dark: #1A2526; /* Deep space blue */
-            --secondary-dark: #37474F; /* Darker teal-gray */
-            --accent-dark: #4DB6AC; /* Brighter teal */
-            --text-dark: #ECF0F1; /* Starlight white */
-            --button-bg-dark: #26A69A; /* Cosmic teal */
-            --button-hover-dark: #80CBC4; /* Light teal */
-            --project-back-dark: #546E7A; /* Dark teal-gray */
-            --skill-tag-bg-dark: #78909C; /* Medium teal-gray */
+            --primary-dark: #2C3E50;
+            --secondary-dark: #E9ECEF;
+            --accent-dark: #DEE2E6;
+            --text-dark: #ECF0F1;
+            --button-bg-dark: #3498DB;
+            --button-hover-dark: #2ECC71;
+            --project-back-dark: #CED4DA;
+            --skill-tag-bg-dark: #7F8C8D;
         }
 
         body {
@@ -57,24 +57,24 @@
 
         .particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background-color: var(--button-bg); /* Cosmic teal */
+            width: 5px;
+            height: 5px;
+            background-color: #ff073a; /* Neon red in light mode */
             border-radius: 50%;
-            opacity: 0.4;
-            animation: float 12s infinite ease-in-out;
-            box-shadow: 0 0 6px var(--button-bg); /* Subtle teal glow */
+            opacity: 0.5;
+            animation: float 10s infinite ease-in-out;
+            box-shadow: 0 0 5px #ff073a; /* Glow effect in light mode */
         }
 
         @keyframes float {
             0% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-20px); }
             100% { transform: translateY(0); }
         }
 
         .dark-mode .particle {
-            background-color: var(--accent-dark); /* Brighter teal in dark mode */
-            box-shadow: 0 0 6px var(--accent-dark);
+            background-color: #ff073a; /* Neon red in dark mode */
+            box-shadow: 0 0 5px #ff073a; /* Glow effect in dark mode */
         }
 
         header {
@@ -83,7 +83,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             position: relative;
             z-index: 1;
         }
@@ -116,7 +116,7 @@
             height: 2px;
             bottom: 0;
             left: 50%;
-            background: var(--button-bg);
+            background: var(--text-fixed);
             transition: all 0.3s ease;
             transform: translateX(-50%);
         }
@@ -138,7 +138,7 @@
         .toggle-switch {
             width: 50px;
             height: 25px;
-            background: var(--button-bg);
+            background: var(--button-bg-light);
             border-radius: 50px;
             position: relative;
             cursor: pointer;
@@ -164,7 +164,6 @@
 
         .dark-mode .toggle-switch::before {
             left: 25px;
-            background: var(--text-dark);
         }
 
         section {
@@ -179,8 +178,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, var(--accent-light), var(--secondary-light));
-            color: var(--text-light);
+            background: linear-gradient(135deg, #1C2526, #3A4042); /* Apple-inspired dark gradient */
+            color: var(--text-dark); /* White text for contrast */
         }
 
         #hero h1 {
@@ -199,8 +198,8 @@
 
         @keyframes typing {
             0% { width: 0 }
-            70% { width: 100% }
-            100% { width: 100% }
+            70% { width: 100% } /* 4.2s */
+            100% { width: 100% } /* 1.8s pause */
         }
 
         @keyframes blink {
@@ -347,40 +346,42 @@
 
         .project-button, .social-button {
             text-decoration: none;
-            color: #FFFFFF; /* White text for contrast */
-            background: var(--button-bg);
+            color: var(--text-dark);
+            background: var(--button-bg-light);
             padding: 10px 15px;
             border-radius: 5px;
             display: inline-block;
             margin: 5px;
             transition: background 0.3s;
+            opacity: 1;
         }
 
         .project-button:hover, .social-button:hover {
-            background: var(--button-hover);
+            background: var(--button-hover-light);
         }
 
         .resume-button {
             text-decoration: none;
-            color: #FFFFFF;
-            background: var(--button-bg);
+            color: var(--text-dark);
+            background: var(--button-bg-light);
             padding: 12px 20px;
             border-radius: 5px;
             display: inline-block;
             margin: 10px;
             transition: background 0.3s;
+            opacity: 1;
         }
 
         .resume-button:hover {
-            background: var(--button-hover);
+            background: var(--button-hover-light);
         }
 
         #back-to-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: var(--button-bg);
-            color: #FFFFFF;
+            background: var(--button-bg-light);
+            color: var(--text-dark);
             border: none;
             border-radius: 50%;
             width: 40px;
@@ -393,7 +394,7 @@
         }
 
         #back-to-top:hover {
-            background: var(--button-hover);
+            background: var(--button-hover-light);
         }
 
         footer {
@@ -411,14 +412,6 @@
             color: var(--text-dark);
         }
 
-        .dark-mode header {
-            background: var(--secondary-dark);
-        }
-
-        .dark-mode footer {
-            background: var(--secondary-dark);
-        }
-
         .dark-mode .project-front, 
         .dark-mode .certification, 
         .dark-mode .skills-block {
@@ -427,15 +420,6 @@
 
         .dark-mode .project-back {
             background: var(--project-back-dark);
-        }
-
-        .dark-mode .skills-tags span {
-            background: var(--skill-tag-bg-dark);
-            color: var(--text-dark);
-        }
-
-        .dark-mode #hero {
-            background: linear-gradient(135deg, var(--accent-dark), var(--secondary-dark));
         }
 
         /* Responsive Styles */
@@ -526,8 +510,8 @@
             }
 
             .particle {
-                width: 3px;
-                height: 3px;
+                width: 4px;
+                height: 4px;
             }
         }
 
@@ -585,8 +569,8 @@
             }
 
             .particle {
-                width: 2px;
-                height: 2px;
+                width: 3px;
+                height: 3px;
             }
 
             .nav-button {
@@ -789,7 +773,7 @@
 
         // Set the width and ensure animation respects it
         typingElement.style.maxWidth = `${textWidth}px`;
-        typingElement.style.width = '0';
+        typingElement.style.width = '0'; // Start at 0 for animation
         typingElement.style.animation = `typing 6s steps(${text.length}, end) infinite, blink 0.75s step-end infinite`;
 
         // Back-to-Top Button
@@ -806,7 +790,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Particle Animation
+        // Particle Animation with Neon Red Effect
         document.addEventListener('DOMContentLoaded', () => {
             const particlesContainer = document.getElementById('particles');
             let numParticles = window.innerWidth <= 480 ? 20 : window.innerWidth <= 768 ? 30 : 50;
@@ -815,7 +799,7 @@
                 particle.classList.add('particle');
                 particle.style.left = `${Math.random() * 100}vw`;
                 particle.style.top = `${Math.random() * 100}vh`;
-                particle.style.animationDelay = `${Math.random() * 12}s`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
                 particlesContainer.appendChild(particle);
             }
         });
