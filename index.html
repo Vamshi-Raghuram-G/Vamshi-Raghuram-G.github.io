@@ -7,6 +7,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
     <style>
         :root {
             --primary-light: #F8F9FA;
@@ -20,69 +25,62 @@
             --skill-tag-bg: #E9ECEF;
 
             --primary-dark: #2C3E50;
-            --secondary-dark: #E9ECEF;
-            --accent-dark: #DEE2E6;
+            --secondary-dark: #34495E; /* Darker background for cards */
+            --accent-dark: #34495E;
             --text-dark: #ECF0F1;
             --button-bg-dark: #3498DB;
             --button-hover-dark: #2ECC71;
-            --project-back-dark: #CED4DA;
+            --project-back-dark: #4A6572;
             --skill-tag-bg-dark: #7F8C8D;
+        }
+
+        /* NEW: Core styles for the 3D experience */
+        html {
+            overflow-x: hidden;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--primary-light);
-            color: var(--text-light);
+            background-color: #000011; /* Deep space background color */
+            color: var(--primary-light);
             text-align: center;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            transition: all 0.3s ease-in-out;
             font-size: 16px;
-            position: relative;
         }
 
-        #particles {
+        /* NEW: Canvas for three.js background */
+        #bg-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            pointer-events: none;
+            z-index: -1; /* Place it behind all content */
         }
-
-        .particle {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background-color: #3498DB;
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: float 10s infinite ease-in-out;
-            box-shadow: 0 0 5px #3498DB;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
-        }
-
-        .dark-mode .particle {
-            background-color: #3498DB;
-            box-shadow: 0 0 5px #3498DB;
-        }
-
+        
         header {
-            background: var(--secondary-light);
+            /* Make header float with a blurred background */
+            background: rgba(233, 236, 239, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 1;
+            position: fixed; /* Keep header at the top */
+            width: 100%;
+            box-sizing: border-box;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .dark-mode header {
+             background: rgba(44, 62, 80, 0.2);
+             border-bottom: 1px solid rgba(236, 240, 241, 0.2);
         }
 
         nav {
@@ -99,11 +97,15 @@
 
         .nav-button {
             text-decoration: none;
-            color: var(--text-fixed);
+            color: var(--primary-light); /* Text color for light/dark mode */
             font-weight: bold;
             padding: 10px;
             position: relative;
             transition: all 0.3s ease;
+        }
+        
+        .dark-mode .nav-button {
+            color: var(--text-dark);
         }
 
         .nav-button::after {
@@ -113,9 +115,13 @@
             height: 2px;
             bottom: 0;
             left: 50%;
-            background: var(--text-fixed);
+            background: var(--primary-light);
             transition: all 0.3s ease;
             transform: translateX(-50%);
+        }
+        
+        .dark-mode .nav-button::after {
+            background: var(--text-dark);
         }
 
         .nav-button:hover::after {
@@ -129,463 +135,123 @@
             font-size: 14px;
             font-weight: bold;
             margin-right: 16px;
-            color: var(--text-fixed);
+            color: var(--primary-light);
         }
-
-        .toggle-switch {
-            width: 50px;
-            height: 25px;
-            background: var(--button-bg-light);
-            border-radius: 50px;
-            position: relative;
-            cursor: pointer;
-            transition: 0.3s;
+        
+        .dark-mode .toggle-container {
+            color: var(--text-dark);
         }
-
-        .toggle-switch::before {
-            content: '';
-            width: 20px;
-            height: 20px;
-            background: var(--primary-light);
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 5px;
-            transform: translateY(-50%);
-            transition: 0.3s;
+        
+        /* ... existing toggle-switch styles ... */
+        .toggle-switch { width: 50px; height: 25px; background: var(--button-bg-light); border-radius: 50px; position: relative; cursor: pointer; transition: 0.3s; }
+        .toggle-switch::before { content: ''; width: 20px; height: 20px; background: var(--primary-light); border-radius: 50%; position: absolute; top: 50%; left: 5px; transform: translateY(-50%); transition: 0.3s; }
+        .dark-mode .toggle-switch { background: var(--button-bg-dark); }
+        .dark-mode .toggle-switch::before { left: 25px; background: var(--primary-dark); }
+        
+        /* NEW: Main content wrapper to handle spacing below fixed header */
+        .content-wrapper {
+            padding-top: 100px; /* Space for the fixed header */
         }
-
-        .dark-mode .toggle-switch {
-            background: var(--button-bg-dark);
-        }
-
-        .dark-mode .toggle-switch::before {
-            left: 25px;
-        }
-
+        
         section {
-            padding: 80px 20px;
+            padding: 120px 20px;
             position: relative;
-        }
-
-        /* Hero Section - UPDATED */
-        #hero {
-            height: calc(30vh - 48px);
+            z-index: 1;
+            background: transparent; /* Sections must be transparent */
+            min-height: 100vh; /* Give sections height for scrolling */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: var(--primary-light); /* New text color for contrast */
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite;
         }
 
-        /* New Keyframes for Background Animation */
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            color: var(--primary-light);
         }
 
         #hero h1 {
-            font-size: clamp(1.5em, 5vw, 2.5em);
+            font-size: clamp(2em, 6vw, 4em);
             margin: 0;
-            color: var(--primary-light); /* Ensure consistent light color */
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         }
 
-        /* Typing Effect - UPDATED */
         .typing-effect {
-            font-size: clamp(0.9em, 3vw, 1.5em);
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid var(--primary-light); /* Updated cursor color */
-            animation: blink 0.75s step-end infinite;
-            display: inline-block;
+            font-size: clamp(1em, 3vw, 1.8em);
             min-height: 1.5em; /* Prevent layout shift */
+            border-right: 3px solid var(--primary-light);
+            animation: blink 0.75s step-end infinite;
         }
 
-        /* Old 'typing' keyframes are removed as JS now handles the animation */
-        
         @keyframes blink {
-            0%, 100% { border-color: var(--primary-light); } /* Updated cursor color */
+            0%, 100% { border-color: var(--primary-light); }
             50% { border-color: transparent; }
         }
 
-        /* Flip Card Styles (Projects) */
+        /* Cards and Blocks Styling */
+        .project, .certification, .skills-block {
+             background: rgba(233, 236, 239, 0.1);
+             backdrop-filter: blur(10px);
+             -webkit-backdrop-filter: blur(10px);
+             border: 1px solid rgba(255, 255, 255, 0.1);
+             border-radius: 15px;
+             color: var(--primary-light);
+        }
+        
+        .dark-mode .project, .dark-mode .certification, .dark-mode .skills-block, .dark-mode .project-back {
+            background: rgba(44, 62, 80, 0.25);
+            border: 1px solid rgba(236, 240, 241, 0.2);
+            color: var(--text-dark);
+        }
+
+        /* Project Cards */
         .project {
             position: relative;
             width: 45%;
             height: 200px;
             perspective: 1000px;
-            z-index: 1;
             margin: 10px auto;
         }
-
-        .project-front, .project-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            transition: transform 0.6s;
-            border-radius: 10px;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        .project-front {
-            background: var(--accent-light);
-            color: var(--text-light);
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .project-front h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1em;
-        }
-
-        .project-front p {
-            margin: 0;
-            font-size: 0.9em;
-        }
-
-        .project-back {
-            background: var(--project-back-light);
-            color: var(--text-light);
-            transform: rotateY(180deg);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .project-back p {
-            margin: 0 0 10px 0;
-            font-size: 0.9em;
-        }
-
-        .project:hover .project-front {
-            transform: rotateY(-180deg);
-        }
-
-        .project:hover .project-back {
-            transform: rotateY(0deg);
-        }
-
-        /* Certification Block */
-        .certification {
-            position: relative;
-            width: 45%;
-            height: 150px;
-            background: var(--accent-light);
-            border-radius: 10px;
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1;
-            color: var(--text-light);
-            margin: 10px auto;
-        }
-
-        .certification:only-child {
-            width: 90%;
-        }
-
-        .certification h3 {
-            margin-top: 19px;
-            margin-bottom: 0;
-        }
-
-        .certification p {
-            margin: 10px 0;
-        }
-
-        .certification .project-button {
-            margin-top: 0;
-        }
-
-        /* Skills Block */
-        .skills-block {
-            position: relative;
-            width: calc(45% + 45% + 20px);
-            height: 150px;
-            background: var(--accent-light);
-            border-radius: 10px;
-            padding: 15px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1;
-            color: var(--text-light);
-            margin: 10px auto;
-        }
-
-        .skills-tags {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .skills-tags span {
-            background: var(--skill-tag-bg);
-            color: var(--text-light);
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 0.9em;
-        }
-
-        /* Containers */
-        .project-container, .certifications-container, .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .project-button, .social-button {
-            text-decoration: none;
-            color: var(--text-dark);
-            background: var(--button-bg-light);
-            padding: 10px 15px;
-            border-radius: 5px;
-            display: inline-block;
-            margin: 5px;
-            transition: background 0.3s;
-            opacity: 1;
-        }
-
-        .project-button:hover, .social-button:hover {
-            background: var(--button-hover-light);
-        }
-
-        .resume-button {
-            text-decoration: none;
-            color: var(--text-dark);
-            background: var(--button-bg-light);
-            padding: 12px 20px;
-            border-radius: 5px;
-            display: inline-block;
-            margin: 10px;
-            transition: background 0.3s;
-            opacity: 1;
-        }
-
-        .resume-button:hover {
-            background: var(--button-hover-light);
-        }
-
-        #back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--button-bg-light);
-            color: var(--text-dark);
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 20px;
-            cursor: pointer;
-            display: none;
-            transition: background 0.3s;
-            z-index: 2;
-        }
-
-        #back-to-top:hover {
-            background: var(--button-hover-light);
-        }
+        .project-front, .project-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; transition: transform 0.6s; border-radius: 15px; padding: 15px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; background: transparent; }
+        .project-front { z-index: 2; }
+        .project-back { transform: rotateY(180deg); }
+        .project:hover .project-front { transform: rotateY(-180deg); }
+        .project:hover .project-back { transform: rotateY(0deg); }
+        .project-front h3, .project-front p, .project-back p { margin: 10px 0; }
+        
+        /* ... Other card styles ... */
+        .certification { width: 45%; padding: 20px; margin: 10px auto; display:flex; flex-direction:column; justify-content:center; }
+        .skills-block { width: 90%; padding: 25px; margin: 10px auto; }
+        .skills-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+        .skills-tags span { background: rgba(255,255,255,0.1); padding: 8px 15px; border-radius: 20px; }
+        .dark-mode .skills-tags span { background: var(--skill-tag-bg-dark); }
+        .project-container, .certifications-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1200px; }
+        
+        .project-button, .social-button, .resume-button { text-decoration: none; color: white; background: var(--button-bg-light); padding: 10px 15px; border-radius: 5px; display: inline-block; margin: 5px; transition: background 0.3s; }
+        .project-button:hover, .social-button:hover, .resume-button:hover { background: var(--button-hover-light); }
+        .resume-button { padding: 12px 20px; }
 
         footer {
-            background: var(--secondary-light);
-            padding: 20px;
-            margin-top: 40px;
-            color: var(--text-fixed);
+            padding: 40px 20px;
+            color: var(--primary-light);
+            background: transparent;
             position: relative;
             z-index: 1;
         }
-
-        /* Dark Mode */
-        .dark-mode {
-            background-color: var(--primary-dark);
-            color: var(--text-dark);
-        }
-
-        .dark-mode .project-front, 
-        .dark-mode .certification, 
-        .dark-mode .skills-block {
-            background: var(--accent-dark);
-        }
-
-        .dark-mode .project-back {
-            background: var(--project-back-dark);
-        }
+        
+        #back-to-top { position: fixed; bottom: 20px; right: 20px; background: var(--button-bg-light); color: white; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 20px; cursor: pointer; display: none; transition: background 0.3s; z-index: 10; }
+        #back-to-top:hover { background: var(--button-hover-light); }
 
         /* Responsive Styles */
         @media (max-width: 768px) {
-            header {
-                flex-direction: row;
-                overflow-x: auto;
-                white-space: nowrap;
-                padding: 10px 15px;
-            }
-
-            nav {
-                flex: 1;
-                overflow-x: auto;
-            }
-
-            nav ul {
-                flex-direction: row;
-                overflow-x: auto;
-                white-space: nowrap;
-                gap: 0;
-            }
-
-            .nav-button {
-                padding: 8px 12px;
-            }
-
-            .toggle-container {
-                width: 150px;
-                flex-shrink: 0;
-                padding-left: 10px;
-            }
-
-            #hero {
-                height: calc(35vh - 48px);
-            }
-
-            #hero h1 {
-                font-size: 2em;
-            }
-
-            .typing-effect {
-                font-size: clamp(0.8em, 2.5vw, 1.2em);
-            }
-
-            .project, .certification, .skills-block {
-                width: 90%;
-                height: 220px;
-                margin: 10px auto;
-            }
-
-            .project-front h3 {
-                font-size: 1em;
-            }
-
-            .project-front p {
-                font-size: 0.85em;
-            }
-
-            .certification {
-                width: 90%;
-                height: 160px;
-            }
-
-            .skills-block {
-                height: 250px;
-                padding: 10px;
-            }
-
-            .skills-tags {
-                gap: 6px;
-            }
-
-            .skills-tags span {
-                padding: 4px 8px;
-                font-size: 0.85em;
-            }
-
-            section {
-                padding: 60px 15px;
-            }
-
-            .particle {
-                width: 4px;
-                height: 4px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            #hero {
-                height: calc(40vh - 48px);
-            }
-
-            #hero h1 {
-                font-size: 1.8em;
-            }
-
-            .typing-effect {
-                font-size: clamp(0.7em, 2vw, 1em);
-            }
-
-            .resume-button, .social-button {
-                padding: 10px 15px;
-                font-size: 0.9em;
-            }
-
-            .project-button {
-                padding: 8px 12px;
-                font-size: 0.85em;
-            }
-
-            .project, .certification, .skills-block {
-                height: 240px;
-                margin: 10px auto;
-            }
-
-            .certification {
-                width: 90%;
-            }
-
-            .skills-block {
-                height: 280px;
-                padding: 8px;
-            }
-
-            .skills-tags {
-                gap: 5px;
-            }
-
-            .skills-tags span {
-                padding: 3px 6px;
-                font-size: 0.8em;
-            }
-
-            #back-to-top {
-                width: 35px;
-                height: 35px;
-                font-size: 18px;
-            }
-
-            .particle {
-                width: 3px;
-                height: 3px;
-            }
-
-            .nav-button {
-                padding: 6px 10px;
-            }
-
-            .toggle-container {
-                width: 130px;
-            }
+            section { padding: 80px 15px; }
+            .project, .certification { width: 90%; }
         }
     </style>
 </head>
-<body> <div id="particles"></div>
+<body>
+    <canvas id="bg-canvas"></canvas>
 
     <header>
         <nav>
@@ -604,154 +270,111 @@
         </div>
     </header>
 
-    <section id="hero" data-aos="fade-down">
-        <h1>Hi, I'm Vamshi Raghuram</h1>
-        <p class="typing-effect"></p>
-    </section>
+    <div class="content-wrapper">
+        <section id="hero">
+            <h1>Hi, I'm Vamshi Raghuram</h1>
+            <p class="typing-effect"></p>
+        </section>
 
-    <section id="about" data-aos="fade-up">
-        <h2>About Me</h2>
-        <p>I’m a Data Scientist who doesn’t just crunch numbers—I sculpt insights. From machine learning models that think ahead to visualizations that speak volumes, I bridge the gap between raw data and real-world impact. My toolbox is vast, my passion is relentless, and my goal is simple—to transform the unseen into strategies that ignite change.</p>
-    </section>
+        <section id="about" data-aos="fade-up">
+            <h2>About Me</h2>
+            <p style="max-width: 800px;">I’m a Data Scientist who doesn’t just crunch numbers—I sculpt insights. From machine learning models that think ahead to visualizations that speak volumes, I bridge the gap between raw data and real-world impact. My toolbox is vast, my passion is relentless, and my goal is simple—to transform the unseen into strategies that ignite change.</p>
+        </section>
 
-    <section id="projects" data-aos="fade-up">
-        <h2>Projects</h2>
-        <div class="project-container">
-            <div class="project" data-aos="flip-left">
-                <div class="project-front">
-                    <h3>Drug Recommendation System Based On Sentiment Analysis Of Drug Reviews</h3>
-                    <p>The Drug Recommender System leverages machine learning for sentiment analysis, aiding medical professionals and patients in making informed decisions regarding drugs.</p>
+        <section id="projects" data-aos="fade-up">
+            <h2>Projects</h2>
+            <div class="project-container">
+                <div class="project" data-aos="fade-up">
+                    <div class="project-front">
+                        <h3>Drug Recommendation System</h3>
+                        <p>Leverages machine learning for sentiment analysis to aid medical professionals.</p>
+                    </div>
+                    <div class="project-back">
+                        <p>Tech Stack: Python, Scikit-learn, Sentiment Analysis, Jupyter</p>
+                        <a href="https://github.com/Vamshi-Raghuram-G/Drug-Recommendation-System-Based-On-Sentiment-Analysis-Of-Drug-Reviews-Using-Machine-Learning.git" class="project-button">View Project</a>
+                    </div>
                 </div>
-                <div class="project-back">
-                    <p>Tech Stack: Python, Scikit-learn, Sentiment Analysis, Jupyter Notebook</p>
-                    <a href="https://github.com/Vamshi-Raghuram-G/Drug-Recommendation-System-Based-On-Sentiment-Analysis-Of-Drug-Reviews-Using-Machine-Learning.git" class="project-button">View Project</a>
+                <div class="project" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-front">
+                        <h3>Retail Sales Prediction</h3>
+                        <p>Forecasting daily sales for 3,000+ drug stores up to six weeks in advance.</p>
+                    </div>
+                    <div class="project-back">
+                        <p>Tech Stack: Python, Time Series Analysis, Scikit-learn, Jupyter</p>
+                        <a href="https://github.com/Vamshi-Raghuram-G/Retail-Sales-Prediction.git" class="project-button">View Project</a>
+                    </div>
                 </div>
-            </div>
-            <div class="project" data-aos="flip-right">
-                <div class="project-front">
-                    <h3>Retail Sales Prediction</h3>
-                    <p>Forecasting daily sales for XYZ's 3,000+ drug stores across seven countries, up to six weeks in advance, using historical data and influencing factors.</p>
+                <div class="project" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-front">
+                        <h3>Tableau & Power BI Projects</h3>
+                        <p>A collection of data visualization projects with interactive dashboards.</p>
+                    </div>
+                    <div class="project-back">
+                        <p>Tech Stack: Tableau, Power BI, Data Visualization</p>
+                        <a href="https://github.com/Vamshi-Raghuram-G/Tableau-Power-BI-Projects.git" class="project-button">View Project</a>
+                    </div>
                 </div>
-                <div class="project-back">
-                    <p>Tech Stack: Python, Time Series Analysis, Feature Engineering, Scikit-learn, Jupyter Notebook</p>
-                    <a href="https://github.com/Vamshi-Raghuram-G/Retail-Sales-Prediction.git" class="project-button">View Project</a>
+                <div class="project" data-aos="fade-up" data-aos-delay="300">
+                     <div class="project-front">
+                        <h3>SQL Data Warehouse Project</h3>
+                        <p>A data warehousing solution with Medallion Architecture for analytics.</p>
+                    </div>
+                    <div class="project-back">
+                        <p>Tech Stack: SQL, Medallion Architecture, Data Warehouse</p>
+                        <a href="https://github.com/Vamshi-Raghuram-G/SQL-Data-Warehouse-Project.git" class="project-button">View Project</a>
+                    </div>
                 </div>
-            </div>
-            <div class="project" data-aos="flip-left">
-                <div class="project-front">
-                    <h3>Tableau & Power BI Projects</h3>
-                    <p>A collection of data visualization projects featuring interactive dashboards, diverse chart types, and comprehensive reports across multiple domains.</p>
-                </div>
-                <div class="project-back">
-                    <p>Tech Stack: Tableau, Power BI, Data Visualization</p>
-                    <a href="https://github.com/Vamshi-Raghuram-G/Tableau-Power-BI-Projects.git" class="project-button">View Project</a>
-                </div>
-            </div>
-            <div class="project" data-aos="flip-right">
-                <div class="project-front">
-                    <h3>SQL Data Warehouse Project</h3>
-                    <p>A comprehensive data warehousing solution with Medallion Architecture (Bronze, Silver, Gold layers) for reporting and analytics.</p>
-                </div>
-                <div class="project-back">
-                    <p>Tech Stack: SQL, Medallion Architecture, Data Warehouse</p>
-                    <a href="https://github.com/Vamshi-Raghuram-G/SQL-Data-Warehouse-Project.git" class="project-button">View Project</a>
-                </div>
-            </div>
-            <div class="project" data-aos="flip-left">
-                <div class="project-front">
-                    <h3>Fashion MNIST</h3>
-                    <p>A deep learning classifier to recognize and categorize clothing items from grayscale images, enhancing automated image recognition.</p>
-                </div>
-                <div class="project-back">
-                    <p>Tech Stack: Python, Neural Networks, Tensorflow, Jupyter Notebook</p>
-                    <a href="https://github.com/Vamshi-Raghuram-G/Fashion-mnist.git" class="project-button">View Project</a>
-                </div>
-            </div>
-            <div class="project" data-aos="flip-right">
-                <div class="project-front">
-                    <h3>Insurance Forecast</h3>
-                    <p>A deep learning system predicting healthcare costs based on demographic and lifestyle factors for insurers and policyholders.</p>
-                </div>
-                <div class="project-back">
-                    <p>Tech Stack: Python, Neural Networks, Tensorflow, Jupyter Notebook</p>
-                    <a href="https://github.com/Vamshi-Raghuram-G/Insurance-Forecast.git" class="project-button">View Project</a>
-                </div>
-            </div>
-        </div>
-    </section>
+                 </div>
+        </section>
 
-    <section id="skills" data-aos="fade-up">
-        <h2>Skills</h2>
-        <div class="skills-container">
+        <section id="skills" data-aos="fade-up">
+            <h2>Skills</h2>
             <div class="skills-block">
                 <div class="skills-tags">
-                    <span>Python</span>
-                    <span>SQL</span>
-                    <span>Machine Learning</span>
-                    <span>Deep Learning</span>
-                    <span>NLP</span>
-                    <span>Tensorflow</span>
-                    <span>Tableau</span>
-                    <span>Power BI</span>
-                    <span>IBM SPSS Statistics</span>
-                    <span>MongoDB</span>
-                    <span>Exploratory Data Analysis</span>
-                    <span>Data Cleaning</span>
-                    <span>Data Visualization</span>
-                    <span>Object Oriented Programming</span>
-                    <span>Time Series Forecasting</span>
-                    <span>Microsoft Azure</span>
-                    <span>Web Scraping</span>
-                    <span>Statistics</span>
-                    <span>Jira</span>
-                    <span>Git</span>
+                    <span>Python</span> <span>SQL</span> <span>Machine Learning</span> <span>Deep Learning</span> <span>NLP</span> <span>Tensorflow</span> <span>Tableau</span> <span>Power BI</span> <span>IBM SPSS Statistics</span> <span>MongoDB</span> <span>Exploratory Data Analysis</span> <span>Data Cleaning</span> <span>Data Visualization</span> <span>Object Oriented Programming</span> <span>Time Series Forecasting</span> <span>Microsoft Azure</span> <span>Web Scraping</span> <span>Statistics</span> <span>Jira</span> <span>Git</span>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="certifications" data-aos="fade-up">
-        <h2>Certifications</h2>
-        <div class="certifications-container">
-            <div class="certification" data-aos="fade-up">
-                <h3>Data Science and AI</h3>
-                <p><strong>Issuer:</strong> IBM</p>
-                <a href="https://learnvista.skillsnetwork.site/certificates/d8e7f8cc-4c69-48ce-ad36-aa8b0c1a9f80" class="project-button">Verify Certificate</a>
+        </section>
+        
+        <section id="certifications" data-aos="fade-up">
+            <h2>Certifications</h2>
+             <div class="certifications-container">
+                <div class="certification" data-aos="fade-up">
+                    <h3>Data Science and AI</h3>
+                    <p><strong>Issuer:</strong> IBM</p>
+                    <a href="https://learnvista.skillsnetwork.site/certificates/d8e7f8cc-4c69-48ce-ad36-aa8b0c1a9f80" class="project-button">Verify Certificate</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="resume" data-aos="fade-up">
-        <h2>Resume</h2>
-        <a href="https://raw.githubusercontent.com/Vamshi-Raghuram-G/Vamshi-Raghuram-G.github.io/main/Vamshi%20Raghuram%20G_Resume.pdf" download="Vamshi Raghuram G_Resume.pdf" class="resume-button"><i class="fas fa-download"></i> Download Resume</a>
-    </section>
+        <section id="resume" data-aos="fade-up">
+            <h2>Resume</h2>
+            <a href="https://raw.githubusercontent.com/Vamshi-Raghuram-G/Vamshi-Raghuram-G.github.io/main/Vamshi%20Raghuram%20G_Resume.pdf" download="Vamshi Raghuram G_Resume.pdf" class="resume-button"><i class="fas fa-download"></i> Download Resume</a>
+        </section>
 
-    <section id="contact" data-aos="fade-up">
-        <h2>Find Me Online</h2>
-        <div>
-            <a href="https://www.linkedin.com/in/vamshi-raghuram-g" class="social-button"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://github.com/Vamshi-Raghuram-G" class="social-button"><i class="fab fa-github"></i> GitHub</a>
-        </div>
-    </section>
+        <section id="contact" data-aos="fade-up">
+            <h2>Find Me Online</h2>
+            <div>
+                <a href="https://www.linkedin.com/in/vamshi-raghuram-g" class="social-button"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/Vamshi-Raghuram-G" class="social-button"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </section>
 
-    <footer>
-        <p>Driven by curiosity, ever-evolving. © 2025 Vamshi Raghuram</p>
-    </footer>
+        <footer>
+            <p>Driven by curiosity, ever-evolving. © 2025 Vamshi Raghuram</p>
+        </footer>
+    </div>
 
     <button id="back-to-top" onclick="scrollToTop()">⬆</button>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true,
-        });
+        // --- Existing Scripts (AOS, Dark Mode, etc.) ---
+        AOS.init({ duration: 1000, once: true });
 
         function toggleDarkMode() {
             document.body.classList.toggle("dark-mode");
         }
 
-        // Back-to-Top Button
         window.onscroll = function() {
             let btn = document.getElementById('back-to-top');
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -766,59 +389,130 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Particle Animation
-            const particlesContainer = document.getElementById('particles');
-            let numParticles = window.innerWidth <= 480 ? 20 : window.innerWidth <= 768 ? 30 : 50;
-            for (let i = 0; i < numParticles; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                particle.style.left = `${Math.random() * 100}vw`;
-                particle.style.top = `${Math.random() * 100}vh`;
-                particle.style.animationDelay = `${Math.random() * 10}s`;
-                particlesContainer.appendChild(particle);
-            }
-
-            // --- Improved Typing Animation ---
             const typingElement = document.querySelector('.typing-effect');
             const textsToType = ["Data Scientist", "Data Maverick", "Insight Catalyst"];
-            let textIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
+            let textIndex = 0, charIndex = 0, isDeleting = false;
 
             function type() {
                 const currentText = textsToType[textIndex];
-                let displayText = '';
-
-                if (isDeleting) {
-                    // Deleting text
-                    displayText = currentText.substring(0, charIndex - 1);
-                    charIndex--;
-                } else {
-                    // Typing text
-                    displayText = currentText.substring(0, charIndex + 1);
-                    charIndex++;
-                }
-
+                let displayText = isDeleting ? currentText.substring(0, charIndex - 1) : currentText.substring(0, charIndex + 1);
                 typingElement.textContent = displayText;
-
+                charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
                 let typingSpeed = isDeleting ? 75 : 150;
 
                 if (!isDeleting && charIndex === currentText.length) {
-                    // Pause at the end after typing
-                    typingSpeed = 2000;
-                    isDeleting = true;
+                    typingSpeed = 2000; isDeleting = true;
                 } else if (isDeleting && charIndex === 0) {
-                    // Finished deleting
-                    isDeleting = false;
-                    textIndex = (textIndex + 1) % textsToType.length;
-                    typingSpeed = 500; // Pause before typing the next text
+                    isDeleting = false; textIndex = (textIndex + 1) % textsToType.length; typingSpeed = 500;
                 }
-
                 setTimeout(type, typingSpeed);
             }
-            
-            // Start the animation
             type();
+        });
+
+
+        // --- NEW: Interactive Data Universe Script ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. Scene Setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#bg-canvas'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        
+        // 2. Create Objects (Stars and Nebulas)
+        function createStarfield(count, size, color) {
+            const geometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(count * 3);
+            for (let i = 0; i < count; i++) {
+                positions[i * 3] = (Math.random() - 0.5) * 200;
+                positions[i * 3 + 1] = (Math.random() - 0.5) * 200;
+                positions[i * 3 + 2] = (Math.random() - 0.5) * 200;
+            }
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const material = new THREE.PointsMaterial({ size: size, color: color, transparent: true, opacity: 0.8, depthWrite: false });
+            return new THREE.Points(geometry, material);
+        }
+
+        const stars = createStarfield(20000, 0.03, 0xffffff);
+        scene.add(stars);
+
+        // Nebulas for each section
+        const nebulaColors = [0x3498DB, 0x2ECC71, 0xE74C3C, 0xF1C40F, 0x9B59B6];
+        const nebulas = [];
+        const sectionPositions = [
+            { x: 5, y: -10, z: 10 },   // About
+            { x: -10, y: -25, z: 0 },  // Projects
+            { x: 10, y: -40, z: -5 },   // Skills
+            { x: 0, y: -55, z: 5 },  // Certifications
+            { x: 5, y: -70, z: 0 }     // Resume/Contact
+        ];
+
+        sectionPositions.forEach((pos, i) => {
+            const nebula = createStarfield(2000, 0.2, nebulaColors[i % nebulaColors.length]);
+            nebula.position.set(pos.x, pos.y, pos.z);
+            scene.add(nebula);
+            nebulas.push(nebula);
+        });
+
+        camera.position.z = 25;
+
+        // 3. Mouse Interaction
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        // 4. GSAP Scroll Animation
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.content-wrapper',
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: 1.5, // Smooth scrubbing
+            }
+        });
+        
+        // Define camera path
+        tl.to(camera.position, { x: 0, y: -12, z: 18 }, 'about')
+          .to(camera.rotation, { x: 0.2, y: 0, z: 0 }, 'about')
+          
+          .to(camera.position, { x: -5, y: -27, z: 15 }, 'projects')
+          .to(camera.rotation, { x: 0.1, y: -0.5, z: 0 }, 'projects')
+
+          .to(camera.position, { x: 5, y: -42, z: 12 }, 'skills')
+          .to(camera.rotation, { x: -0.1, y: 0.3, z: 0 }, 'skills')
+
+          .to(camera.position, { x: 0, y: -57, z: 15 }, 'certifications')
+          .to(camera.rotation, { x: 0, y: 0, z: 0 }, 'certifications')
+          
+          .to(camera.position, { x: 0, y: -72, z: 18 }, 'contact')
+          .to(camera.rotation, { x: 0, y: 0, z: 0 }, 'contact');
+        
+
+        // 5. Animation Loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Mouse parallax effect
+            camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.02;
+            camera.position.y += (-mouseY * 0.5 - camera.position.y) * 0.02;
+            camera.lookAt(scene.position);
+
+            // Rotate stars and nebulas for a dynamic feel
+            stars.rotation.y += 0.0001;
+            nebulas.forEach(n => n.rotation.y += 0.0005);
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // 6. Handle Window Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
         });
     </script>
 </body>
