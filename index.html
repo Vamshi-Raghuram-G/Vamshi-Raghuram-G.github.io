@@ -759,16 +759,19 @@
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        // Initialize AOS animations with error handling
         if (typeof AOS !== 'undefined') {
             AOS.init({ duration: 1000, once: true });
         } else {
             console.warn('AOS failed to load. Animations disabled.');
         }
 
+        // Dark mode toggle function
         function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
+            document.body.classList.toggle('dark-mode');
         }
 
+        // Handle keyboard events for dark mode toggle
         function handleToggleKey(event) {
             if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
@@ -776,7 +779,8 @@
             }
         }
 
-        const phrases = ["Data Scientist", "Data Maverick", "Insight Catalyst"];
+        // Dynamic typing effect
+        const phrases = ['Data Scientist', 'Data Maverick', 'Insight Catalyst'];
         const typingElement = document.querySelector('.typing-effect');
         if (phrases && typingElement) {
             let phraseIndex = 0;
@@ -805,17 +809,22 @@
 
             type();
         } else {
-            console.warn('Typing effect failed: phrases or typing element not found.');
+            console.error('Typing effect failed: phrases or typing element not found.');
         }
 
+        // Smooth scrolling for navigation links
         document.querySelectorAll('.nav-button').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
-                document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
 
+        // Back-to-top button visibility
         window.onscroll = function() {
             let btn = document.getElementById('back-to-top');
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -825,10 +834,12 @@
             }
         };
 
+        // Scroll to top function
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // Particle animation
         document.addEventListener('DOMContentLoaded', () => {
             const particlesContainer = document.getElementById('particles');
             let numParticles = window.innerWidth <= 480 ? 10 : window.innerWidth <= 768 ? 20 : 50;
@@ -841,20 +852,6 @@
                 particlesContainer.appendChild(particle);
             }
         });
-
-        /* Optional: Use particles.js for better performance
-        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-        particlesJS('particles', {
-            particles: {
-                number: { value: window.innerWidth <= 480 ? 10 : 50 },
-                color: { value: '#3498DB' },
-                shape: { type: 'circle' },
-                opacity: { value: 0.5 },
-                size: { value: 5 },
-                move: { enable: true, speed: 1 }
-            }
-        });
-        */
     </script>
 </body>
 </html>
