@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vamshi Raghuram's Portfolio</title>
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -18,23 +21,22 @@
             --text-light: #2C3E50;
             --text-fixed: #343A40;
             --button-bg-light: #3498DB;
-            --button-hover-light: #2ECC71;
+            --button-hover-light: #5DADE2;
             --project-back-light: #CED4DA;
             --skill-tag-bg: #E9ECEF;
-
             --primary-dark: #2C3E50;
             --secondary-dark: #E9ECEF;
             --accent-dark: #DEE2E6;
             --text-dark: #ECF0F1;
             --button-bg-dark: #3498DB;
-            --button-hover-dark: #2ECC71;
+            --button-hover-dark: #5DADE2;
             --project-back-dark: #CED4DA;
-            --skill-tag-bg-dark: #7F8C8D;
+            --skill-tag-bg-dark: #95A5A6;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--primary-light);
+            background: var(--primary-light);
             color: var(--text-light);
             text-align: center;
             margin: 0;
@@ -59,7 +61,7 @@
             position: absolute;
             width: 5px;
             height: 5px;
-            background-color: #3498DB;
+            background: #3498DB;
             border-radius: 50%;
             opacity: 0.5;
             animation: float 10s infinite ease-in-out;
@@ -73,7 +75,7 @@
         }
 
         .dark-mode .particle {
-            background-color: #3498DB;
+            background: #3498DB;
             box-shadow: 0 0 5px #3498DB;
         }
 
@@ -121,8 +123,13 @@
             transform: translateX(-50%);
         }
 
-        .nav-button:hover::after {
+        .nav-button:hover::after, .nav-button:focus::after {
             width: 100%;
+        }
+
+        .nav-button:focus {
+            outline: 2px solid var(--button-hover-light);
+            outline-offset: 2px;
         }
 
         .toggle-container {
@@ -158,6 +165,11 @@
             transition: 0.3s;
         }
 
+        .toggle-switch:focus {
+            outline: 2px solid var(--button-hover-light);
+            outline-offset: 2px;
+        }
+
         .dark-mode .toggle-switch {
             background: var(--button-bg-dark);
         }
@@ -171,7 +183,11 @@
             position: relative;
         }
 
-        /* Hero Section */
+        h2 {
+            font-size: clamp(1.8em, 4vw, 2.5em);
+            margin-bottom: 20px;
+        }
+
         #hero {
             height: calc(30vh - 48px);
             display: flex;
@@ -192,22 +208,14 @@
             overflow: hidden;
             white-space: nowrap;
             border-right: 3px solid var(--text-light);
-            animation: typing 6s steps(55) infinite, blink 0.75s step-end infinite;
             display: inline-block;
+            min-width: 200px;
         }
 
-        @keyframes typing {
-            0% { width: 0 }
-            70% { width: 100% }
-            100% { width: 100% }
+        .dark-mode .typing-effect {
+            border-right-color: var(--text-dark);
         }
 
-        @keyframes blink {
-            0%, 100% { border-color: var(--text-light); }
-            50% { border-color: transparent; }
-        }
-
-        /* Flip Card Styles (Projects) */
         .project {
             position: relative;
             width: 45%;
@@ -215,6 +223,11 @@
             perspective: 1000px;
             z-index: 1;
             margin: 10px auto;
+            transition: transform 0.3s ease;
+        }
+
+        .project:hover {
+            transform: scale(1.02);
         }
 
         .project-front, .project-back {
@@ -271,7 +284,6 @@
             transform: rotateY(0deg);
         }
 
-        /* Certification Block */
         .certification {
             position: relative;
             width: 45%;
@@ -302,11 +314,6 @@
             margin: 10px 0;
         }
 
-        .certification .project-button {
-            margin-top: 0;
-        }
-
-        /* Skills Block */
         .skills-block {
             position: relative;
             width: calc(45% + 45% + 20px);
@@ -341,7 +348,6 @@
             font-size: 0.9em;
         }
 
-        /* Containers */
         .project-container, .certifications-container, .skills-container {
             display: flex;
             flex-wrap: wrap;
@@ -353,16 +359,22 @@
             text-decoration: none;
             color: var(--text-dark);
             background: var(--button-bg-light);
-            padding: 10px 15px;
+            padding: 12px 18px;
             border-radius: 5px;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 44px;
             margin: 5px;
-            transition: background 0.3s;
-            opacity: 1;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .project-button:hover, .social-button:hover {
+        .project-button:hover, .social-button:hover,
+        .project-button:focus, .social-button:focus {
             background: var(--button-hover-light);
+            transform: scale(1.05);
         }
 
         .resume-button {
@@ -371,14 +383,19 @@
             background: var(--button-bg-light);
             padding: 12px 20px;
             border-radius: 5px;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 44px;
             margin: 10px;
-            transition: background 0.3s;
-            opacity: 1;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .resume-button:hover {
+        .resume-button:hover, .resume-button:focus {
             background: var(--button-hover-light);
+            transform: scale(1.05);
         }
 
         #back-to-top {
@@ -394,12 +411,13 @@
             font-size: 20px;
             cursor: pointer;
             display: none;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
             z-index: 2;
         }
 
-        #back-to-top:hover {
+        #back-to-top:hover, #back-to-top:focus {
             background: var(--button-hover-light);
+            transform: scale(1.1);
         }
 
         footer {
@@ -411,9 +429,8 @@
             z-index: 1;
         }
 
-        /* Dark Mode */
         .dark-mode {
-            background-color: var(--primary-dark);
+            background: var(--primary-dark);
             color: var(--text-dark);
         }
 
@@ -427,7 +444,11 @@
             background: var(--project-back-dark);
         }
 
-        /* Responsive Styles */
+        .dark-mode .skills-tags span {
+            background: var(--skill-tag-bg-dark);
+            color: var(--text-dark);
+        }
+
         @media (max-width: 768px) {
             header {
                 flex-direction: row;
@@ -463,18 +484,11 @@
             }
 
             #hero h1 {
-                font-size: 2em;
+                font-size: clamp(1.8em, 6vw, 2.5em);
             }
 
             .typing-effect {
-                font-size: clamp(0.8em, 2.5vw, 1.2em);
-                animation: typing-mobile 6s steps(55) infinite, blink 0.75s step-end infinite;
-            }
-
-            @keyframes typing-mobile {
-                0% { width: 0 }
-                70% { width: 100% }
-                100% { width: 100% }
+                font-size: clamp(0.8em, 3vw, 1.4em);
             }
 
             .project, .certification, .skills-block {
@@ -526,12 +540,11 @@
             }
 
             #hero h1 {
-                font-size: 1.8em;
+                font-size: clamp(1.6em, 5vw, 2.2em);
             }
 
             .typing-effect {
-                font-size: clamp(0.7em, 2vw, 1em);
-                animation: typing-mobile 6s steps(55) infinite, blink 0.75s step-end infinite;
+                font-size: clamp(0.8em, 2.5vw, 1.2em);
             }
 
             .resume-button, .social-button {
@@ -540,7 +553,7 @@
             }
 
             .project-button {
-                padding: 8px 12px;
+                padding: 10px 15px;
                 font-size: 0.85em;
             }
 
@@ -588,13 +601,11 @@
         }
     </style>
 </head>
-<body> <!-- Light mode as default -->
-    <!-- Particle Background -->
+<body>
     <div id="particles"></div>
 
-    <!-- Header -->
     <header>
-        <nav>
+        <nav role="navigation" aria-label="Main navigation">
             <ul>
                 <li><a href="#about" class="nav-button">About</a></li>
                 <li><a href="#projects" class="nav-button">Projects</a></li>
@@ -606,25 +617,22 @@
         </nav>
         <div class="toggle-container">
             <span>Dark Mode</span>
-            <div class="toggle-switch" onclick="toggleDarkMode()"></div>
+            <div class="toggle-switch" onclick="toggleDarkMode()" onkeydown="handleToggleKey(event)" role="button" aria-label="Toggle dark mode" tabindex="0"></div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero" data-aos="fade-down">
-        <h1>Hi, I'm Vamshi Raghuram</h1>
+    <section id="hero" data-aos="fade-down" role="region" aria-labelledby="hero-h1">
+        <h1 id="hero-h1">Hi, I'm Vamshi Raghuram</h1>
         <p class="typing-effect"></p>
     </section>
 
-    <!-- About Section -->
-    <section id="about" data-aos="fade-up">
-        <h2>About Me</h2>
+    <section id="about" data-aos="fade-up" role="region" aria-labelledby="about-h2">
+        <h2 id="about-h2">About Me</h2>
         <p>I’m a Data Scientist who doesn’t just crunch numbers—I sculpt insights. From machine learning models that think ahead to visualizations that speak volumes, I bridge the gap between raw data and real-world impact. My toolbox is vast, my passion is relentless, and my goal is simple—to transform the unseen into strategies that ignite change.</p>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" data-aos="fade-up">
-        <h2>Projects</h2>
+    <section id="projects" data-aos="fade-up" role="region" aria-labelledby="projects-h2">
+        <h2 id="projects-h2">Projects</h2>
         <div class="project-container">
             <div class="project" data-aos="flip-left">
                 <div class="project-front">
@@ -689,9 +697,8 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" data-aos="fade-up">
-        <h2>Skills</h2>
+    <section id="skills" data-aos="fade-up" role="region" aria-labelledby="skills-h2">
+        <h2 id="skills-h2">Skills</h2>
         <div class="skills-container">
             <div class="skills-block">
                 <div class="skills-tags">
@@ -720,9 +727,8 @@
         </div>
     </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications" data-aos="fade-up">
-        <h2>Certifications</h2>
+    <section id="certifications" data-aos="fade-up" role="region" aria-labelledby="certifications-h2">
+        <h2 id="certifications-h2">Certifications</h2>
         <div class="certifications-container">
             <div class="certification" data-aos="fade-up">
                 <h3>Data Science and AI</h3>
@@ -732,18 +738,16 @@
         </div>
     </section>
 
-    <!-- Resume Section -->
-    <section id="resume" data-aos="fade-up">
-        <h2>Resume</h2>
-        <a href="https://raw.githubusercontent.com/Vamshi-Raghuram-G/Vamshi-Raghuram-G.github.io/main/Vamshi%20Raghuram%20G_Resume.pdf" download="Vamshi Raghuram G_Resume.pdf" class="resume-button"><i class="fas fa-download"></i> Download Resume</a>
+    <section id="resume" data-aos="fade-up" role="region" aria-labelledby="resume-h2">
+        <h2 id="resume-h2">Resume</h2>
+        <a href="https://raw.githubusercontent.com/Vamshi-Raghuram-G/Vamshi-Raghuram-G.github.io/main/Vamshi%20Raghuram%20G_Resume.pdf" download="Vamshi Raghuram G_Resume.pdf" class="resume-button" aria-label="Download Vamshi Raghuram's resume"><i class="fas fa-download"></i> Download Resume</a>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" data-aos="fade-up">
-        <h2>Find Me Online</h2>
+    <section id="contact" data-aos="fade-up" role="region" aria-labelledby="contact-h2">
+        <h2 id="contact-h2">Find Me Online</h2>
         <div>
-            <a href="https://www.linkedin.com/in/vamshi-raghuram-g" class="social-button"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://github.com/Vamshi-Raghuram-G" class="social-button"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/vamshi-raghuram-g" class="social-button" aria-label="Visit Vamshi Raghuram's LinkedIn profile"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/Vamshi-Raghuram-G" class="social-button" aria-label="Visit Vamshi Raghuram's GitHub profile"><i class="fab fa-github"></i> GitHub</a>
         </div>
     </section>
 
@@ -751,44 +755,67 @@
         <p>Driven by curiosity, ever-evolving. © 2025 Vamshi Raghuram</p>
     </footer>
 
-    <!-- Back-to-Top Button -->
-    <button id="back-to-top" onclick="scrollToTop()">⬆</button>
+    <button id="back-to-top" onclick="scrollToTop()" aria-label="Scroll to top">⬆</button>
 
-    <!-- Scripts -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true,
-        });
+        if (typeof AOS !== 'undefined') {
+            AOS.init({ duration: 1000, once: true });
+        } else {
+            console.warn('AOS failed to load. Animations disabled.');
+        }
 
         function toggleDarkMode() {
             document.body.classList.toggle("dark-mode");
         }
 
-        // Typing Effect with Exact Width
-        const text = "Data Scientist | Data Maverick | Insight Catalyst";
+        function handleToggleKey(event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleDarkMode();
+            }
+        }
+
+        const phrases = ["Data Scientist", "Data Maverick", "Insight Catalyst"];
         const typingElement = document.querySelector('.typing-effect');
-        typingElement.textContent = text;
+        if (phrases && typingElement) {
+            let phraseIndex = 0;
+            let charIndex = 0;
 
-        // Calculate and set the exact width of the text
-        const tempSpan = document.createElement('span');
-        tempSpan.style.visibility = 'hidden';
-        tempSpan.style.position = 'absolute';
-        tempSpan.style.fontSize = getComputedStyle(typingElement).fontSize;
-        tempSpan.style.fontFamily = getComputedStyle(typingElement).fontFamily;
-        tempSpan.style.whiteSpace = 'nowrap';
-        tempSpan.textContent = text;
-        document.body.appendChild(tempSpan);
-        const textWidth = tempSpan.offsetWidth;
-        document.body.removeChild(tempSpan);
+            function type() {
+                if (charIndex < phrases[phraseIndex].length) {
+                    typingElement.textContent = phrases[phraseIndex].slice(0, charIndex + 1);
+                    charIndex++;
+                    setTimeout(type, 100);
+                } else {
+                    setTimeout(erase, 2000);
+                }
+            }
 
-        // Set the width and ensure animation respects it
-        typingElement.style.maxWidth = `${textWidth}px`;
-        typingElement.style.width = '0'; // Start at 0 for animation
-        typingElement.style.animation = `typing 6s steps(55, end) infinite, blink 0.75s step-end infinite`;
+            function erase() {
+                if (charIndex > 0) {
+                    typingElement.textContent = phrases[phraseIndex].slice(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(erase, 50);
+                } else {
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    setTimeout(type, 200);
+                }
+            }
 
-        // Back-to-Top Button
+            type();
+        } else {
+            console.warn('Typing effect failed: phrases or typing element not found.');
+        }
+
+        document.querySelectorAll('.nav-button').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
         window.onscroll = function() {
             let btn = document.getElementById('back-to-top');
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -802,10 +829,9 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Particle Animation with Blue Color
         document.addEventListener('DOMContentLoaded', () => {
             const particlesContainer = document.getElementById('particles');
-            let numParticles = window.innerWidth <= 480 ? 20 : window.innerWidth <= 768 ? 30 : 50;
+            let numParticles = window.innerWidth <= 480 ? 10 : window.innerWidth <= 768 ? 20 : 50;
             for (let i = 0; i < numParticles; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
@@ -815,6 +841,20 @@
                 particlesContainer.appendChild(particle);
             }
         });
+
+        /* Optional: Use particles.js for better performance
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        particlesJS('particles', {
+            particles: {
+                number: { value: window.innerWidth <= 480 ? 10 : 50 },
+                color: { value: '#3498DB' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5 },
+                size: { value: 5 },
+                move: { enable: true, speed: 1 }
+            }
+        });
+        */
     </script>
 </body>
 </html>
