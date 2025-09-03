@@ -3,740 +3,509 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vamshi Raghuram's Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <title>Vamshi Raghuram's Portfolio // Data Architect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root {
-            --primary-light: #F8F9FA;
-            --secondary-light: #E9ECEF;
-            --accent-light: #DEE2E6;
-            --text-light: #2C3E50;
-            --text-fixed: #343A40;
-            --button-bg-light: #3498DB;
-            --button-hover-light: #2ECC71;
-            --project-back-light: #CED4DA;
-            --skill-tag-bg: #E9ECEF;
-
-            --primary-dark: #2C3E50;
-            --secondary-dark: #E9ECEF;
-            --accent-dark: #DEE2E6;
-            --text-dark: #ECF0F1;
-            --button-bg-dark: #3498DB;
-            --button-hover-dark: #2ECC71;
-            --project-back-dark: #CED4DA;
-            --skill-tag-bg-dark: #7F8C8D;
+            --bg-dark-blue: #0A192F;
+            --card-blue: #172A45;
+            --text-light-gray: #CCD6F6;
+            --text-mid-gray: #8892B0;
+            --accent-cyan: #64FFDA;
+            --accent-cyan-tint: rgba(100, 255, 218, 0.1);
+            --grid-lines: rgba(204, 214, 246, 0.05);
+            --font-sans: 'Poppins', sans-serif;
+            --font-mono: 'Source Code Pro', monospace;
         }
 
+        /* --- Base & Background --- */
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--primary-light);
-            color: var(--text-light);
-            text-align: center;
+            font-family: var(--font-sans);
+            background-color: var(--bg-dark-blue);
+            color: var(--text-mid-gray);
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            transition: all 0.3s ease-in-out;
             font-size: 16px;
+            
+            /* Animated Grid Background */
+            background-image:
+                linear-gradient(var(--grid-lines) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-lines) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: pan-grid 60s linear infinite;
+        }
+
+        @keyframes pan-grid {
+            0% { background-position: 0 0; }
+            100% { background-position: 300px 300px; }
+        }
+
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-mono);
+            color: var(--text-light-gray);
+            margin: 0;
+        }
+
+        h2.section-heading {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            margin-bottom: 40px;
+        }
+
+        h2.section-heading::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: var(--text-mid-gray);
+            opacity: 0.3;
+            margin-left: 20px;
+        }
+        
+        /* --- Header & Navigation --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-light-gray);
+            font-family: var(--font-mono);
+            padding: 10px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-cyan);
+        }
+        
+        /* --- Hero Section & Neural Net BG --- */
+        #hero {
+            padding: 150px 0;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
             position: relative;
         }
 
-        #particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        #neural-net-bg {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 40%;
+            max-width: 500px;
+            opacity: 0.15;
             z-index: -1;
             pointer-events: none;
         }
 
-        .particle {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background-color: #3498DB;
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: float 10s infinite ease-in-out;
-            box-shadow: 0 0 5px #3498DB;
+        #neural-net-bg .neuron, #neural-net-bg .axon {
+            stroke: var(--accent-cyan);
+            stroke-width: 1;
+            fill: none;
         }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
+        
+        #neural-net-bg .neuron {
+             animation: pulse 4s infinite ease-in-out;
         }
-
-        .dark-mode .particle {
-            background-color: #3498DB;
-            box-shadow: 0 0 5px #3498DB;
-        }
-
-        header {
-            background: var(--secondary-light);
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 1;
-        }
-
-        nav {
-            flex: 1;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            gap: 20px;
-            margin: 0;
-        }
-
-        .nav-button {
-            text-decoration: none;
-            color: var(--text-fixed);
-            font-weight: bold;
-            padding: 10px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .nav-button::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background: var(--text-fixed);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-button:hover::after {
-            width: 100%;
-        }
-
-        .toggle-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 14px;
-            font-weight: bold;
-            margin-right: 16px;
-            color: var(--text-fixed);
-        }
-
-        .toggle-switch {
-            width: 50px;
-            height: 25px;
-            background: var(--button-bg-light);
-            border-radius: 50px;
-            position: relative;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .toggle-switch::before {
-            content: '';
-            width: 20px;
-            height: 20px;
-            background: var(--primary-light);
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 5px;
-            transform: translateY(-50%);
-            transition: 0.3s;
-        }
-
-        .dark-mode .toggle-switch {
-            background: var(--button-bg-dark);
-        }
-
-        .dark-mode .toggle-switch::before {
-            left: 25px;
-        }
-
-        section {
-            padding: 80px 20px;
-            position: relative;
-        }
-
-        /* Hero Section - UPDATED */
-        #hero {
-            height: calc(30vh - 48px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: var(--primary-light); /* New text color for contrast */
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-
-        /* New Keyframes for Background Animation */
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        
+        @keyframes pulse {
+            0% { stroke-opacity: 0.4; }
+            50% { stroke-opacity: 1; }
+            100% { stroke-opacity: 0.4; }
         }
 
         #hero h1 {
-            font-size: clamp(1.5em, 5vw, 2.5em);
-            margin: 0;
-            color: var(--primary-light); /* Ensure consistent light color */
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 1.1;
         }
 
-        /* Typing Effect - UPDATED */
-        .typing-effect {
-            font-size: clamp(0.9em, 3vw, 1.5em);
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid var(--primary-light); /* Updated cursor color */
-            animation: blink 0.75s step-end infinite;
-            display: inline-block;
-            min-height: 1.5em; /* Prevent layout shift */
+        #hero h3 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            color: var(--text-mid-gray);
+            margin-top: 10px;
         }
-
-        /* Old 'typing' keyframes are removed as JS now handles the animation */
         
-        @keyframes blink {
-            0%, 100% { border-color: var(--primary-light); } /* Updated cursor color */
-            50% { border-color: transparent; }
+        .typing-effect {
+             color: var(--accent-cyan);
         }
 
-        /* Flip Card Styles (Projects) */
+        #hero p {
+            max-width: 600px;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* --- General Section Layout --- */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-content {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .section-content p, .section-content ul {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* --- Projects Section (Masonry) --- */
+        .project-container {
+            column-count: 2;
+            column-gap: 20px;
+        }
+
         .project {
-            position: relative;
-            width: 45%;
-            height: 200px;
-            perspective: 1000px;
-            z-index: 1;
-            margin: 10px auto;
+            background-color: var(--card-blue);
+            border: 1px solid transparent;
+            border-radius: 5px;
+            padding: 25px;
+            margin-bottom: 20px;
+            break-inside: avoid;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .project:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+        
+        .project h3 {
+            color: var(--text-light-gray);
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+        
+        .project .project-description {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
         }
 
-        .project-front, .project-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            transition: transform 0.6s;
-            border-radius: 10px;
-            padding: 15px;
-            box-sizing: border-box;
+        .project .tech-stack {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-mid-gray);
+            margin-bottom: 20px;
+        }
+        
+        .project-button {
+            text-decoration: none;
+            color: var(--accent-cyan);
+            background: transparent;
+            border: 1px solid var(--accent-cyan);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            transition: background-color 0.3s ease;
+        }
+        
+        .project-button:hover {
+            background-color: var(--accent-cyan-tint);
         }
 
-        .project-front {
-            background: var(--accent-light);
-            color: var(--text-light);
-            z-index: 2;
+        /* --- Skills Section --- */
+        .skills-container {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .project-front h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1em;
+        .skills-container span {
+            background-color: var(--card-blue);
+            color: var(--text-light-gray);
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            border: 1px solid var(--accent-cyan-tint);
+        }
+        
+        /* --- Certifications & Resume --- */
+        .button-link {
+             display: inline-block;
+             text-decoration: none;
+             color: var(--accent-cyan);
+             background: transparent;
+             border: 1px solid var(--accent-cyan);
+             padding: 12px 20px;
+             border-radius: 4px;
+             font-family: var(--font-mono);
+             transition: background-color 0.3s ease;
+             margin-top: 10px;
+        }
+        .button-link:hover {
+            background-color: var(--accent-cyan-tint);
         }
 
-        .project-front p {
-            margin: 0;
-            font-size: 0.9em;
+        /* --- Contact / Find Me Online --- */
+        #contact {
+            text-align: center;
         }
-
-        .project-back {
-            background: var(--project-back-light);
-            color: var(--text-light);
-            transform: rotateY(180deg);
+        #contact h2 {
+            margin: 0 auto 20px auto;
+        }
+        .social-links {
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .social-links a {
+            color: var(--text-mid-gray);
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--accent-cyan);
+            transform: translateY(-3px);
         }
 
-        .project-back p {
-            margin: 0 0 10px 0;
-            font-size: 0.9em;
-        }
-
-        .project:hover .project-front {
-            transform: rotateY(-180deg);
-        }
-
-        .project:hover .project-back {
-            transform: rotateY(0deg);
-        }
-
-        /* Certification Block */
-        .certification {
-            position: relative;
-            width: 45%;
-            height: 150px;
-            background: var(--accent-light);
-            border-radius: 10px;
+        /* --- Footer --- */
+        footer {
+            text-align: center;
             padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1;
-            color: var(--text-light);
-            margin: 10px auto;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-mid-gray);
         }
-
-        .certification:only-child {
-            width: 90%;
-        }
-
-        .certification h3 {
-            margin-top: 19px;
-            margin-bottom: 0;
-        }
-
-        .certification p {
-            margin: 10px 0;
-        }
-
-        .certification .project-button {
-            margin-top: 0;
-        }
-
-        /* Skills Block */
-        .skills-block {
-            position: relative;
-            width: calc(45% + 45% + 20px);
-            height: 150px;
-            background: var(--accent-light);
-            border-radius: 10px;
-            padding: 15px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1;
-            color: var(--text-light);
-            margin: 10px auto;
-        }
-
-        .skills-tags {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .skills-tags span {
-            background: var(--skill-tag-bg);
-            color: var(--text-light);
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 0.9em;
-        }
-
-        /* Containers */
-        .project-container, .certifications-container, .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .project-button, .social-button {
-            text-decoration: none;
-            color: var(--text-dark);
-            background: var(--button-bg-light);
-            padding: 10px 15px;
-            border-radius: 5px;
-            display: inline-block;
-            margin: 5px;
-            transition: background 0.3s;
-            opacity: 1;
-        }
-
-        .project-button:hover, .social-button:hover {
-            background: var(--button-hover-light);
-        }
-
-        .resume-button {
-            text-decoration: none;
-            color: var(--text-dark);
-            background: var(--button-bg-light);
-            padding: 12px 20px;
-            border-radius: 5px;
-            display: inline-block;
-            margin: 10px;
-            transition: background 0.3s;
-            opacity: 1;
-        }
-
-        .resume-button:hover {
-            background: var(--button-hover-light);
-        }
-
+        
+        /* --- Back to Top Button --- */
         #back-to-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: var(--button-bg-light);
-            color: var(--text-dark);
-            border: none;
+            background: var(--card-blue);
+            color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
             border-radius: 50%;
             width: 40px;
             height: 40px;
             font-size: 20px;
             cursor: pointer;
             display: none;
-            transition: background 0.3s;
+            transition: background-color 0.3s, color 0.3s;
             z-index: 2;
         }
 
         #back-to-top:hover {
-            background: var(--button-hover-light);
+            background-color: var(--accent-cyan-tint);
         }
 
-        footer {
-            background: var(--secondary-light);
-            padding: 20px;
-            margin-top: 40px;
-            color: var(--text-fixed);
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Dark Mode */
-        .dark-mode {
-            background-color: var(--primary-dark);
-            color: var(--text-dark);
-        }
-
-        .dark-mode .project-front, 
-        .dark-mode .certification, 
-        .dark-mode .skills-block {
-            background: var(--accent-dark);
-        }
-
-        .dark-mode .project-back {
-            background: var(--project-back-dark);
-        }
-
-        /* Responsive Styles */
+        /* --- Responsive Design --- */
         @media (max-width: 768px) {
-            header {
-                flex-direction: row;
-                overflow-x: auto;
-                white-space: nowrap;
-                padding: 10px 15px;
+            .main-container {
+                padding: 0 20px;
             }
-
+            
             nav {
-                flex: 1;
-                overflow-x: auto;
+                display: none; /* Simple hamburger menu would be next step */
             }
-
-            nav ul {
-                flex-direction: row;
-                overflow-x: auto;
-                white-space: nowrap;
-                gap: 0;
-            }
-
-            .nav-button {
-                padding: 8px 12px;
-            }
-
-            .toggle-container {
-                width: 150px;
-                flex-shrink: 0;
-                padding-left: 10px;
-            }
-
+            
             #hero {
-                height: calc(35vh - 48px);
+                align-items: center;
+                text-align: center;
+                min-height: 60vh;
+            }
+            
+            #neural-net-bg {
+                width: 100%;
+                opacity: 0.05;
+                top: 40%;
             }
 
-            #hero h1 {
-                font-size: 2em;
+            .section-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
-
-            .typing-effect {
-                font-size: clamp(0.8em, 2.5vw, 1.2em);
+            
+            .project-container {
+                column-count: 1;
             }
-
-            .project, .certification, .skills-block {
-                width: 90%;
-                height: 220px;
-                margin: 10px auto;
+            
+            h2.section-heading {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
             }
-
-            .project-front h3 {
-                font-size: 1em;
-            }
-
-            .project-front p {
-                font-size: 0.85em;
-            }
-
-            .certification {
-                width: 90%;
-                height: 160px;
-            }
-
-            .skills-block {
-                height: 250px;
-                padding: 10px;
-            }
-
-            .skills-tags {
-                gap: 6px;
-            }
-
-            .skills-tags span {
-                padding: 4px 8px;
-                font-size: 0.85em;
-            }
-
-            section {
-                padding: 60px 15px;
-            }
-
-            .particle {
-                width: 4px;
-                height: 4px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            #hero {
-                height: calc(40vh - 48px);
-            }
-
-            #hero h1 {
-                font-size: 1.8em;
-            }
-
-            .typing-effect {
-                font-size: clamp(0.7em, 2vw, 1em);
-            }
-
-            .resume-button, .social-button {
-                padding: 10px 15px;
-                font-size: 0.9em;
-            }
-
-            .project-button {
-                padding: 8px 12px;
-                font-size: 0.85em;
-            }
-
-            .project, .certification, .skills-block {
-                height: 240px;
-                margin: 10px auto;
-            }
-
-            .certification {
-                width: 90%;
-            }
-
-            .skills-block {
-                height: 280px;
-                padding: 8px;
-            }
-
-            .skills-tags {
-                gap: 5px;
-            }
-
-            .skills-tags span {
-                padding: 3px 6px;
-                font-size: 0.8em;
-            }
-
-            #back-to-top {
-                width: 35px;
-                height: 35px;
-                font-size: 18px;
-            }
-
-            .particle {
-                width: 3px;
-                height: 3px;
-            }
-
-            .nav-button {
-                padding: 6px 10px;
-            }
-
-            .toggle-container {
-                width: 130px;
+            
+            h2.section-heading::after {
+                display: none;
             }
         }
     </style>
 </head>
-<body> <div id="particles"></div>
+<body>
+
+    <svg id="neural-net-bg" viewBox="0 0 200 100" preserveAspectRatio="xMidYMid meet">
+        <g class="layer-1">
+            <circle class="neuron" cx="20" cy="20" r="4"/>
+            <circle class="neuron" cx="20" cy="50" r="4"/>
+            <circle class="neuron" cx="20" cy="80" r="4"/>
+        </g>
+        <g class="layer-2">
+            <circle class="neuron" cx="100" cy="35" r="5"/>
+            <circle class="neuron" cx="100" cy="65" r="5"/>
+        </g>
+        <g class="layer-3">
+            <circle class="neuron" cx="180" cy="50" r="6"/>
+        </g>
+        <g class="axons">
+            <line class="axon" x1="20" y1="20" x2="100" y2="35"/>
+            <line class="axon" x1="20" y1="20" x2="100" y2="65"/>
+            <line class="axon" x1="20" y1="50" x2="100" y2="35"/>
+            <line class="axon" x1="20" y1="50" x2="100" y2="65"/>
+            <line class="axon" x1="20" y1="80" x2="100" y2="35"/>
+            <line class="axon" x1="20" y1="80" x2="100" y2="65"/>
+            <line class="axon" x1="100" y1="35" x2="180" y2="50"/>
+            <line class="axon" x1="100" y1="65" x2="180" y2="50"/>
+        </g>
+    </svg>
 
     <header>
+        <a href="/" style="font-family: var(--font-mono); color: var(--accent-cyan); text-decoration: none; font-size: 1.5rem;">VRG</a>
         <nav>
-            <ul>
-                <li><a href="#about" class="nav-button">About</a></li>
-                <li><a href="#projects" class="nav-button">Projects</a></li>
-                <li><a href="#skills" class="nav-button">Skills</a></li>
-                <li><a href="#certifications" class="nav-button">Certifications</a></li>
-                <li><a href="#resume" class="nav-button">Resume</a></li>
-                <li><a href="#contact" class="nav-button">Find Me Online</a></li>
-            </ul>
+            <a href="#about">/about</a>
+            <a href="#projects">/projects</a>
+            <a href="#skills">/skills</a>
+            <a href="#contact">/contact</a>
         </nav>
-        <div class="toggle-container">
-            <span>Dark Mode</span>
-            <div class="toggle-switch" onclick="toggleDarkMode()"></div>
-        </div>
     </header>
 
-    <section id="hero" data-aos="fade-down">
-        <h1>Hi, I'm Vamshi Raghuram</h1>
-        <p class="typing-effect"></p>
-    </section>
+    <div class="main-container">
 
-    <section id="about" data-aos="fade-up">
-        <h2>About Me</h2>
-        <p>I’m a Data Scientist who doesn’t just crunch numbers—I sculpt insights. From machine learning models that think ahead to visualizations that speak volumes, I bridge the gap between raw data and real-world impact. My toolbox is vast, my passion is relentless, and my goal is simple—to transform the unseen into strategies that ignite change.</p>
-    </section>
+        <section id="hero" data-aos="fade-in">
+            <h3>Hi, my name is</h3>
+            <h1>Vamshi Raghuram.</h1>
+            <h1 style="color: var(--text-mid-gray);">I build things with data.</h1>
+            <p>I’m a <span class="typing-effect"></span> who doesn’t just crunch numbers—I sculpt insights. From machine learning models that think ahead to visualizations that speak volumes, I bridge the gap between raw data and real-world impact.</p>
+            <a href="#projects" class="button-link" style="margin-top: 40px;">Check out my work!</a>
+        </section>
 
-    <section id="projects" data-aos="fade-up">
-        <h2>Projects</h2>
-        <div class="project-container">
-            <div class="project" data-aos="flip-left">
-                <div class="project-front">
-                    <h3>Drug Recommendation System Based On Sentiment Analysis Of Drug Reviews</h3>
-                    <p>The Drug Recommender System leverages machine learning for sentiment analysis, aiding medical professionals and patients in making informed decisions regarding drugs.</p>
-                </div>
-                <div class="project-back">
-                    <p>Tech Stack: Python, Scikit-learn, Sentiment Analysis, Jupyter Notebook</p>
-                    <a href="https://github.com/Vamshi-Raghuram-G/Drug-Recommendation-System-Based-On-Sentiment-Analysis-Of-Drug-Reviews-Using-Machine-Learning.git" class="project-button">View Project</a>
+        <section id="about" data-aos="fade-up">
+            <h2 class="section-heading">About Me</h2>
+            <div class="section-content">
+                <div></div>
+                <div>
+                    <p>My toolbox is vast, my passion is relentless, and my goal is simple—to transform the unseen into strategies that ignite change.</p>
                 </div>
             </div>
-            <div class="project" data-aos="flip-right">
-                <div class="project-front">
+        </section>
+
+        <section id="projects" data-aos="fade-up">
+            <h2 class="section-heading">Projects</h2>
+            <div class="project-container">
+                <div class="project" data-aos="fade-up">
+                    <h3>Drug Recommendation System</h3>
+                    <p class="project-description">A system leveraging ML-based sentiment analysis of drug reviews to aid medical professionals and patients in making informed decisions.</p>
+                    <p class="tech-stack">Python, Scikit-learn, Sentiment Analysis</p>
+                    <a href="https://github.com/Vamshi-Raghuram-G/Drug-Recommendation-System-Based-On-Sentiment-Analysis-Of-Drug-Reviews-Using-Machine-Learning.git" class="project-button" target="_blank">View Project</a>
+                </div>
+                <div class="project" data-aos="fade-up">
                     <h3>Retail Sales Prediction</h3>
-                    <p>Forecasting daily sales for XYZ's 3,000+ drug stores across seven countries, up to six weeks in advance, using historical data and influencing factors.</p>
+                    <p class="project-description">Forecasting daily sales for 3,000+ drug stores across seven countries up to six weeks in advance using time series analysis.</p>
+                    <p class="tech-stack">Python, Time Series, Feature Engineering</p>
+                    <a href="https://github.com/Vamshi-Raghuram-G/Retail-Sales-Prediction.git" class="project-button" target="_blank">View Project</a>
                 </div>
-                <div class="project-back">
-                    <p>Tech Stack: Python, Time Series Analysis, Feature Engineering, Scikit-learn, Jupyter Notebook</p>
-                    <a href="https://github.com/Vamshi-Raghuram-G/Retail-Sales-Prediction.git" class="project-button">View Project</a>
+                <div class="project" data-aos="fade-up">
+                    <h3>Tableau & Power BI Dashboards</h3>
+                    <p class="project-description">A collection of data visualization projects featuring interactive dashboards and comprehensive reports across multiple domains.</p>
+                    <p class="tech-stack">Tableau, Power BI, Data Visualization</p>
+                    <a href="https://github.com/Vamshi-Raghuram-G/Tableau-Power-BI-Projects.git" class="project-button" target="_blank">View Project</a>
                 </div>
-            </div>
-            <div class="project" data-aos="flip-left">
-                <div class="project-front">
-                    <h3>Tableau & Power BI Projects</h3>
-                    <p>A collection of data visualization projects featuring interactive dashboards, diverse chart types, and comprehensive reports across multiple domains.</p>
+                <div class="project" data-aos="fade-up">
+                    <h3>SQL Data Warehouse</h3>
+                    <p class="project-description">A comprehensive data warehousing solution using Medallion Architecture (Bronze, Silver, Gold layers) for reporting and analytics.</p>
+                    <p class="tech-stack">SQL, Medallion Architecture, Data Warehouse</p>
+                    <a href="https://github.com/Vamshi-Raghuram-G/SQL-Data-Warehouse-Project.git" class="project-button" target="_blank">View Project</a>
                 </div>
-                <div class="project-back">
-                    <p>Tech Stack: Tableau, Power BI, Data Visualization</p>
-                    <a href="https://github.com/Vamshi-Raghuram-G/Tableau-Power-BI-Projects.git" class="project-button">View Project</a>
+                <div class="project" data-aos="fade-up">
+                    <h3>Fashion MNIST Classifier</h3>
+                    <p class="project-description">A deep learning classifier to recognize and categorize clothing items from grayscale images, enhancing automated image recognition.</p>
+                    <p class="tech-stack">Python, Tensorflow, Neural Networks</p>
+                    <a href="https://github.com/Vamshi-Raghuram-G/Fashion-mnist.git" class="project-button" target="_blank">View Project</a>
                 </div>
-            </div>
-            <div class="project" data-aos="flip-right">
-                <div class="project-front">
-                    <h3>SQL Data Warehouse Project</h3>
-                    <p>A comprehensive data warehousing solution with Medallion Architecture (Bronze, Silver, Gold layers) for reporting and analytics.</p>
-                </div>
-                <div class="project-back">
-                    <p>Tech Stack: SQL, Medallion Architecture, Data Warehouse</p>
-                    <a href="https://github.com/Vamshi-Raghuram-G/SQL-Data-Warehouse-Project.git" class="project-button">View Project</a>
-                </div>
-            </div>
-            <div class="project" data-aos="flip-left">
-                <div class="project-front">
-                    <h3>Fashion MNIST</h3>
-                    <p>A deep learning classifier to recognize and categorize clothing items from grayscale images, enhancing automated image recognition.</p>
-                </div>
-                <div class="project-back">
-                    <p>Tech Stack: Python, Neural Networks, Tensorflow, Jupyter Notebook</p>
-                    <a href="https://github.com/Vamshi-Raghuram-G/Fashion-mnist.git" class="project-button">View Project</a>
+                <div class="project" data-aos="fade-up">
+                    <h3>Insurance Cost Forecast</h3>
+                    <p class="project-description">A deep learning system predicting healthcare costs based on demographic and lifestyle factors for insurers and policyholders.</p>
+                    <p class="tech-stack">Python, Tensorflow, Neural Networks</p>
+                    <a href="https://github.com/Vamshi-Raghuram-G/Insurance-Forecast.git" class="project-button" target="_blank">View Project</a>
                 </div>
             </div>
-            <div class="project" data-aos="flip-right">
-                <div class="project-front">
-                    <h3>Insurance Forecast</h3>
-                    <p>A deep learning system predicting healthcare costs based on demographic and lifestyle factors for insurers and policyholders.</p>
-                </div>
-                <div class="project-back">
-                    <p>Tech Stack: Python, Neural Networks, Tensorflow, Jupyter Notebook</p>
-                    <a href="https://github.com/Vamshi-Raghuram-G/Insurance-Forecast.git" class="project-button">View Project</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="skills" data-aos="fade-up">
-        <h2>Skills</h2>
-        <div class="skills-container">
-            <div class="skills-block">
-                <div class="skills-tags">
-                    <span>Python</span>
-                    <span>SQL</span>
-                    <span>Machine Learning</span>
-                    <span>Deep Learning</span>
-                    <span>NLP</span>
-                    <span>Tensorflow</span>
-                    <span>Tableau</span>
-                    <span>Power BI</span>
-                    <span>IBM SPSS Statistics</span>
-                    <span>MongoDB</span>
-                    <span>Exploratory Data Analysis</span>
-                    <span>Data Cleaning</span>
-                    <span>Data Visualization</span>
-                    <span>Object Oriented Programming</span>
-                    <span>Time Series Forecasting</span>
-                    <span>Microsoft Azure</span>
-                    <span>Web Scraping</span>
-                    <span>Statistics</span>
-                    <span>Jira</span>
-                    <span>Git</span>
+        <section id="skills" data-aos="fade-up">
+            <h2 class="section-heading">Skills</h2>
+            <div class="skills-container">
+                <span>Python</span><span>SQL</span><span>Machine Learning</span><span>Deep Learning</span><span>NLP</span><span>Tensorflow</span><span>Tableau</span><span>Power BI</span><span>IBM SPSS</span><span>MongoDB</span><span>EDA</span><span>Data Cleaning</span><span>Data Visualization</span><span>OOP</span><span>Time Series Forecasting</span><span>Microsoft Azure</span><span>Web Scraping</span><span>Statistics</span><span>Jira</span><span>Git</span>
+            </div>
+        </section>
+
+        <section id="certifications" data-aos="fade-up">
+            <h2 class="section-heading">Credentials</h2>
+            <div class="section-content">
+                <div>
+                     <h3>IBM Data Science & AI</h3>
+                     <p>Issuer: IBM</p>
+                     <a href="https://learnvista.skillsnetwork.site/certificates/d8e7f8cc-4c69-48ce-ad36-aa8b0c1a9f80" class="button-link" target="_blank">Verify Certificate</a>
+                </div>
+                 <div>
+                     <h3>Resume</h3>
+                     <p>View my full professional history and qualifications.</p>
+                     <a href="https://raw.githubusercontent.com/Vamshi-Raghuram-G/Vamshi-Raghuram-G.github.io/main/Vamshi%20Raghuram%20G_Resume.pdf" download="Vamshi_Raghuram_G_Resume.pdf" class="button-link"><i class="fas fa-download"></i> Download Resume</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="certifications" data-aos="fade-up">
-        <h2>Certifications</h2>
-        <div class="certifications-container">
-            <div class="certification" data-aos="fade-up">
-                <h3>Data Science and AI</h3>
-                <p><strong>Issuer:</strong> IBM</p>
-                <a href="https://learnvista.skillsnetwork.site/certificates/d8e7f8cc-4c69-48ce-ad36-aa8b0c1a9f80" class="project-button">Verify Certificate</a>
+        <section id="contact" data-aos="fade-up">
+            <h2 class="section-heading" style="justify-content: center;">Find Me Online</h2>
+            <p>Let's connect. You can find me on the following platforms.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/vamshi-raghuram-g" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Vamshi-Raghuram-G" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="resume" data-aos="fade-up">
-        <h2>Resume</h2>
-        <a href="https://raw.githubusercontent.com/Vamshi-Raghuram-G/Vamshi-Raghuram-G.github.io/main/Vamshi%20Raghuram%20G_Resume.pdf" download="Vamshi Raghuram G_Resume.pdf" class="resume-button"><i class="fas fa-download"></i> Download Resume</a>
-    </section>
-
-    <section id="contact" data-aos="fade-up">
-        <h2>Find Me Online</h2>
-        <div>
-            <a href="https://www.linkedin.com/in/vamshi-raghuram-g" class="social-button"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://github.com/Vamshi-Raghuram-G" class="social-button"><i class="fab fa-github"></i> GitHub</a>
-        </div>
-    </section>
-
-    <footer>
-        <p>Driven by curiosity, ever-evolving. © 2025 Vamshi Raghuram</p>
-    </footer>
+        <footer>
+            <p>Designed & Built by Vamshi Raghuram. © 2025</p>
+        </footer>
+    </div>
 
     <button id="back-to-top" onclick="scrollToTop()">⬆</button>
 
@@ -745,16 +514,13 @@
         AOS.init({
             duration: 1000,
             once: true,
+            offset: 100,
         });
 
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
-        }
-
-        // Back-to-Top Button
+        // --- Back-to-Top Button ---
         window.onscroll = function() {
             let btn = document.getElementById('back-to-top');
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
                 btn.style.display = 'block';
             } else {
                 btn.style.display = 'none';
@@ -766,59 +532,42 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Particle Animation
-            const particlesContainer = document.getElementById('particles');
-            let numParticles = window.innerWidth <= 480 ? 20 : window.innerWidth <= 768 ? 30 : 50;
-            for (let i = 0; i < numParticles; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                particle.style.left = `${Math.random() * 100}vw`;
-                particle.style.top = `${Math.random() * 100}vh`;
-                particle.style.animationDelay = `${Math.random() * 10}s`;
-                particlesContainer.appendChild(particle);
-            }
-
             // --- Improved Typing Animation ---
             const typingElement = document.querySelector('.typing-effect');
-            const textsToType = ["Data Scientist", "Data Maverick", "Insight Catalyst"];
-            let textIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
+            if(typingElement) {
+                const textsToType = ["Data Scientist", "Data Maverick", "Insight Catalyst"];
+                let textIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
 
-            function type() {
-                const currentText = textsToType[textIndex];
-                let displayText = '';
+                function type() {
+                    const currentText = textsToType[textIndex];
+                    let displayText = '';
 
-                if (isDeleting) {
-                    // Deleting text
-                    displayText = currentText.substring(0, charIndex - 1);
-                    charIndex--;
-                } else {
-                    // Typing text
-                    displayText = currentText.substring(0, charIndex + 1);
-                    charIndex++;
+                    if (isDeleting) {
+                        displayText = currentText.substring(0, charIndex - 1);
+                        charIndex--;
+                    } else {
+                        displayText = currentText.substring(0, charIndex + 1);
+                        charIndex++;
+                    }
+
+                    typingElement.textContent = displayText;
+                    let typingSpeed = isDeleting ? 75 : 150;
+
+                    if (!isDeleting && charIndex === currentText.length) {
+                        typingSpeed = 2000;
+                        isDeleting = true;
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        textIndex = (textIndex + 1) % textsToType.length;
+                        typingSpeed = 500;
+                    }
+
+                    setTimeout(type, typingSpeed);
                 }
-
-                typingElement.textContent = displayText;
-
-                let typingSpeed = isDeleting ? 75 : 150;
-
-                if (!isDeleting && charIndex === currentText.length) {
-                    // Pause at the end after typing
-                    typingSpeed = 2000;
-                    isDeleting = true;
-                } else if (isDeleting && charIndex === 0) {
-                    // Finished deleting
-                    isDeleting = false;
-                    textIndex = (textIndex + 1) % textsToType.length;
-                    typingSpeed = 500; // Pause before typing the next text
-                }
-
-                setTimeout(type, typingSpeed);
+                type();
             }
-            
-            // Start the animation
-            type();
         });
     </script>
 </body>
