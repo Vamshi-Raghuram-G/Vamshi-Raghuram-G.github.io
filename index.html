@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vamshi Raghuram's Portfolio // Data Architect</title>
+    <title>Vamshi Raghuram's Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
@@ -80,7 +80,7 @@
         /* --- Header & Navigation --- */
         header {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 20px 0;
             position: fixed;
@@ -89,6 +89,23 @@
             background-color: rgba(10, 25, 47, 0.85);
             backdrop-filter: blur(10px);
             z-index: 10;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 40px;
+        }
+
+        #logo {
+            font-family: var(--font-mono);
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin-left: 20px; /* Shifted to the right */
         }
 
         nav {
@@ -174,19 +191,7 @@
         section {
             padding: 100px 0;
         }
-
-        .section-content {
-            display: grid;
-            grid-template-columns: 2fr 3fr;
-            gap: 50px;
-            align-items: flex-start;
-        }
-
-        .section-content p, .section-content ul {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
+        
         /* --- Projects Section (Masonry) --- */
         .project-container {
             column-count: 2;
@@ -259,6 +264,18 @@
         }
         
         /* --- Certifications & Resume --- */
+        .single-item-content {
+            max-width: 600px;
+        }
+        .single-item-content h3 {
+            color: var(--text-light-gray);
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+        }
+        .single-item-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
         .button-link {
              display: inline-block;
              text-decoration: none;
@@ -269,7 +286,7 @@
              border-radius: 4px;
              font-family: var(--font-mono);
              transition: background-color 0.3s ease;
-             margin-top: 10px;
+             margin-top: 15px;
         }
         .button-link:hover {
             background-color: var(--accent-cyan-tint);
@@ -331,12 +348,16 @@
 
         /* --- Responsive Design --- */
         @media (max-width: 768px) {
-            .main-container {
+            .main-container, .header-content {
                 padding: 0 20px;
             }
             
             nav {
                 display: none; /* Simple hamburger menu would be next step */
+            }
+            
+            #logo {
+                margin-left: 0;
             }
             
             #hero {
@@ -349,11 +370,6 @@
                 width: 100%;
                 opacity: 0.05;
                 top: 40%;
-            }
-
-            .section-content {
-                grid-template-columns: 1fr;
-                gap: 20px;
             }
             
             .project-container {
@@ -399,13 +415,16 @@
     </svg>
 
     <header>
-        <a href="/" style="font-family: var(--font-mono); color: var(--accent-cyan); text-decoration: none; font-size: 1.5rem;">VRG</a>
-        <nav>
-            <a href="#about">/about</a>
-            <a href="#projects">/projects</a>
-            <a href="#skills">/skills</a>
-            <a href="#contact">/contact</a>
-        </nav>
+        <div class="header-content">
+            <a href="/" id="logo">VRG</a>
+            <nav>
+                <a href="#projects">/projects</a>
+                <a href="#skills">/skills</a>
+                <a href="#certifications">/certifications</a>
+                <a href="#resume">/resume</a>
+                <a href="#contact">/contact</a>
+            </nav>
+        </div>
     </header>
 
     <div class="main-container">
@@ -414,18 +433,8 @@
             <h3>Hi, my name is</h3>
             <h1>Vamshi Raghuram.</h1>
             <h1 style="color: var(--text-mid-gray);">I build things with data.</h1>
-            <p>I’m a <span class="typing-effect"></span> who doesn’t just crunch numbers—I sculpt insights. From machine learning models that think ahead to visualizations that speak volumes, I bridge the gap between raw data and real-world impact.</p>
+            <p>I’m a <span class="typing-effect"></span> who doesn’t just crunch numbers—I sculpt insights. From machine learning models that think ahead to visualizations that speak volumes, I bridge the gap between raw data and real-world impact. My toolbox is vast, my passion is relentless, and my goal is simple—to transform the unseen into strategies that ignite change.</p>
             <a href="#projects" class="button-link" style="margin-top: 40px;">Check out my work!</a>
-        </section>
-
-        <section id="about" data-aos="fade-up">
-            <h2 class="section-heading">About Me</h2>
-            <div class="section-content">
-                <div></div>
-                <div>
-                    <p>My toolbox is vast, my passion is relentless, and my goal is simple—to transform the unseen into strategies that ignite change.</p>
-                </div>
-            </div>
         </section>
 
         <section id="projects" data-aos="fade-up">
@@ -478,18 +487,19 @@
         </section>
 
         <section id="certifications" data-aos="fade-up">
-            <h2 class="section-heading">Credentials</h2>
-            <div class="section-content">
-                <div>
-                     <h3>IBM Data Science & AI</h3>
-                     <p>Issuer: IBM</p>
-                     <a href="https://learnvista.skillsnetwork.site/certificates/d8e7f8cc-4c69-48ce-ad36-aa8b0c1a9f80" class="button-link" target="_blank">Verify Certificate</a>
-                </div>
-                 <div>
-                     <h3>Resume</h3>
-                     <p>View my full professional history and qualifications.</p>
-                     <a href="https://raw.githubusercontent.com/Vamshi-Raghuram-G/Vamshi-Raghuram-G.github.io/main/Vamshi%20Raghuram%20G_Resume.pdf" download="Vamshi_Raghuram_G_Resume.pdf" class="button-link"><i class="fas fa-download"></i> Download Resume</a>
-                </div>
+            <h2 class="section-heading">Certifications</h2>
+             <div class="single-item-content">
+                 <h3>Data Science and AI</h3>
+                 <p><strong>Issuer:</strong> IBM</p>
+                 <a href="https://learnvista.skillsnetwork.site/certificates/d8e7f8cc-4c69-48ce-ad36-aa8b0c1a9f80" class="button-link" target="_blank">Verify Certificate</a>
+            </div>
+        </section>
+
+        <section id="resume" data-aos="fade-up">
+            <h2 class="section-heading">Resume</h2>
+             <div class="single-item-content">
+                 <p>View my full professional history and qualifications by downloading my resume.</p>
+                 <a href="https://raw.githubusercontent.com/Vamshi-Raghuram-G/Vamshi-Raghuram-G.github.io/main/Vamshi%20Raghuram%20G_Resume.pdf" download="Vamshi_Raghuram_G_Resume.pdf" class="button-link"><i class="fas fa-download"></i> Download Resume</a>
             </div>
         </section>
 
@@ -503,7 +513,7 @@
         </section>
 
         <footer>
-            <p>Designed & Built by Vamshi Raghuram. © 2025</p>
+            <p>Driven by Curiosity, Ever-evolving. © 2025 Vamshi Raghuram</p>
         </footer>
     </div>
 
@@ -535,7 +545,7 @@
             // --- Improved Typing Animation ---
             const typingElement = document.querySelector('.typing-effect');
             if(typingElement) {
-                const textsToType = ["Data Scientist", "Data Maverick", "Insight Catalyst"];
+                const textsToType = ["AI Generalist", "ML Engineer", "Data Analyst", "Data Scientist", "Data Maverick", "Insight Catalyst", "Data Architect"];
                 let textIndex = 0;
                 let charIndex = 0;
                 let isDeleting = false;
