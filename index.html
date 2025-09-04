@@ -107,6 +107,12 @@
             font-size: 1.5rem;
             margin-left: 20px; /* Shifted to the right */
         }
+        
+        .header-right-panel {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
 
         nav {
             display: flex;
@@ -124,6 +130,27 @@
 
         nav a:hover {
             color: var(--accent-cyan);
+        }
+
+        #mute-btn {
+            background: transparent;
+            border: 1px solid var(--text-mid-gray);
+            color: var(--text-mid-gray);
+            cursor: pointer;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        #mute-btn:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+        #mute-btn i {
+            font-size: 0.9rem;
         }
         
         /* --- Hero Section & Neural Net BG --- */
@@ -417,13 +444,18 @@
     <header>
         <div class="header-content">
             <a href="/" id="logo">VR</a>
-            <nav>
-                <a href="#projects">/projects</a>
-                <a href="#skills">/skills</a>
-                <a href="#certifications">/certifications</a>
-                <a href="#resume">/resume</a>
-                <a href="#contact">/contact</a>
-            </nav>
+            <div class="header-right-panel">
+                <nav>
+                    <a href="#projects">/projects</a>
+                    <a href="#skills">/skills</a>
+                    <a href="#certifications">/certifications</a>
+                    <a href="#resume">/resume</a>
+                    <a href="#contact">/contact</a>
+                </nav>
+                <button id="mute-btn" aria-label="Mute sound">
+                    <i class="fas fa-volume-high"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -517,6 +549,9 @@
         </footer>
     </div>
 
+    <audio id="hover-sound" src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjQ1LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAAABoamZmZ2tra21ubnBxcXN0dHV2d3h5ent8fX5/gIGCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXmJmam5ydnp+goaKjpKWmp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcbHyMnKy8zNzs/Q0dLT1NXW19jZ2tvc3d7f4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8AAADlTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//tAwRAAAAHAAADFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV-J4BVkAIAABAAKVCgBGAQ4AAAAYrGgA/kv/EwC/8hSA/4Uf/u//9v/nevhj/nre8A" preload="auto"></audio>
+    <audio id="click-sound" src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjQ1LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAAABoamZmZ2tra21ubnBxcXN0dHV2d3h5ent8fX5/gIGCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXmJmam5ydnp+goaKjpKWmp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcbHyMnKy8zNzs/Q0dLT1NXW19jZ2tvc3d7f4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8AAABVTExNTTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/7QMEQAAAHAAADFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV-H4BVkAIAABAAKVCgBGAQ4AAAAYrGgA/kv/EwC/8hSA/4Uf/u//9v/nevhj/nre8A" preload="auto"></audio>
+
     <button id="back-to-top" onclick="scrollToTop()">⬆</button>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -578,6 +613,51 @@
                 }
                 type();
             }
+
+            // --- Sound Effects ---
+            const hoverSound = document.getElementById('hover-sound');
+            const clickSound = document.getElementById('click-sound');
+            const muteBtn = document.getElementById('mute-btn');
+            const muteIcon = muteBtn.querySelector('i');
+
+            let isMuted = localStorage.getItem('isMuted') === 'true';
+
+            function updateMuteState() {
+                if (isMuted) {
+                    muteIcon.classList.remove('fa-volume-high');
+                    muteIcon.classList.add('fa-volume-xmark');
+                    muteBtn.setAttribute('aria-label', 'Unmute sound');
+                } else {
+                    muteIcon.classList.remove('fa-volume-xmark');
+                    muteIcon.classList.add('fa-volume-high');
+                    muteBtn.setAttribute('aria-label', 'Mute sound');
+                }
+            }
+            
+            updateMuteState();
+
+            muteBtn.addEventListener('click', () => {
+                isMuted = !isMuted;
+                localStorage.setItem('isMuted', isMuted);
+                updateMuteState();
+                playSound(clickSound); // Play click sound on mute toggle
+            });
+
+            function playSound(sound) {
+                if (!isMuted && sound) {
+                    sound.currentTime = 0;
+                    sound.play().catch(e => console.error("Sound play failed:", e));
+                }
+            }
+
+            const interactiveElements = document.querySelectorAll(
+                'a, button, .button-link'
+            );
+
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => playSound(hoverSound));
+                el.addEventListener('click', () => playSound(clickSound));
+            });
         });
     </script>
 </body>
