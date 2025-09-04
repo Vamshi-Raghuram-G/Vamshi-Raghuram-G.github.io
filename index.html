@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,12 +108,6 @@
             font-size: 1.5rem;
             margin-left: 20px; /* Shifted to the right */
         }
-        
-        .header-right-panel {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
 
         nav {
             display: flex;
@@ -130,27 +125,6 @@
 
         nav a:hover {
             color: var(--accent-cyan);
-        }
-
-        #mute-btn {
-            background: transparent;
-            border: 1px solid var(--text-mid-gray);
-            color: var(--text-mid-gray);
-            cursor: pointer;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        #mute-btn:hover {
-            border-color: var(--accent-cyan);
-            color: var(--accent-cyan);
-        }
-        #mute-btn i {
-            font-size: 0.9rem;
         }
         
         /* --- Hero Section & Neural Net BG --- */
@@ -444,18 +418,13 @@
     <header>
         <div class="header-content">
             <a href="/" id="logo">VR</a>
-            <div class="header-right-panel">
-                <nav>
-                    <a href="#projects">/projects</a>
-                    <a href="#skills">/skills</a>
-                    <a href="#certifications">/certifications</a>
-                    <a href="#resume">/resume</a>
-                    <a href="#contact">/contact</a>
-                </nav>
-                <button id="mute-btn" aria-label="Mute sound">
-                    <i class="fas fa-volume-high"></i>
-                </button>
-            </div>
+            <nav>
+                <a href="#projects">/projects</a>
+                <a href="#skills">/skills</a>
+                <a href="#certifications">/certifications</a>
+                <a href="#resume">/resume</a>
+                <a href="#contact">/contact</a>
+            </nav>
         </div>
     </header>
 
@@ -549,9 +518,6 @@
         </footer>
     </div>
 
-    <audio id="hover-sound" src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjQ1LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAAABoamZmZ2tra21ubnBxcXN0dHV2d3h5ent8fX5/gIGCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXmJmam5ydnp+goaKjpKWmp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcbHyMnKy8zNzs/Q0dLT1NXW19jZ2tvc3d7f4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8AAADlTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//tAwRAAAAHAAADFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV-JprGgA/kv/EwC/8hSA/8Uf/u//9v/nevhj/nre8A" preload="auto"></audio>
-    <audio id="click-sound" src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjQ1LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAAABoamZmZ2tra21ubnBxcXN0dHV2d3h5ent8fX5/gIGCg4SFhoeIiYqLjI2Oj5CRkpOUlZaXmJmam5ydnp+goaKjpKWmp6ipqqusra6vsLGys7S1tre4ubq7vL2+v8DBwsPExcbHyMnKy8zNzs/Q0dLT1NXW19jZ2tvc3d7f4OHi4+Tl5ufo6err7O3u7/Dx8vP09fb3+Pn6+/z9/v8AAABVTExNTTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/7QMEQAAAHAAADFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV-H4BVkAIAABAAKVCgBGAQ4AAAAYrGgA/kv/EwC/8hSA/8Uf/u//9v/nevhj/nre8A" preload="auto"></audio>
-
     <button id="back-to-top" onclick="scrollToTop()">⬆</button>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -613,64 +579,6 @@
                 }
                 type();
             }
-
-            // --- Sound Effects ---
-            const hoverSound = document.getElementById('hover-sound');
-            const clickSound = document.getElementById('click-sound');
-            const muteBtn = document.getElementById('mute-btn');
-            const muteIcon = muteBtn.querySelector('i');
-
-            let isAudioUnlocked = false;
-            let isMuted = localStorage.getItem('isMuted') === 'true';
-
-            function updateMuteState() {
-                if (isMuted) {
-                    muteIcon.classList.remove('fa-volume-high');
-                    muteIcon.classList.add('fa-volume-xmark');
-                    muteBtn.setAttribute('aria-label', 'Unmute sound');
-                } else {
-                    muteIcon.classList.remove('fa-volume-xmark');
-                    muteIcon.classList.add('fa-volume-high');
-                    muteBtn.setAttribute('aria-label', 'Mute sound');
-                }
-            }
-            
-            updateMuteState();
-
-            function playSound(sound, isClick = false) {
-                // Unlock audio context on the first user click
-                if (!isAudioUnlocked && isClick) {
-                    isAudioUnlocked = true;
-                }
-                // Only play hover sounds if audio is unlocked
-                if (!isAudioUnlocked && !isClick) {
-                    return;
-                }
-                // Play sound if not muted
-                if (!isMuted && sound) {
-                    sound.currentTime = 0;
-                    sound.play().catch(e => console.error("Sound play failed. User interaction might be required."));
-                }
-            }
-
-            muteBtn.addEventListener('click', () => {
-                isMuted = !isMuted;
-                localStorage.setItem('isMuted', isMuted);
-                updateMuteState();
-                playSound(clickSound, true); 
-            });
-
-            const interactiveElements = document.querySelectorAll(
-                'a, button, .button-link'
-            );
-
-            interactiveElements.forEach(el => {
-                // Mute button has its own click sound, so we exclude it here
-                if (el.id !== 'mute-btn') {
-                     el.addEventListener('click', () => playSound(clickSound, true));
-                }
-                el.addEventListener('mouseenter', () => playSound(hoverSound, false));
-            });
         });
     </script>
 </body>
